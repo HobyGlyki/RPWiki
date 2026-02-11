@@ -13,12 +13,15 @@
         input[type="text"], textarea { width: 100%; padding: 10px; background: #222; color: #fff; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; box-sizing: border-box; }
         textarea { resize: vertical; min-height: 100px; }
         input[type="color"] { width: 100%; height: 40px; padding: 0; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; background: #222; }
-        .btn { background: var(--accent); color: #fff; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-right: 10px; transition: 0.2s; }
-        .btn:hover { background: #357abd; }
+        input[type="file"] { padding: 8px; background: #333; color: #fff; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; }
+        
+        .btn { background: var(--accent); color: #fff; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-right: 10px; transition: 0.2s; display: inline-block; text-decoration: none; }
+        .btn:hover { background: #357abd; color: #fff; text-decoration: none; }
         .btn-danger { background: #d9534f; }
         .btn-danger:hover { background: #c9302c; }
-        .dynamic-row { display: flex; gap: 10px; margin-bottom: 10px; }
-        .dynamic-row input { flex: 1; }
+        
+        .dynamic-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
+        .dynamic-row input[type="text"] { flex: 1; }
         .section-title { border-bottom: 2px solid var(--border); padding-bottom: 5px; margin-top: 30px; }
         
         /* Секции контента */
@@ -37,13 +40,15 @@
     </style>
 </head>
 <body class="dark-mode">
-    <div id="navbar-container" data-path="../"></div>
+
     <div id="preview-overlay">
         <button id="close-preview-btn" class="btn btn-danger" onclick="togglePreview(false)">✖ Закрыть предпросмотр</button>
         <iframe id="preview-iframe"></iframe>
     </div>
 
     <div class="editor-wrapper">
+        <a href="../index.html" class="btn" style="background: #555; margin-bottom: 20px;">🏠 На главную</a>
+
         <h1>Генератор Статей Wiki</h1>
         
         <div style="margin-bottom: 20px;">
@@ -59,8 +64,9 @@
                 <li><b>Перенос строки:</b> <code>&lt;br&gt;</code> (Используйте в Инфобоксе, чтобы вписать два значения)</li>
                 <li><b>Жирный:</b> <code>&lt;b&gt;Текст&lt;/b&gt;</code> | <b>Курсив:</b> <code>&lt;i&gt;Текст&lt;/i&gt;</code></li>
                 <li><b>Ссылка на персонажа:</b> <code>&lt;a href="jerry.html" class="wiki-link"&gt;Джерри&lt;/a&gt;</code></li>
-                <li><b>Картинка в тексте:</b> <code>&lt;img src="../Statics/image/файл.jpg" style="width:100%; border-radius:5px;"&gt;</code></li>
+                <li><b>Картинка в тексте:</b> <code>&lt;img src="../Statics/image/твоя_картинка.jpg" style="width:100%; border-radius:5px;"&gt;</code></li>
             </ul>
+            <p style="color: #ff9d00; margin-top: 10px;"><b>ВАЖНО ДЛЯ КАРТИНОК:</b> Чтобы картинки отображались в предпросмотре, загрузите их в специальные поля "Файл для предпросмотра". Названия загруженных файлов должны точно совпадать с теми, что вы прописали в коде (например, <i>твоя_картинка.jpg</i>).</p>
         </div>
 
         <form id="wikiForm">
@@ -95,11 +101,12 @@
             </div>
 
             <h2 class="section-title">2. Изображения (Аватарки)</h2>
-            <p style="color:#aaa; font-size:0.9em;">Если добавить больше одной картинки, автоматически появятся кнопки переключения форм.</p>
+            <p style="color:#aaa; font-size:0.9em;">Выберите файл с компьютера, и его имя впишется автоматически.</p>
             <div id="images_container">
                 <div class="dynamic-row image-row">
-                    <input type="text" placeholder="Название вкладки (Обычный)" class="img-tab-name" value="Обычный">
-                    <input type="text" placeholder="Имя файла (JerryAva.jpg)" class="img-file-name" value="JerryAva.jpg">
+                    <input type="text" placeholder="Вкладка (Обычный)" class="img-tab-name" value="Обычный">
+                    <input type="text" placeholder="Имя файла" class="img-file-name" value="JerryAva.jpg">
+                    <input type="file" accept="image/*" title="Файл для предпросмотра" onchange="handleAvatarUpload(this)">
                     <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()">X</button>
                 </div>
             </div>
@@ -158,54 +165,46 @@
                     </div>
                     <textarea class="sec-content" rows="4"><h3>Детство</h3><p>Текст...</p></textarea>
                 </div>
-
                 <div class="dynamic-section">
                     <div class="dynamic-section-header">
                         <input type="text" value="Личность и характер" class="sec-title">
                         <button type="button" class="btn btn-danger" onclick="this.parentElement.parentElement.remove()">Удалить блок</button>
                     </div>
-                    <textarea class="sec-content" rows="4"><p>Он очень крутой...</p></textarea>
+                    <textarea class="sec-content" rows="4"><p>Описание...</p></textarea>
                 </div>
-
                 <div class="dynamic-section">
                     <div class="dynamic-section-header">
                         <input type="text" value="Внешность" class="sec-title">
                         <button type="button" class="btn btn-danger" onclick="this.parentElement.parentElement.remove()">Удалить блок</button>
                     </div>
-                    <textarea class="sec-content" rows="4"><p>Высокий рост...</p></textarea>
+                    <textarea class="sec-content" rows="4"><p>Описание...</p></textarea>
                 </div>
-
                 <div class="dynamic-section">
                     <div class="dynamic-section-header">
                         <input type="text" value="Способности и Арсенал" class="sec-title">
                         <button type="button" class="btn btn-danger" onclick="this.parentElement.parentElement.remove()">Удалить блок</button>
                     </div>
-                    <textarea class="sec-content" rows="4"><ul><li><b>Магия:</b> Огонь</li></ul></textarea>
+                    <textarea class="sec-content" rows="4"><ul><li><b>Способность:</b> Описание</li></ul></textarea>
                 </div>
-
                 <div class="dynamic-section">
                     <div class="dynamic-section-header">
                         <input type="text" value="Связи с персонажами" class="sec-title">
                         <button type="button" class="btn btn-danger" onclick="this.parentElement.parentElement.remove()">Удалить блок</button>
                     </div>
-                    <textarea class="sec-content" rows="4"><ul><li><b>Имя:</b> Описание отношений.</li></ul></textarea>
-                </div>
-
-                <div class="dynamic-section">
-                    <div class="dynamic-section-header">
-                        <input type="text" value="Интересные факты" class="sec-title">
-                        <button type="button" class="btn btn-danger" onclick="this.parentElement.parentElement.remove()">Удалить блок</button>
-                    </div>
-                    <textarea class="sec-content" rows="4"><ul><li>Любит пиццу.</li></ul></textarea>
+                    <textarea class="sec-content" rows="4"><ul><li><b>Имя:</b> Отношение</li></ul></textarea>
                 </div>
             </div>
-            
             <button type="button" class="btn" style="width: 100%; margin-top: 10px;" onclick="addContentSection()">+ Добавить новый раздел</button>
+
+            <h2 class="section-title">Картинки для текста (Только для предпросмотра)</h2>
+            <p style="color:#aaa; font-size:0.9em;">Если вы вставили тег <code>&lt;img&gt;</code> в текст, загрузите эти картинки сюда, чтобы они отображались в предпросмотре. Можно выбрать сразу несколько файлов.</p>
+            <input type="file" multiple accept="image/*" onchange="handleTextImagesUpload(this)">
+            <div id="text_images_list" style="margin-top: 10px; font-size: 0.9em; color: #88a;"></div>
 
             <h2 class="section-title">6. Музыкальная тема</h2>
             <div class="form-group">
                 <label>Название трека (в плеере):</label>
-                <input type="text" id="f_music_name" value="Character Theme - Epic">
+                <input type="text" id="f_music_name" value="Character Theme">
             </div>
             <div class="form-group">
                 <label>Имя файла (напр. theme.mp3):</label>
@@ -216,17 +215,50 @@
     </div>
 
     <script>
+        // СЛОВАРЬ КАРТИНОК ДЛЯ ПРЕДПРОСМОТРА
+        const previewImageMap = {};
+
         function toggleHelp() {
             const h = document.getElementById('helpBox');
             h.style.display = h.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // ОБРАБОТКА ЗАГРУЗКИ АВАТАРОК
+        function handleAvatarUpload(input) {
+            const file = input.files[0];
+            if (file) {
+                // Автоматически вписываем имя файла в текстовое поле рядом
+                const fileNameInput = input.parentElement.querySelector('.img-file-name');
+                fileNameInput.value = file.name;
+                // Сохраняем во временную память браузера
+                previewImageMap[file.name] = URL.createObjectURL(file);
+            }
+        }
+
+       // ОБРАБОТКА ЗАГРУЗКИ КАРТИНОК ИЗ ТЕКСТА
+        function handleTextImagesUpload(input) {
+            const list = document.getElementById('text_images_list');
+            
+            // Мы убрали очистку списка, чтобы старые файлы оставались на экране!
+            Array.from(input.files).forEach(file => {
+                // Проверяем, нет ли уже такого файла, чтобы не дублировать надпись
+                if (!previewImageMap[file.name]) {
+                    previewImageMap[file.name] = URL.createObjectURL(file);
+                    list.innerHTML += `<div style="color: #28a745; margin-top: 5px;">✅ Сохранено: <b>${file.name}</b></div>`;
+                }
+            });
+            
+            // Сбрасываем сам input, чтобы можно было выбрать тот же файл еще раз, если нужно
+            input.value = ''; 
         }
 
         function addImageRow() {
             const div = document.createElement('div');
             div.className = 'dynamic-row image-row';
             div.innerHTML = `
-                <input type="text" placeholder="Название вкладки" class="img-tab-name">
-                <input type="text" placeholder="Имя файла (name.jpg)" class="img-file-name">
+                <input type="text" placeholder="Вкладка (Маска)" class="img-tab-name">
+                <input type="text" placeholder="Имя файла" class="img-file-name">
+                <input type="file" accept="image/*" title="Файл для предпросмотра" onchange="handleAvatarUpload(this)">
                 <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()">X</button>
             `;
             document.getElementById('images_container').appendChild(div);
@@ -268,7 +300,7 @@
         }
 
         // ГЛАВНАЯ ФУНКЦИЯ: СБОРКА HTML
-        function generateCode() {
+        function generateCode(isPreview = false) {
             const bgColor = document.getElementById('f_bg_color').value;
             const accentColor = document.getElementById('f_accent_color').value;
             const title = document.getElementById('f_title').value;
@@ -276,10 +308,8 @@
             const intro = document.getElementById('f_intro').value;
             const infoTitle = document.getElementById('f_infobox_title').value;
             
-            // Кастомные стили (цвета)
             const customStyles = `\n    <style>\n        body.dark-mode {\n            --bg: ${bgColor};\n            --accent: ${accentColor};\n        }\n    </style>`;
             
-            // Собираем картинки
             const imgRows = document.querySelectorAll('.image-row');
             let imagesHTML = '';
             let imageScript = '';
@@ -313,7 +343,6 @@
                 imageScript = `\n    <script>\n        function switchAvatar(mode, btn) {\n            const img = document.getElementById('charImage');\n            const btns = document.querySelectorAll('.toggle-btn');\n            btns.forEach(b => b.classList.remove('active'));\n            btn.classList.add('active');\n            ${scriptLogic.trim()}\n        }\n    <\/script>`;
             }
 
-            // Собираем Таблицы Инфобокса
             let infoTable = '<table>\n';
             document.querySelectorAll('.info-row').forEach(row => {
                 const k = row.querySelector('.info-key').value;
@@ -330,7 +359,6 @@
             });
             relTable += '                </table>';
 
-            // Собираем Блоки контента (С динамическим Содержанием)
             let tocHTML = '<ul>\n';
             let contentHTML = '';
             
@@ -349,8 +377,7 @@
             const mName = document.getElementById('f_music_name').value;
             const mFile = document.getElementById('f_music_file').value;
 
-            // ФОРМИРУЕМ ФИНАЛЬНЫЙ HTML
-            const finalHTML = `<!DOCTYPE html>
+            let finalHTML = `<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -400,6 +427,17 @@
 </body>
 </html>`;
 
+            // МАГИЯ ПРЕДПРОСМОТРА КАРТИНОК
+            // Если включен режим предпросмотра, подменяем пути на локальные Blob URL
+            if (isPreview) {
+                Object.keys(previewImageMap).forEach(fileName => {
+                    const originalPath = '../Statics/image/' + fileName;
+                    const localPath = previewImageMap[fileName];
+                    // Безопасная замена всех совпадений в строке
+                    finalHTML = finalHTML.split(originalPath).join(localPath);
+                });
+            }
+
             return finalHTML;
         }
 
@@ -409,7 +447,7 @@
             const iframe = document.getElementById('preview-iframe');
             
             if (show) {
-                const html = generateCode();
+                const html = generateCode(true); // Передаем true, чтобы подгрузить картинки
                 overlay.style.display = 'block';
                 document.body.style.overflow = 'hidden'; 
                 iframe.srcdoc = html; 
@@ -422,7 +460,7 @@
 
         // ЛОГИКА СКАЧИВАНИЯ
         function downloadHTML() {
-            const htmlContent = generateCode();
+            const htmlContent = generateCode(false); // Передаем false для чистых путей
             const fileName = document.getElementById('f_filename').value || 'article.html';
             
             const blob = new Blob([htmlContent], { type: 'text/html' });
