@@ -20,7 +20,19 @@ const charactersData = [
       "posY": "top",
       "scale": "1.0"
     }
+  },
+  {
+    "id": "adrian",
+    "name": "Эдриан Морн",
+    "nickname": "Всевластный демон",
+    "image": "Statics/image/adrianava.jpg", 
+    "link": "Wikis/adrian.html",
+    "settings": {
+      "posY": "top",
+      "scale": "1.0"
+    }
   }
+
 ];
 
 // ... (твой существующий массив charactersData оставляем без изменений) ...
