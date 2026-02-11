@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Проверка коммитов
+    console.log("Привет! Если ты видишь это сообщение, значит скрипт успешно загрузился.")
+    
     // --- 1. ГЕНЕРАЦИЯ НАВБАРА (МЕГА-МЕНЮ) ---
     const navContainer = document.getElementById('navbar-container');
     
