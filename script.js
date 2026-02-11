@@ -63,7 +63,47 @@ document.addEventListener('DOMContentLoaded', () => {
             renderAlphabeticalIndex(contentArea, filteredWorlds);
         }
     }
-});
+    
+// --- 4. ГЕНЕРАЦИЯ НЕДАВНИХ СТАТЕЙ (Для Главной страницы) ---
+    const recentGrid = document.getElementById('recent-articles-grid');
+    if (recentGrid) {
+        renderRecentArticles(recentGrid);
+    }
+}); // <-- Это закрывающая скобка от document.addEventListener('DOMContentLoaded', () => {
+
+// Функция рендера недавних статей
+function renderRecentArticles(container) {
+    // 1. Собираем все статьи из всех доступных баз в один большой массив
+    let allArticles = [];
+    if (typeof charactersData !== 'undefined') allArticles = allArticles.concat(charactersData);
+    if (typeof worldsData !== 'undefined') allArticles = allArticles.concat(worldsData);
+    if (typeof factionsData !== 'undefined') allArticles = allArticles.concat(factionsData);
+
+    // 2. Оставляем только те, у которых есть дата, и сортируем (от новых к старым)
+    const sortedArticles = allArticles
+        .filter(item => item.dateAdded) // Отбрасываем те, где дата не указана
+        .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)) // Сортируем
+        .slice(0, 8); // Берем только ТОП-4 самых свежих
+
+    // 3. Создаем HTML для каждой карточки
+    sortedArticles.forEach(article => {
+        const link = document.createElement('a');
+        link.href = article.link;
+        link.className = 'recent-card';
+
+        link.innerHTML = `
+            <div class="recent-img-wrapper">
+                <img src="${article.image}" alt="${article.name}" onerror="this.src='Statics/image/RPImage.png'">
+            </div>
+            <div class="recent-info">
+                <h3>${article.name}</h3>
+                <p>${article.nickname || ''}</p>
+            </div>
+        `;
+        
+        container.appendChild(link);
+    });
+}
 
 
 function renderAlphabeticalIndex(container, data) {
@@ -144,3 +184,4 @@ function initNavbarScroll() {
         });
     }
 }
+
