@@ -1,0 +1,536 @@
+:root {
+    /* ЦВЕТА (ТЕМНАЯ ТЕМА ПО УМОЛЧАНИЮ) */
+    --bg: #121212;         /* Почти черный фон */
+    --text: #e0e0e0;       /* Светлый текст */
+    --card-bg: #1e1e1e;    /* Фон карточек */
+    --border: #333333;     /* Темные рамки */
+    --accent: #4a90e2;     /* Синий акцент */
+    --nav-bg: #000000;     /* Черный навбар */
+    --nav-text: #ffffff;
+    --header-bg: #2d2d2d;  /* Заголовки */
+    --infobox-header: #2a2a2a;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    margin: 0; 
+    padding: 0; /* Убрали padding, чтобы навбар был от края до края */
+    line-height: 1.6;
+}
+
+/* === 1. ВЕРХНЯЯ ПАНЕЛЬ И MEGA-MENU === */
+.wiki-navbar {
+    background-color: var(--nav-bg);
+    color: var(--nav-text);
+    padding: 0 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    border-bottom: 3px solid #00c3ff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.wiki-navbar.hidden {
+    transform: translateY(-100%);
+}
+
+/* Логотип и название (Кликабельные) */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    margin-right: 30px;
+}
+
+.nav-logo {
+    height: 45px; width: 45px;
+    border-radius: 50%; object-fit: cover;
+    border: 2px solid #333; margin-right: 15px;
+}
+
+.site-title {
+    font-weight: bold; font-size: 1.1em;
+    text-transform: uppercase; letter-spacing: 1.5px;
+}
+
+/* Контейнер ссылок */
+.nav-links {
+    display: flex;
+    align-items: center;
+    height: 100%; /* Важно для убирания зазора */
+}
+
+/* Кнопки меню 1 уровня */
+.dropdown {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dropbtn {
+    color: #aaa; text-decoration: none;
+    padding: 0 15px; font-size: 0.85em;
+    font-weight: bold; text-transform: uppercase;
+    cursor: pointer; height: 100%;
+    display: flex; align-items: center;
+}
+
+.dropdown:hover .dropbtn { color: #fff; }
+
+/* Выпадающий список 1 уровня */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 60px; /* Сразу под навбаром */
+    left: 0;
+    background-color: var(--nav-bg);
+    min-width: 240px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.7);
+    border: 1px solid var(--border);
+    border-top: none;
+}
+
+.dropdown:hover .dropdown-content { display: block; }
+
+.dropdown-content > a, .dropdown-submenu > a {
+    color: #ccc; padding: 12px 16px;
+    text-decoration: none; display: block;
+    font-size: 0.9em; border-bottom: 1px solid #222;
+}
+
+.dropdown-content > a:hover, .dropdown-submenu:hover > a {
+    background-color: #222; color: #fff;
+}
+
+/* Списки 2 уровня (Вложенные) */
+.dropdown-submenu { position: relative; }
+
+/* Стрелочка для вложенных меню */
+.dropdown-submenu > a::after {
+    content: " ▸"; float: right;
+}
+
+.dropdown-submenu-content {
+    display: none;
+    position: absolute;
+    top: 0; left: 100%; /* Открывается вправо */
+    background-color: var(--nav-bg);
+    min-width: 250px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.7);
+    border: 1px solid var(--border);
+}
+
+.dropdown-submenu:hover .dropdown-submenu-content { display: block; }
+
+.dropdown-submenu-content a {
+    color: #ccc; padding: 10px 16px;
+    text-decoration: none; display: block;
+    font-size: 0.85em; border-bottom: 1px solid #222;
+}
+
+.dropdown-submenu-content a:hover { background-color: #333; color: #fff; }
+
+/* Кнопка смены темы */
+.theme-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: var(--nav-text);
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background 0.3s;
+}
+.theme-btn:hover { background: rgba(255,255,255,0.1); }
+
+
+/* === ИСПРАВЛЕНИЕ КАРТОЧЕК ПЕРСОНАЖЕЙ === */
+
+.char-grid {
+    display: grid;
+    /* Адаптивная сетка: минимум 250px ширины, иначе перенос */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.wiki-card {
+    display: flex; /* Флекс, чтобы картинка была слева, текст справа */
+    align-items: stretch; /* Растягиваем по высоте */
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 6px;
+    transition: transform 0.2s, border-color 0.2s;
+    overflow: hidden;
+    height: 60px; /* Фиксируем высоту карточки */
+}
+
+.wiki-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.wiki-card img {
+    width: 10px;  /* Фиксированная ширина */
+    object-fit: cover; /* Чтобы картинка не плющилась, а обрезалась */
+    border-right: 1px solid var(--border);
+    flex-shrink: 0; /* ЗАПРЕЩАЕМ сжимать картинку */
+    /* ... твои старые стили ... */
+    background-color: #333; /* Серый фон, если картинка не прогрузилась */
+    min-width: 25%; /* Чтобы блок не схлопывался без картинки */
+    
+}
+
+.wiki-card-info {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрируем текст по вертикали */
+    flex-grow: 1; /* Текст занимает всё оставшееся место */
+    min-width: 0; /* Магия CSS: разрешает тексту сжиматься внутри флекса */
+}
+
+.wiki-card-info h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: var(--accent);
+    line-height: 1.2;
+    /* Если имя длинное, оно перенесется на вторую строку */
+    white-space: normal; 
+}
+
+.wiki-card-info p {
+    margin: 4px 0 0;
+    font-size: 0.8em;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Троеточие, если роль длинная */
+}
+
+/* === 2. Контейнер и Сетка === */
+.container { 
+    max-width: 1200px; 
+    margin: 80px auto 20px; /* Отступ сверху 80px, чтобы контент не залез под навбар */
+    padding: 0 20px;
+    position: relative;
+}
+
+/* Алфавитные секции */
+.alphabet-section {
+    margin-bottom: 40px;
+    border-top: 2px solid var(--border); /* Разделитель букв */
+    padding-top: 10px;
+}
+
+.letter-header {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 15px;
+    display: inline-block;
+    padding: 5px 15px;
+    background: var(--card-bg);
+    border-radius: 5px;
+    border: 1px solid var(--border);
+}
+
+/* Сетка карточек */
+.char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Чуть шире карточки */
+    gap: 15px;
+}
+
+/* Карточка на главной */
+.wiki-card {
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 4px;
+    transition: transform 0.2s, border-color 0.2s;
+    overflow: hidden;
+}
+
+.wiki-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.wiki-card img {
+    width: 60px;  /* Уменьшили картинку */
+    height: 60px;
+    object-fit: cover;
+    border-right: 1px solid var(--border);
+    flex-shrink: 0; /* Чтобы картинка не сжималась */
+}
+
+.wiki-card-info {
+    padding: 0 15px;
+    overflow: hidden; /* Скрываем длинный текст */
+}
+
+.wiki-card-info h3 {
+    margin: 0;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--accent);
+}
+
+.wiki-card-info p {
+    margin: 3px 0 0;
+    font-size: 0.75em;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.infobox {
+    width: 350px; /* СДЕЛАЛ ШИРЕ */
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 5px;
+    font-size: 0.9em;
+    float: right; /* Обтекание текстом */
+    margin-left: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.infobox-header {
+    background: var(--infobox-header);
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-bottom: 1px solid var(--border);
+}
+
+.infobox img { width: 100%; height: auto; display: block; margin-bottom: 10px;}
+
+.infobox table { width: 100%; border-collapse: collapse; }
+.infobox th { 
+    text-align: left; 
+    padding: 8px; 
+    width: 40%; 
+    vertical-align: top;
+    color: var(--text);
+    opacity: 0.8;
+}
+.infobox td { padding: 8px; vertical-align: top; }
+
+/* Таблица глаз в тексте */
+.eyes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+}
+.eyes-table th { background: var(--infobox-header); border: 1px solid var(--border); padding: 10px; text-align: left;}
+.eyes-table td { border: 1px solid var(--border); padding: 10px; }
+
+/* Очистка потока после статьи */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Плеер */
+.music-player {
+    position: fixed; bottom: 20px; right: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 10px 15px;
+    border-radius: 50px;
+    display: flex; align-items: center; gap: 10px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+.char-card { display: block; border: 1px solid var(--border); background: var(--card-bg); }
+.img-container { height: 200px; overflow: hidden; }
+.img-container img { width: 100%; height: 100%; object-fit: cover; }
+.char-info { padding: 10px; text-align: center; }
+
+/* Линии под заголовками блоков */
+h2 {
+    border-bottom: 2px solid var(--border); /* Линия снизу */
+    padding-bottom: 5px; /* Отступ текста от линии */
+    margin-top: 30px; /* Отступ сверху от предыдущего блока */
+    font-size: 1.8em;
+    font-weight: normal;
+    font-family: 'Times New Roman', serif; /* Шрифт как в вики */
+    color: var(--text);
+}
+
+/* Ссылки внутри текста */
+.wiki-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+.wiki-link:hover {
+    text-decoration: underline;
+}
+
+/* === ОФОРМЛЕНИЕ БЛОКА СОДЕРЖАНИЯ (TOC) === */
+
+.toc {
+    /* Делаем "Коробку" */
+    background-color: var(--card-bg); /* Цвет фона как у карточек */
+    border: 1px solid var(--border);  /* Рамка */
+    display: inline-block;            /* ВАЖНО: блок сжимается по ширине контента */
+    
+    /* Отступы и скругления */
+    padding: 15px 30px 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    min-width: 200px; /* Минимальная ширина, чтобы не было слишком узко */
+    
+    /* Тень для объема (опционально, но красиво) */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Заголовок "Содержание" внутри коробки */
+.toc h3 {
+    text-align: center;      /* По центру */
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: none;     /* Убираем линию, которая у нас у обычных заголовков */
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: var(--text);
+}
+
+/* Список внутри коробки */
+.toc ul {
+    list-style-type: decimal; /* Цифры (1, 2, 3...) как в настоящей вики */
+    padding-left: 20px;       /* Отступ для цифр */
+    margin: 0;
+}
+
+.toc li {
+    margin-bottom: 5px;       /* Расстояние между пунктами */
+    font-size: 0.95em;
+}
+
+/* Ссылки внутри содержания */
+.toc a {
+    text-decoration: none;
+    color: var(--accent);
+    transition: color 0.2s;
+}
+
+.toc a:hover {
+    text-decoration: underline;
+    color: #fff; /* Подсветка при наведении */
+}
+
+/* === ПЕРЕКЛЮЧАТЕЛЬ ОБЛИКОВ (TABBER) === */
+.image-toggle {
+    display: flex;
+    background: #f0f0f0; /* Светлый фон контейнера */
+    border-bottom: 1px solid #aaa;
+}
+
+.toggle-btn {
+    flex: 1; /* Кнопки растягиваются равномерно */
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #555;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent; /* Линия снизу (скрыта) */
+}
+
+.toggle-btn:hover {
+    background: rgba(0,0,0,0.05);
+    color: #000;
+}
+
+/* Активная кнопка (выбранная) */
+.toggle-btn.active {
+    background: var(--card-bg); /* Цвет фона как у карточки */
+    color: var(--accent);       /* Синий текст */
+    border-bottom: 3px solid var(--accent); /* Синяя линия снизу */
+}
+
+/* Темная тема для переключателя */
+body.dark-mode .image-toggle {
+    background: #2d2d2d;
+    border-bottom-color: #444;
+}
+body.dark-mode .toggle-btn { color: #aaa; }
+body.dark-mode .toggle-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
+body.dark-mode .toggle-btn.active { 
+    background: var(--card-bg); 
+    color: var(--accent); 
+}
+
+
+// ... (твой существующий массив charactersData оставляем без изменений) ...
+
+// === БАЗА ДАННЫХ МИРОВ И АУ ===
+const worldsData = [
+  {
+    "id": "orig",
+    "name": "ОРИГ",
+    "nickname": "Главный Хаб мультивселенной",
+    "image": "Statics/image/orig_world.jpg",
+    "link": "Wikis/orig.html",
+    "categories": ["all"] // Появится только в общем списке
+  },
+  {
+    "id": "swapfell",
+    "name": "SwapFell (SF)",
+    "nickname": "Мрачная мафиозная G!AU",
+    "image": "Statics/image/sf_landscape.jpg",
+    "link": "Wikis/swapfell.html",
+    "categories": ["all", "g_au"] // Появится в обоих списках
+  },
+  {
+    "id": "g_t",
+    "name": "G_T",
+    "nickname": "Мир Глюка",
+    "image": "Statics/image/gt_world.jpg",
+    "link": "Wikis/g_t.html",
+    "categories": ["all", "g_au"]
+  },
+  {
+    "id": "fell",
+    "name": "Fell",
+    "nickname": "Мир Кэйсси",
+    "image": "Statics/image/fell_world.jpg",
+    "link": "Wikis/fell.html",
+    "categories": ["all", "g_au"]
+  },
+  {
+    "id": "hell",
+    "name": "Ад",
+    "nickname": "Внешний Домен (Преисподняя)",
+    "image": "Statics/image/hell_world.jpg",
+    "link": "Wikis/hell.html",
+    "categories": ["all"]
+  }
+];
