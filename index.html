@@ -2,20 +2,94 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Multiverse ARCHIVES Wiki | Главная</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MULTIVERSE ARCHIVES | Главная</title>
     <link rel="stylesheet" href="style.css">
     <script src="data/data.js"></script>
-    <script src="script.js"></script>
 </head>
-<body>
+<body class="dark-mode">
 
     <div id="navbar-container" data-path=""></div>
 
-    <div class="container">
-        <main id="wiki-content-area" style="width: 100%;">
-            <h1 class="page-title">Персонажи</h1>
-            <p>Добро пожаловать в архив мультивселенной. Ниже представлен список известных личностей.</p>
-            </main>
+    <div class="container clearfix">
+        <main style="width: 100%;">
+            
+            <div style="text-align: center; margin-bottom: 40px; padding: 50px 20px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                <h1 style="font-family: 'Times New Roman', serif; font-size: 2.8em; color: var(--accent); margin-top: 0; letter-spacing: 2px;">MULTIVERSE ARCHIVES</h1>
+                <p style="font-size: 1.1em; color: var(--text); max-width: 800px; margin: 0 auto; opacity: 0.9;">
+                    Официальная энциклопедия грандиозного ролевого проекта. Здесь собраны все знания о мультивселенной «Жизнь», пустоте, Пантеоне Богов, мрачных экспериментах Adrian Corp и бесчисленных Альтернативных Вселенных (АУ).
+                </p>
+            </div>
+
+            <div style="display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap;">
+                
+                <div style="flex: 2; min-width: 300px; background: var(--card-bg); border: 1px solid var(--border); padding: 25px; border-radius: 8px;">
+                    <h2 style="margin-top: 0; font-size: 1.5em;">О проекте</h2>
+                    <p>Наш мир разделен на множество эпох и сезонов: от зарождения первых богов и Великой Райской Войны до современности, где герои вынуждены скрываться под масками, а демоны ведут жестокую борьбу за трон Ада.</p>
+                    <p>Каждое решение здесь имеет последствия. Изучайте хронологию событий, читайте секретные досье на персонажей и погружайтесь в лор, чтобы узнать, что скрывается во тьме.</p>
+                </div>
+
+                <div style="flex: 1; min-width: 250px; background: var(--card-bg); border: 1px solid var(--border); padding: 25px; border-radius: 8px;">
+                    <h2 style="margin-top: 0; font-size: 1.5em;">Быстрый старт</h2>
+                    <ul style="padding-left: 20px; line-height: 1.8;">
+                        <li><a href="character/index.html" class="wiki-link">Список Персонажей (А-Я)</a></li>
+                        <li><a href="world.html" class="wiki-link">Архив Миров и АУ</a></li>
+                        <li><a href="g_aus.html" class="wiki-link">База G!Swap Вселенных</a></li>
+                        <li><a href="#" class="wiki-link">Хронология сезонов</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Недавно добавленные статьи</h2>
+            <p style="margin-bottom: 20px; opacity: 0.8;">Последние обновления базы данных:</p>
+            
+            <div class="recent-grid">
+                
+                <a href="Wikis/jerry.html" class="recent-card">
+                    <div class="recent-img-wrapper">
+                        <img src="Statics/image/JerryAva.jpg" alt="Джеррими Райс" onerror="this.src='Statics/image/RPImage.png'">
+                    </div>
+                    <div class="recent-info">
+                        <h3>Джеррими Райс (Red X)</h3>
+                        <p>Герой, бывший Объект №42 лаборатории Adrian Corp.</p>
+                    </div>
+                </a>
+
+                <a href="Wikis/glitch.html" class="recent-card">
+                    <div class="recent-img-wrapper">
+                        <img src="Statics/image/GlitchAva.jpg" alt="Глюк Райдер" onerror="this.src='Statics/image/RPImage.png'">
+                    </div>
+                    <div class="recent-info">
+                        <h3>Глюк Райдер</h3>
+                        <p>Музыкант, мироходец и носитель двух древних богинь.</p>
+                    </div>
+                </a>
+
+                <a href="Wikis/swapfell.html" class="recent-card">
+                    <div class="recent-img-wrapper">
+                        <img src="Statics/image/sf_landscape.jpg" alt="SwapFell" onerror="this.src='Statics/image/RPImage.png'">
+                    </div>
+                    <div class="recent-info">
+                        <h3>Мир: SwapFell (SF)</h3>
+                        <p>Мрачная G!AU с диктатурой Эдриана и теневой мафией.</p>
+                    </div>
+                </a>
+
+                <a href="Wikis/pantheon.html" class="recent-card">
+                    <div class="recent-img-wrapper">
+                        <img src="Statics/image/pantheon_logo.jpg" alt="Пантеон Богов" onerror="this.src='Statics/image/RPImage.png'">
+                    </div>
+                    <div class="recent-info">
+                        <h3>Фракция: Пантеон Богов</h3>
+                        <p>Высшие сущности, управлявшие миром до Падения Рая.</p>
+                    </div>
+                </a>
+
+            </div>
+
+        </main>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

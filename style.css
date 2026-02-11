@@ -488,49 +488,62 @@ body.dark-mode .toggle-btn.active {
     color: var(--accent); 
 }
 
+/* === КАРТОЧКИ НА ГЛАВНОЙ СТРАНИЦЕ (НОВЫЕ СТАТЬИ) === */
+.recent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
 
-// ... (твой существующий массив charactersData оставляем без изменений) ...
+.recent-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
 
-// === БАЗА ДАННЫХ МИРОВ И АУ ===
-const worldsData = [
-  {
-    "id": "orig",
-    "name": "ОРИГ",
-    "nickname": "Главный Хаб мультивселенной",
-    "image": "Statics/image/orig_world.jpg",
-    "link": "Wikis/orig.html",
-    "categories": ["all"] // Появится только в общем списке
-  },
-  {
-    "id": "swapfell",
-    "name": "SwapFell (SF)",
-    "nickname": "Мрачная мафиозная G!AU",
-    "image": "Statics/image/sf_landscape.jpg",
-    "link": "Wikis/swapfell.html",
-    "categories": ["all", "g_au"] // Появится в обоих списках
-  },
-  {
-    "id": "g_t",
-    "name": "G_T",
-    "nickname": "Мир Глюка",
-    "image": "Statics/image/gt_world.jpg",
-    "link": "Wikis/g_t.html",
-    "categories": ["all", "g_au"]
-  },
-  {
-    "id": "fell",
-    "name": "Fell",
-    "nickname": "Мир Кэйсси",
-    "image": "Statics/image/fell_world.jpg",
-    "link": "Wikis/fell.html",
-    "categories": ["all", "g_au"]
-  },
-  {
-    "id": "hell",
-    "name": "Ад",
-    "nickname": "Внешний Домен (Преисподняя)",
-    "image": "Statics/image/hell_world.jpg",
-    "link": "Wikis/hell.html",
-    "categories": ["all"]
-  }
-];
+.recent-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.recent-img-wrapper {
+    height: 140px;
+    width: 100%;
+    background-color: #222; /* Фон, если картинка не загрузится */
+    border-bottom: 1px solid var(--border);
+}
+
+.recent-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recent-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Чтобы текст занимал всё место снизу */
+}
+
+.recent-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1em;
+    color: var(--accent);
+    font-family: sans-serif;
+}
+
+.recent-info p {
+    margin: 0;
+    font-size: 0.85em;
+    color: #999;
+    line-height: 1.4;
+}
