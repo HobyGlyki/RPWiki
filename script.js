@@ -125,3 +125,19 @@ function createWikiCard(char) {
 
     return link;
 }
+
+function initNavbarScroll() {
+    let lastScrollY = window.scrollY;
+    const navbar = document.querySelector('.wiki-navbar');
+
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (lastScrollY < window.scrollY && window.scrollY > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            lastScrollY = window.scrollY;
+        });
+    }
+}
