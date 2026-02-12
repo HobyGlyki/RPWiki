@@ -185,3 +185,66 @@ function initNavbarScroll() {
     }
 }
 
+/* === ФУНКЦИЯ ПРОСМОТРА ИЗОБРАЖЕНИЙ (LIGHTBOX) === */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Создаем HTML модального окна, если его нет
+    if (!document.getElementById('imageModal')) {
+        const modalHTML = `
+            <div id="imageModal" class="modal">
+                <span class="modal-close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="modal-caption"></div>
+            </div>`;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById("img01");
+    const captionText = document.getElementById("modal-caption");
+    const span = document.getElementsByClassName("modal-close")[0];
+
+    // 2. Находим все картинки, которые нужно увеличивать
+    // (В тексте статьи, в галерее и в инфобоксе)
+    const images = document.querySelectorAll('.wiki-image-float img, .gallery-item img, .infobox-image img');
+
+    images.forEach(img => {
+        // Добавляем курсор лупы
+        img.style.cursor = 'pointer';
+        
+        img.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = this.src; // Берем src нажатой картинки
+            
+            // Пытаемся найти подпись (alt или соседний блок)
+            let caption = this.alt;
+            
+            // Если картинка в блоке с подписью, берем текст оттуда
+            const parent = this.parentElement;
+            const captionEl = parent.querySelector('.img-caption, .gallery-caption');
+            if (captionEl) {
+                caption = captionEl.innerText;
+            }
+
+            captionText.innerHTML = caption;
+        }
+    });
+
+    // 3. Закрытие модального окна
+    span.onclick = function() { 
+        modal.style.display = "none";
+    }
+    
+    // Закрытие по клику на фон
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+    
+    // Закрытие по клавише ESC
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            modal.style.display = "none";
+        }
+    });
+});

@@ -293,3 +293,152 @@ article ul li b { color: #fff; }
 
 /* Плеер */
 .music-player { position: fixed; bottom: 20px; right: 20px; background: var(--card-bg); border: 1px solid var(--accent); padding: 10px 15px; border-radius: 50px; display: flex; align-items: center; gap: 10px; z-index: 1000; box-shadow: 0 0 15px var(--glow); }
+
+/* ========================================= */
+/* === НОВЫЕ СТИЛИ: ИЗОБРАЖЕНИЯ И ГАЛЕРЕЯ === */
+/* ========================================= */
+
+/* Плавающие картинки в тексте */
+.wiki-image-float {
+    max-width: 280px;
+    margin: 10px 0 10px 20px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer; /* Курсор показывает, что можно нажать */
+    transition: border-color 0.3s;
+}
+.wiki-image-float:hover {
+    border-color: var(--accent);
+}
+.wiki-image-float img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+}
+.wiki-image-float .img-caption {
+    display: block;
+    font-size: 0.85em;
+    color: #888; /* Используем серый, если var(--text-muted) не задан */
+    text-align: center;
+    padding-top: 5px;
+    font-style: italic;
+}
+
+/* Классы обтекания */
+.float-right { float: right; margin-left: 20px; margin-bottom: 10px; clear: right; }
+.float-left { float: left; margin-right: 20px; margin-bottom: 10px; margin-left: 0; clear: left; }
+.clearfix-text::after { content: ""; display: table; clear: both; }
+
+/* Адаптация для телефонов */
+@media (max-width: 600px) {
+    .wiki-image-float {
+        float: none !important;
+        margin: 10px auto;
+        max-width: 100%;
+    }
+}
+
+/* Сетка Галереи */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+.gallery-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: pointer;
+}
+.gallery-item:hover { 
+    transform: translateY(-3px); 
+    border-color: var(--accent); 
+}
+.gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border);
+}
+.gallery-caption {
+    padding: 8px;
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--text);
+}
+
+/* ========================================= */
+/* === МОДАЛЬНОЕ ОКНО (ПРОСМОТР ФОТО) === */
+/* ========================================= */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    padding-top: 50px; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9); /* Темный фон */
+    backdrop-filter: blur(5px); /* Размытие фона */
+}
+
+/* Картинка внутри модального окна */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 1000px;
+    max-height: 80vh;
+    object-fit: contain;
+    border: 2px solid var(--accent); /* Рамка цветом акцента персонажа */
+    box-shadow: 0 0 20px var(--accent); /* Свечение */
+    animation: zoom 0.3s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* Подпись под фото */
+#modal-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+    font-family: 'Times New Roman', serif;
+    font-size: 1.2em;
+}
+
+/* Кнопка закрытия */
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: var(--accent);
+    text-decoration: none;
+    cursor: pointer;
+}
