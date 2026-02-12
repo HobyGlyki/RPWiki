@@ -28,7 +28,7 @@ const charactersData = [
     "settings": { "posY": "0%", "scale": "1.0" }
   },
   {
-    'id': 'zero',
+    'id': 'Zero',
     'name': 'Зеро',
     'nickname': 'Сильнейший демон/паук',
     'image': 'Statics/image/zero.jpg',
