@@ -35,6 +35,15 @@ const charactersData = [
     'link': 'Wikis/Zero.html',
     'dateAdded': '2025-02-13',
     'settings': { 'posY': '10px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'ivriil',
+    'name': 'Ивриил',
+    'nickname': 'Джентльмен, сын Оливии',
+    'image': 'Statics/image/ivriil.jpg',
+    'link': 'Wikis/ivriil.html',
+    'dateAdded': '2025-04-13',
+    'settings': { 'posY': '-10px', 'center': true, 'scale': '1.0' }
   }
 ];
  
