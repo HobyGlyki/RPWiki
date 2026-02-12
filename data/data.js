@@ -32,7 +32,7 @@ const charactersData = [
     'name': 'Зеро',
     'nickname': 'Сильнейший демон/паук',
     'image': 'Statics/image/zero.jpg',
-    'link': 'Wikis/zero.html',
+    'link': 'Wikis/Zero.html',
     'dateAdded': '2025-02-13',
     'settings': { 'posY': '10px', 'center': true, 'scale': '1.0' }
   }
