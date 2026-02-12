@@ -15,7 +15,7 @@ const charactersData = [
     "nickname": "Герой, бывший Объект №42",
     "image": "Statics/image/JerryAva.jpg", 
     "link": "Wikis/jerry.html",
-    "dateAdded": "2024-02-12",
+    "dateAdded": "2025-04-12",
     "settings": { "posY": "top", "scale": "1.0" }
   },
   {
@@ -26,6 +26,15 @@ const charactersData = [
     "link": "Wikis/glitch.html",
     "dateAdded": "2024-02-11", // Самый старый из новых
     "settings": { "posY": "0%", "scale": "1.0" }
+  },
+  {
+    'id': 'zero',
+    'name': 'Зеро',
+    'nickname': 'Сильнейший демон/паук',
+    'image': 'Statics/image/zero.jpg',
+    'link': 'Wikis/zero.html',
+    'dateAdded': '2025-02-13',
+    'settings': { 'posY': '10px', 'center': true, 'scale': '1.0' }
   }
 ];
  
