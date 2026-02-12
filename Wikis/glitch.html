@@ -6,6 +6,48 @@
     <title>Глюк Райдер - Wiki</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../data/data.js"></script> 
+    <style>
+    /* Особое оформление для страницы Глюка */
+        body.dark-mode {
+            background-image: -moz-repeating-linear-gradient(90deg,  #070714, #16090c5d, #070714 ); /* Глубокий градиент для атмосферы */
+            background-attachment: fixed;
+            background-size: cover;
+            background-position-y: 40px;
+            --content-bg: #141519;    
+            --accent: #0062ac;      /* Кроваво-красный */
+            --text: #d0d0d0;        /* Слегка приглушенный белый текст */
+            --border: var(--accent);      /* Темно-синяя рамка */
+            --card-bg: #121010;     /* Темные панели */
+            --glow: rgba(0, 98, 172, 0.204); /* Светящийся эффект для Глюка */
+        }
+        
+
+        .infobox {
+                border-top: 3px solid var(--accent); /* Акцент цвета для Глюка */
+                box-shadow: 0 10px 25px rgba(105, 200, 255, 0.06); /* Розовое свечение */
+            }
+            
+            .infobox-header {
+                background: linear-gradient(90deg, transparent, rgba(105, 195, 255, 0.108), transparent);
+                color: var(--accent);
+                border-bottom: 1px solid var(--accent);
+            }
+                .page-title {
+                    color: var(--accent);
+                    text-shadow: 0 0 10px var(--glow);
+                }
+
+                .eyes-table th {
+                    background: var(--card-bg);
+                    color: var(--accent);
+                    border-bottom: 1px solid var(--border);
+                }
+                
+                
+
+    </style>
+
+
 </head>
 <body class="dark-mode">
 
@@ -85,7 +127,7 @@
                 <tr><td style="color: #ffa500; font-weight: bold;"> Оранжевый</td><td>Азарт / Храбрость</td></tr>
                 <tr><td style="color: #0000ff; font-weight: bold;"> Синий</td><td>Грусть</td></tr>
                 <tr><td style="color: #87ceeb; font-weight: bold;"> Голубой</td><td>Радость (Стандарт)</td></tr>
-                <tr><td style="color: #e6e600; font-weight: bold; background: #333;"> Жёлтый</td><td>Опьянение</td></tr>
+                <tr><td style="color: #e6e600; font-weight: bold;"> Жёлтый</td><td>Опьянение</td></tr>
                 <tr><td style="color: #008000; font-weight: bold;"> Зелёный</td><td>Страх</td></tr>
                 <tr><td style="color: #ff0000; font-weight: bold;"> Красный</td><td>Ярость</td></tr>
             </table>
