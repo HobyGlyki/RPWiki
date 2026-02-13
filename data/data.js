@@ -44,6 +44,15 @@ const charactersData = [
     'link': 'Wikis/ivriil.html',
     'dateAdded': '2025-04-13',
     'settings': { 'posY': '-10px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'gabriel',
+    'name': 'Габриэль Винс',
+    'nickname': 'Бывший Архангел, изобретатель',
+    'image': 'Statics/image/gabrielava.jpg',
+    'link': 'Wikis/gabriel.html',
+    'dateAdded': '2025-04-14',
+    'settings': { 'posY': '-10px', 'center': true, 'scale': '1.0' }
   }
 ];
  
