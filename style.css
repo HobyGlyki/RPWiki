@@ -279,7 +279,7 @@ article ul li b { color: #fff; }
 .recent-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; margin-bottom: 50px; }
 .recent-card { display: flex; flex-direction: column; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); overflow: hidden; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
 .recent-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 8px 20px var(--glow); }
-.recent-img-wrapper { height: 140px; width: 100%; background-color: #222; border-bottom: 1px solid var(--border); }
+.recent-img-wrapper { height: 300px; width: 100%; background-color: #222; border-bottom: 1px solid var(--border); }
 .recent-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 .recent-info { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
 .recent-info h3 { margin: 0 0 8px 0; font-size: 1.1em; color: var(--accent); font-family: sans-serif; }
@@ -441,4 +441,30 @@ article ul li b { color: #fff; }
     color: var(--accent);
     text-decoration: none;
     cursor: pointer;
+}
+
+@font-face {
+    font-family: 'determination'; /* Придумай имя шрифту */
+    src: url('Statics/determinationrusbylyajka.otf') format('opentype'); /* Путь к файлу */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* === БЛОК УВЕДОМЛЕНИЯ ОТ АВТОРА === */
+.author-notice {
+    background-color: var(--card-bg); /* Фон как у карточек */
+    border: 1px solid var(--accent);  /* Рамка цветом текущего акцента */
+    color: #fff;                   /* Белый текст */
+    padding: 15px 20px;
+    margin-bottom: 25px;              /* Отступ снизу до остального контента */
+    border-radius: 6px;               /* Скругленные углы */
+    font-family: 'determination', serif;               /* Курсив для стиля "примечания" */
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Легкая тень */
+
+    /* Чтобы занимал всю ширину и не обтекал инфобокс */
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    clear: both; 
 }

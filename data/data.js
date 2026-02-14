@@ -33,8 +33,8 @@ const charactersData = [
     'nickname': 'Сильнейший демон/паук',
     'image': 'Statics/image/zero.jpg',
     'link': 'Wikis/zero.html',
-    'dateAdded': '2025-02-13',
-    'settings': { 'posY': '10px', 'center': true, 'scale': '1.0' }
+    'dateAdded': '2025-04-14',
+    'settings': { 'posY': '10%', 'center': true, 'scale': '1.0' }
   },
   {
     'id': 'ivriil',
@@ -43,7 +43,7 @@ const charactersData = [
     'image': 'Statics/image/ivriil.jpg',
     'link': 'Wikis/ivriil.html',
     'dateAdded': '2025-04-13',
-    'settings': { 'posY': '-10px', 'center': true, 'scale': '1.0' }
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   },
   {
     'id': 'gabriel',
@@ -52,7 +52,35 @@ const charactersData = [
     'image': 'Statics/image/gabrielava.jpg',
     'link': 'Wikis/gabriel.html',
     'dateAdded': '2025-04-14',
-    'settings': { 'posY': '-10px', 'center': true, 'scale': '1.0' }
+    'settings': { 'posY': '0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'jenny',
+    'name': 'Дженнифер Райс',
+    'nickname': 'Дочь Джерри и Чанзи Райс',
+    'image': 'Statics/image/jenny.jpg',
+    'link': 'Wikis/jenny.html',
+    'dateAdded': '2025-04-15',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'chanzie',
+    'name': 'Чанзи Райс',
+    'nickname': 'Жена Джерри и мать Коула и Дженнифер',
+    'image': 'Statics/image/chanzie.jpg',
+    'link': 'Wikis/chanzie.html',
+    'dateAdded': '2025-04-16',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'john',
+    'name':"Джон Доу"
+    ,'nickname': 'Патологический лжец, создатель наркотика "Веселье"',
+    'image': 'Statics/image/john.jpg',
+    'link': 'Wikis/john.html',
+    'dateAdded': '2025-04-17',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+
   }
 ];
  

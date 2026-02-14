@@ -83,7 +83,7 @@ function renderRecentArticles(container) {
     const sortedArticles = allArticles
         .filter(item => item.dateAdded) // Отбрасываем те, где дата не указана
         .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)) // Сортируем
-        .slice(0, 8); // Берем только ТОП-4 самых свежих
+        .slice(0, 12); // Берем только ТОП-4 самых свежих
 
     // 3. Создаем HTML для каждой карточки
     sortedArticles.forEach(article => {
@@ -93,7 +93,7 @@ function renderRecentArticles(container) {
 
         link.innerHTML = `
             <div class="recent-img-wrapper">
-                <img src="${article.image}" alt="${article.name}" onerror="this.src='Statics/image/RPImage.png'">
+                <img src="${article.image}" alt="${article.name}" onerror="this.src='Statics/image/RPImage.png', this.style.objectFit='cover'; this.style.objectPosition='center';" style="${article.settings ? `object-position: center ${article.settings.posY || 'center'}; transform: scale(${article.settings.scale || 1});` : ''}">
             </div>
             <div class="recent-info">
                 <h3>${article.name}</h3>
