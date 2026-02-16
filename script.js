@@ -281,3 +281,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Находим все аудио-плееры на странице
+            const audios = document.querySelectorAll('audio');
+
+            audios.forEach(audio => {
+                audio.addEventListener('play', function() {
+                    // Когда этот трек начинает играть, проходимся по всем остальным
+                    audios.forEach(otherAudio => {
+                        if (otherAudio !== audio) {
+                            otherAudio.pause(); // Ставим на паузу
+                            // otherAudio.currentTime = 0; // Если хочешь, чтобы они сбрасывались в начало, раскомментируй эту строку
+                        }
+                    });
+                });
+            });
+        });

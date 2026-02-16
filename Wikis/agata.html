@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Агата - Wiki</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../data/data.js"></script>
+    <style>
+        /* === СТИЛЬ АГАТЫ (Падшее Золото / Королева Ада) === */
+        body.dark-mode {
+            --bg: #080600;           /* Почти черный, с оттенком жженого золота */
+            --content-bg: #040403;   /* Темная подложка */
+            --accent: #b8860b;       /* Темное золото (DarkGoldenRod) */
+            --text: #ededed;         /* Светло-серый текст */
+            --border: #8a6508;       /* Тусклая золотая рамка */
+            --card-bg: #1a1710;
+            --glow: rgba(184, 134, 11, 0.25); /* Золотое свечение */
+            --quote-border: #ffd700; /* Яркое золото для цитат */
+            --quote2-border: #007bff; /* Оранжевое для второй цитаты */
+        }
+
+        /* Заголовки */
+        .page-title {
+            font-family: 'Times New Roman', serif;
+            letter-spacing: 3px;
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(184, 134, 11, 0.4);
+            border-bottom: 2px solid var(--border);
+            text-transform: uppercase;
+        }
+
+        h2 {
+            border-bottom: 1px solid var(--border);
+            color: #d4af37;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #ad9345;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        /* Цитата */
+      /* === Обновленный Стиль Цитат === */
+#quote-block {
+    position: relative; /* Чтобы позиционировать иконку кавычки */
+    width: fit-content; /* Подстраивается под размер текста */
+    /* Делаем "коробочку" */
+    background: linear-gradient(0deg, rgba(184, 134, 11, 0.08), transparent); /* Более мягкий градиент */
+    background-color: rgba(0, 0, 0, 0.2); /* Легкая подложка */
+    border: 1px solid rgba(184, 134, 11, 0.2); /* Тонкая рамка вокруг */
+    border-left: 3px solid var(--quote-border); /* Твой фирменный акцент слева */
+    border-radius: 6px; /* Скругляем углы */
+    
+    /* Размеры и отступы */
+    padding: 12px 15px 12px 45px; /* Слева отступ больше (45px) под иконку */
+    margin: 15px 0; /* Отступ от остального текста */
+    
+    /* Текст */
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #f0e68c;
+    font-size: 0.95em; /* Чуть меньше основного текста для аккуратности */
+    line-height: 1.4;  /* Плотнее строки */
+    
+    /* Тень для объема */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Добавляем декоративную кавычку */
+#quote-block::before {
+    content: '❝';         /* Символ кавычки */
+    position: absolute;
+    left: 12px;           /* Положение слева */
+    top: 2px;             /* Положение сверху */
+    font-size: 2.5em;     /* Размер иконки */
+    color: var(--quote-border);
+    opacity: 0.4;         /* Полупрозрачность, чтобы не мешала читать */
+    font-family: serif;
+    line-height: 1;
+}
+
+#quote1-block {
+    position: relative; /* Чтобы позиционировать иконку кавычки */
+    width: fit-content; /* Подстраивается под размер текста */
+    /* Делаем "коробочку" */
+    background: linear-gradient(0deg, rgba(11, 126, 184, 0.08), transparent); /* Более мягкий градиент */
+    background-color: rgba(0, 0, 0, 0.2); /* Легкая подложка */
+    border: 1px solid rgba(188, 188, 188, 0.2); /* Тонкая рамка вокруг */
+    border-left: 3px solid var(--quote2-border); /* Твой фирменный акцент слева */
+    border-radius: 6px; /* Скругляем углы */
+    
+    /* Размеры и отступы */
+    padding: 12px 15px 12px 45px; /* Слева отступ больше (45px) под иконку */
+    margin: 15px 0; /* Отступ от остального текста */
+    
+    /* Текст */
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #bdf2ff;
+    font-size: 0.95em; /* Чуть меньше основного текста для аккуратности */
+    line-height: 1.4;  /* Плотнее строки */
+    
+    /* Тень для объема */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Добавляем декоративную кавычку */
+#quote1-block::before {
+    content: '❝';         /* Символ кавычки */
+    position: absolute;
+    left: 12px;           /* Положение слева */
+    top: 2px;             /* Положение сверху */
+    font-size: 2.5em;     /* Размер иконки */
+    color: var(--quote2-border);
+    opacity: 0.4;         /* Полупрозрачность, чтобы не мешала читать */
+    font-family: serif;
+    line-height: 1;
+}
+        /* Инфобокс */
+        .infobox {
+            border: 2px solid var(--border);
+            box-shadow: 0 0 25px rgba(184, 134, 11, 0.15);
+        }
+        
+        .infobox-header {
+            background: linear-gradient(to right, #2e2612, #110f0a);
+            color: #ffd700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Списки */
+        article ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        article ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: #eee
+        }
+
+        /* Иконка Короны для списков */
+        article ul li::before {
+            content: '♛'; 
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        /* Ссылки */
+        a.wiki-link {
+            color: #f0e68c;
+            text-decoration: none;
+            border-bottom: 1px dashed #8a6508;
+            transition: all 0.3s;
+        }
+        
+        a.wiki-link:hover {
+            color: #fff;
+            text-shadow: 0 0 10px var(--accent);
+            border-bottom: 1px solid #ffd700;
+        }
+
+        /* Галерея */
+        .gallery-caption {
+            color: #ad9345;
+            font-style: italic;
+        }
+
+                .toc ul li {
+            list-style-type: decimal !important; 
+            padding-left: 0;
+        }
+        .toc ul li::before {
+            content: none !important;
+        }
+        .toc ul ul {
+            list-style-type: circle;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <div id="navbar-container" data-path="../"></div>
+
+    <div class="container clearfix">
+        <article style="width: 100%;">
+            
+            <aside class="infobox">
+                <div class="infobox-name">Агата</div>
+                
+                <div class="infobox-image">
+                    <img id="charImage" src="../Statics/image/agata.jpg" alt="Агата" onerror="this.src='../Statics/image/RPImage.png'">
+                </div>
+                
+                <div class="infobox-header">Личные данные</div>
+                <table>
+                    <tr><th>Имя</th><td>Агата</td></tr>
+                    <tr><th>Титул</th><td>Королева Ада<br>Узурпатор<br>Падшая Принцесса</td></tr>
+                    <tr><th>Происхождение</th><td>Первый Ангел (Дочь Марты)</td></tr>
+                    <tr><th>Статус</th><td>Жива, Правит Адом</td></tr>
+                </table>
+
+                <div class="infobox-header">Родственные связи</div>
+                <table>
+                    <tr><th>Мать</th><td><a href="marta.html" class="wiki-link">Марта (Богиня Жизни)</a></td></tr>
+                    <tr><th>Союзник (бывш.)</th><td><a href="#" class="wiki-link">Хэльга (Дочь Смерти)</a></td></tr>
+
+                    <tr><th>Союзники(Грехи)</th><td><a href="demyan.html" class="wiki-link">Дэмьян</a>(Мёртв), <a href="geil.html" class="wiki-link">Гейль</a>, <a href="ernest.html" class="wiki-link">Эрнест</a>, <a href="riya.html" class="wiki-link">Рия</a>(предательница), <a href="adam.html" class="wiki-link">Адам</a>, <a href="dailaiya.html" class="wiki-link">Дэлайла</a>, <a href="emilia.html" class="wiki-link">Эмилия</a>(предательница).</td></tr>
+
+
+                </table>
+            </aside>
+
+            <h1 class="page-title">АГАТА</h1>
+            <p ><i>«Новый порядок. Вы пришли за тем, чтобы с вас сняли оковы! Я пришла, чтобы помочь всем ангелам почувствовать свободу!»</i></p>
+            
+            <p><b>Агата</b> — самопровозглашённая Королева Ада, бывшая любимица Рая и Первый Ангел. Одержимая жаждой власти и "свободы", она возглавила восстание против Богов, что привело к падению Рая и изменению миропорядка. Ныне она правит Преисподней железной рукой, стремясь доказать свое превосходство над всеми, включая своих создателей.</p>
+
+            <div class="toc" id="toc">
+                <h3>Содержание</h3>
+                <ul>
+                    <li><a href="#history">История</a>
+                        <ul>
+                            <li><a href="#hist_heaven">Прошлое в Раю: Первая среди равных</a></li>
+                            <li><a href="#hist_war">Священная Война и Падение Небес</a></li>
+                            <li><a href="#hist_exile">Крах и Изгнание</a></li>
+                            <li><a href="#hist_hell">Возвращение и Правление Адом</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#personality">Личность и характер</a></li>
+                    <li><a href="#appearance">Внешность</a></li>
+                    <li><a href="#abilities">Способности и Арсенал</a></li>
+                    <li><a href="#relations">Связи с персонажами</a></li>
+                    <li><a href="#facts">Интересные факты</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#songs">Песни</a></li>
+                         <ul>
+                            <li><a href="#Dei of Agatha">Dei of Agatha (Declaration of War)</a></li>
+                            <li><a href="#Stayed Gone">Stayed Gone</a></li>
+                            <li><a href="#enternal detention">Eternal Detention</a></li>
+                        </ul>
+                </ul>
+            </div>
+            
+           <h2 id="history">История</h2>
+            
+            <h3 id="hist_heaven">Прошлое в Раю: Первая среди равных</h3>
+            <p>Агата была Первым Ангелом, любимицей богини Жизни — Марты. Однако появление Архангела Габриэля посеяло в её сердце зерно ревности. Она жаждала не просто любви создательницы, а абсолютной власти и свободы. Этим мастерски воспользовались сущности <a href="comedy.html" class="wiki-link">Комедия</a> и <a href="tragedy.html" class="wiki-link">Трагедия</a>, подталкивая её к мысли о восстании.</p>
+            <p>Найдя союзника в лице Хэльги (дочери Смерти), Агата разработала план переворота. Ключевым моментом стало обнаружение древних Масок, которые позволяли блокировать волю Богов над их творениями. Заручившись поддержкой демонов семи смертных грехов и многих оверлордов, она выбрала для удара день рождения Авилы — третьего Голоса Бога.</p>
+
+            <h3 id="hist_war">Священная Война и Падение Небес</h3>
+            <p>В разгар празднества Агата вышла на сцену. Усилив голос магией, она прервала торжество, объявив Рай "тюрьмой", а Богов — тиранами, которым плевать на свои творения. Когда Марта попыталась остановить её силой, Агата использовала это как доказательство своей правоты, окончательно расколов общество ангелов.</p>
+            
+            <p>Приняв чудовищную форму «Омеги», Агата открыла порталы в Ад, впуская легионы демонов. Началась резня. Она провозгласила начало «Священной Войны» (Holy War), превратив поле битвы в свою сцену.</p>
+            
+            <p><b>Ключевые события битвы:</b></p>
+            <ul>
+                <li><b>Убийство Бога:</b> Когда Вилли (Бог Неизвестности) попытался остановить её, приняв форму гигантской тьмы, Агата сожгла его заживо своей золотой магией, доказав, что способна убивать даже божеств.</li>
+                <li><b>Падение Габриэля:</b> Архангел пытался сопротивляться, но Агата, физически превосходящая его, сломала ему крылья и пронзила душу шипами, произнеся: <i>«Добро пожаловать в свой кошмар!»</i></li>
+                <li><b>Изоляция Богов:</b> Из-за влияния Масок армия перестала подчиняться Марте и Талии. Чтобы спасти остатки мира от полного уничтожения, Боги были вынуждены принести себя в жертву, запечатав свои сущности в Маски.</li>
+            </ul>
+
+            <h3 id="hist_exile">Крах и Изгнание</h3>
+            <p>Когда Рай пал, а Боги исчезли, Агата упивалась триумфом, считая себя новой владычицей мироздания. Однако её радость была прервана появлением истинного кукловода — <a href="olivia.html" class="wiki-link">Оливии Райс</a>.</p>
+            <p>Древняя сущность, дергавшая за ниточки из тени, одним щелчком лишила Агату сил. Вся мощь "Королевы" оказалась ничем перед Оливией.</p>
+            <p id="quote1-block">«Успокойся. Ты проиграла. Эпоха богов прошла... Да будет же Эпоха Кошмара».</p>
+            <p>Оливия отправила падшего ангела в вечную тьму, где та провела тысячу лет в заточении, наедине со своей ненавистью и страхом.</p>
+
+            <h3 id="hist_hell">Возвращение и Правление Адом</h3>
+            <p>Спустя тысячелетие Агата сумела вырваться из небытия. Оказавшись в Аду, она не тратила времени даром. Мгновенно мобилизовав вокруг себя Грехи, она совершила жестокий переворот, убив принца Ада <a href="steve.html" class="wiki-link">Стива</a> и узурпировав трон.</p>
+            <p><b>Текущее положение:</b><br>
+            Агата правит железной рукой, стремясь построить "Новый Рай" на костях старого мира. Она собирает ангельский металл и ресурсы для реванша. Однако её власть шатка: Габриэль сбежал из плена, многие союзники (Рия, Эмилия) предали её или погибли, а недавняя стычка с Робом и Зеро показала, что у неё всё ещё есть достойные противники. Но несмотря на потери, Королева Ада намерена идти до конца.</p>
+           
+            <h2 id="personality">Личность и характер</h2>
+            <p>Агата — воплощение тирании и нарциссизма. Она властная, ревнивая и жестокая. Её главная мотивация — доказать всем (и особенно исчезнувшим Богам), что она лучше их, что она единственный "настоящий" правитель.</p>
+            <ul>
+                <li><b>Артистизм:</b> Она любит шоу. Агата ведет себя как звезда на сцене, использует телевидение и громкие речи для манипуляции массами. Любит петь, превращая битву в представление.</li>
+                <li><b>Страхи:</b> За маской уверенности скрывается парализующий ужас перед <a href="olivia.html" class="wiki-link">Оливией</a>. Агата панически боится проиграть снова.</li>
+                <li><b>Монарх:</b> Она не интересуется современными медиа для развлечения, она использует их как инструмент пропаганды. Её стиль правления — личное доминирование и устрашение.</li>
+            </ul>
+
+            <h2 id="appearance">Внешность</h2>
+            <p>Агата выглядит как «испортившийся», но величественный ангел.</p>
+            <ul>
+                <li><b>Физические данные:</b> Высокая, с идеально белой кожей и длинными белоснежными волосами.</li>
+                <li><b>Лицо:</b> Золотые глаза с вертикальным зрачком, рот полон острых зубов.</li>
+                <li><b>Крылья:</b> Три пары (шесть крыльев). После падения они приобрели темный, кроваво-черный оттенок, контрастирующий с её волосами.</li>
+                <li><b>Стиль:</b> Носит чёрное закрытое платье-мундир с элементами брони, подчеркивающее её воинственность. Голову венчает парящая чёрная корона с острыми зубцами. На руках — длинные острые когти.</li>
+            </ul>
+
+            <h2 id="abilities">Способности и Арсенал</h2>
+            <ul>
+                <li><b>Сила Первого Ангела:</b> Обладает колоссальной магической мощью, лишь немного уступающей истинным Богам. Способна подчинять своей воле правителей Грехов.</li>
+                <li><b>Золотые Цепи:</b> Призывает магические цепи из золотого света, которыми сковывает, душит или разрывает врагов.</li>
+                <li><b>Порталы:</b> Свободно открывает разломы между мирами.</li>
+                <li><b>Армия Ада:</b> Имеет абсолютную власть над всеми демонами Ада (кроме тех, в ком заключена сущность Талии).</li>
+            </ul>
+
+            <h2 id="relations">Связи с персонажами</h2>
+            <h3>Семья и Боги</h3>
+            <ul>
+                <li><b><a href="marta.html" class="wiki-link">Марта</a>:</b> «Оух, Мамочка... я тебя разочаровала? А знаешь, как ТЫ меня разочаровала?»</i></li>
+                <li><b><a href="talia.html" class="wiki-link">Талия</a>:</b> «Тупая сука, которой уже нет. Зато твой Ад теперь мой.»</i></li>
+                <li><b><a href="rohan.html" class="wiki-link">Рохан</a>:</b> «Ты всегда был трусом, старик.»</i></li>
+                <li><b><a href="comedy.html" class="wiki-link">Комедия</a> и <a href="tragedy.html" class="wiki-link">Трагедия</a>:</b> «Вы меня предали... что ещё можно было ожидать?»</i></li>
+                <li><b><a href="remor.html" class="wiki-link">Ремор</a>:</b> «Ты всегда был стрёмным.»</i></li>
+            </ul>
+
+            <h3>Враги</h3>
+            <ul>
+                <li><b><a href="olivia.html" class="wiki-link">Оливия Райс</a>:</b> «Т-ТЫ ДОЛЖНА БЫТЬ ЗАПЕРТА! ТУПАЯ СУКА, Я ТЕБЯ НАЙДУ И УНИЧТОЖУ! ТЫ СЛЫШИШЬ МЕНЯ?! Я НЕ БОЮСЬ ТЕБЯ!»</i></li>
+                <li><b><a href="gabriel.html" class="wiki-link">Габриэль</a>:</b> «Ты жалок... хоть и бесишь, но ты такая лапочка жалкая.»</i></li>
+                <li><b><a href="rob.html" class="wiki-link">Роб</a>:</b> «Я убила Тебя, твоего Брата и ту огненную... осталось убить твою ледяную сестру.»</i></li>
+                <li><b><a href="steve.html" class="wiki-link">Стив</a>:</b> «Весь Ад... теперь мой. А ты сгнил во тьме.»</i></li>
+                <li><b><a href="adrian.html" class="wiki-link">Эдриан Морн</a>:</b> «То есть ты... обманул меня... отклонил контракт, так и ещё припеваючи живёшь? Ты, обычный человек. Ты НИЧТО для меня.»</i></li>
+                <li><b><a href="jerry.html" class="wiki-link">Джерри Райс</a>:</b> «От него СТОЛЬКО проблем? Я не думала, что... он так опасен... Стоит нанести к нему визит.»</i></li>
+                <li><b><a href="glitch.html" class="wiki-link">Глюк Райдер</a>:</b> «То есть ТЫ смог заполучить силу двух богинь... и при этом жив... и опасен для меня? На любую тварь найдётся ружьё.»</i></li>
+            </ul>
+
+            <h3>Подчиненные и Союзники (Бывшие и Настоящие)</h3>
+            <ul>
+                <li><b><a href="claire.html" class="wiki-link">Клэр</a>:</b> «Спасибо, что решила поработать со мной в Аду, подруга.»</i></li>
+                <li><b><a href="demyan.html" class="wiki-link">Демьян (Гнев Алчности)</a>:</b> «То, что та чёрная мразь сказала... правда? А я... верила тебе.»</i></li>
+                <li><b><a href="#" class="wiki-link">Рия (Гнев)</a>:</b> «Предательница, надеюсь ты насладишься последним глотком воздуха.»</i></li>
+                <li><b><a href="#" class="wiki-link">Гель (Чревоугодие)</a>:</b> «Моя зверушка милая, ты сражалась достойно... но недостаточно.»</i></li>
+                <li><b><a href="delilah.html" class="wiki-link">Делайла (Похоть)</a>:</b> «Хоть ты всё ещё работаешь...»</i></li>
+                <li><b><a href="mike.html" class="wiki-link">Майк Венфир</a>:</b> «Так ты всё-таки... собачка Оливии? Как чудно будет тебя разорвать.»</i></li>
+                <li><b><a href="amadeus.html" class="wiki-link">Амадей Карс</a>:</b> «И всё же... ты поможешь мне с Глюком? Я ведь уже подготовила всё со своей стороны сделки, так что... по рукам?»</i></li>
+            </ul>
+
+            <h3>Прочие</h3>
+            <ul>
+                <li><b><a href="ivriil.html" class="wiki-link">Ивриил</a>:</b> «Никогда о тебе не слышала.»</i></li>
+                <li><b><a href="chanzie.html" class="wiki-link">Чанзи Райс</a>:</b> «А могла бы быть таким же правителем, но ты выбрала жалкого смертного.»</i></li>
+                <li><b><a href="jenny.html" class="wiki-link">Дженнифер Райс</a>:</b> «Простая девочка, что часто плачет, ничего обычного.»</i></li>
+                <li><b><a href="violet.html" class="wiki-link">Фиалка</a>:</b> «Мне жаль, что твою коронацию я прекратила. Но ты так же опасна.»</i></li>
+                <li><b><a href="ravenhell.html" class="wiki-link">Рейвенхелл</a>:</b> «Не люблю клоунов.»</i></li>
+                <li><b><a href="sgs.html" class="wiki-link">СГС</a>:</b> «И даже так, ты на цепи.»</i></li>
+            </ul>
+
+            <h2 id="facts">Интересные факты</h2>
+            <ul>
+                <li><b>Комплекс Бога:</b> Искренне считает себя единственным истинным божеством, достойным поклонения.</li>
+                <li><b>Контроль:</b> Пользуется технологиями Ада и медиа для контроля масс, но предпочитает личное внушение страха.</li>
+                <li><b>Необходимое зло:</b> Убийство Стива считает не преступлением, а необходимым шагом для наведения своего «идеального порядка».</li>
+                <li><b>Крылья Габриэля:</b> Именно она лично вырвала крылья Габриэлю, лишив его статуса Архангела.</li>
+                <li><b>Уровень сил:</b> Её мощь лишь немного уступает силе Истинных Богов.</li>
+                <li><b>Дружба:</b> Когда-то дружила с Хельгой и почти любила её, что делает их нынешнее положение ещё трагичнее.</li>
+                <li><b>Главный страх:</b> Оливия — единственное существо, способное вызвать у Агаты настоящую панику.</li>
+            </ul>
+
+            <h2 id="gallery">Галерея</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="../Statics/image/agata.jpg" alt="Агата в полный рост" onerror="this.src='../Statics/image/RPImage.png'">
+                    <div class="gallery-caption">Истинный облик</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../Statics/image/agata2.jpg" alt="Агата в полный рост" onerror="this.src='../Statics/image/RPImage.png'">
+                    <div class="gallery-caption">Агата Лицок</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../Statics/image/agata1.jpg" alt="Королева АгатаЫ" onerror="this.src='../Statics/image/RPImage.png'">
+                    <div class="gallery-caption">Облик Королевы.</div>
+                </div>
+            </div>
+
+            <h2 id="songs">Музыкальные номера</h2>
+            
+            <div class="song-container">
+                <div class="song-header" id="Dei of Agatha">
+                    <div class="song-title">Dei of Agatha (Declaration of War)</div>
+                    <audio controls class="agatha-player" src="../Statics/music/agata dei.mp3">
+                        Ваш браузер не поддерживает аудио.
+                    </audio>
+                </div>
+
+                <div class="song-content-wrapper">
+                    <table class="song-table">
+                        <thead>
+                            <tr>
+                                <th>Текст песни</th>
+                                <th>Действия (Сцена)</th>
+                                <th>Значение / Контекст</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">—</td>
+                                <td class="col-action">*Сжала кулаки и с вызовом посмотрела на Марту и Талию.*</td>
+                                <td class="col-context">Начало конфликта. Агата бросает прямой вызов создателям.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">Well, we are not gonna be kept down anymore!</td>
+                                <td class="col-action">—</td>
+                                <td class="col-context">"Мы больше не будем угнетенными". Отказ от старых порядков.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;"><span class="highlight-lyric">Consider this a declaration of holy war!</span></td>
+                                <td class="col-action">—</td>
+                                <td class="col-context">Официальное объявление "Священной Войны" против Рая.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">I've woken up the people to the lies you goddess tell~</td>
+                                <td class="col-action">*Из открывшихся адских порталов Хельги выходят легионы демонов и грехов.*</td>
+                                <td class="col-context">Агата обвиняет Богинь во лжи и демонстрирует свою новую армию.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">When we pay you a visit, we won’t be bringing baskets...</td>
+                                <td class="col-action">—</td>
+                                <td class="col-context">Сарказм. Отсылка к традиции приходить в гости с подарками (корзинками).</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">We'll be bringing decimation that'll put you in caskets!</td>
+                                <td class="col-action">—</td>
+                                <td class="col-context">Прямая угроза смерти ("Мы принесем истребление, что уложит вас в гробы").</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">I’ll show you what it means to be the motherfuckin' <span class="highlight-lyric">Queen of Heaven!</span></td>
+                                <td class="col-action">*Взлетает на крыльях над полем битвы.*</td>
+                                <td class="col-context">Провозглашает себя истинной Королевой, используя грубую лексику для усиления эффекта бунта.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">'Cause I'm the furor, I'm immense!<br>I am the avatar of your consequence.</td>
+                                <td class="col-action">—</td>
+                                <td class="col-context">Называет себя "аватаром последствий" — результатом ошибок самих Богов.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">I'm your... <span class="highlight-lyric">OMEGA!</span> I'm the flood!</td>
+                                <td class="col-action">*Резко раскрывает крылья, которые меняются на полу-демонические. Визуальная трансформация.*</td>
+                                <td class="col-context">Принятие формы "Омеги" (Конец всего). Отсылка к библейскому потопу как силе очищения через уничтожение.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">I am the nightmare you made when you silenced Our mute!</td>
+                                <td class="col-action">*Ангелы-мятежники направляют копья. Из земли поднимается огромный монстр, разрушая ландшафт.*</td>
+                                <td class="col-context">Упрек Богам за то, что они заставляли ангелов молчать и подчиняться.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">So cower and hide, find a rope you can swing from!<br>Go say your goodbyes, to your lives, to your kingdom!</td>
+                                <td class="col-action">*Монстр летает вокруг Агаты, создавая атмосферу хаоса.*</td>
+                                <td class="col-context">Призыв к Богам сдаться или покончить с собой, так как их Царство пало.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">—</td>
+                                <td class="col-action">*Монстр издает оглушительный рев на последней ноте, глядя прямо на Марту и Талию.*</td>
+                                <td class="col-context">Финальный аккорд устрашения.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="song-container">
+                <div class="song-header" id="Stayed Gone">
+                    <div class="song-title">Stayed Gone (Agatha vs Olivia)</div>
+                    <audio controls class="agatha-player" src="../Statics/music/stayedgone.mp3">
+                        Ваш браузер не поддерживает аудио.
+                    </audio>
+                </div>
+
+                <div class="song-content-wrapper">
+                    <div style="margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.4); border-left: 4px solid #b81111;">
+                        <p style="margin-bottom: 10px;"><b>Сцена:</b> Тронный зал Агаты. Охрана и Оверлорды мертвы. Агата узнает в "девушке с белыми волосами" свой худший кошмар.</p>
+                        <p><b>Агата:</b> <i>(Вскакивая с трона, глаза расширены от ужаса и гнева)</i><br>«ЭТА СУКА ВЕРНУЛАСЬ!»</p>
+                        <p><b>Дэмьян (Грех Гордыни):</b> <i>(Лениво крутит бокал, сидя на перилах, совершенно не впечатленный)</i><br>«М? Да-а-а~ Забыл вам напомнить, у нас тут... новое лицо.»</p>
+                        <p><b>Агата:</b> <i>(Срываясь на крик, золотая аура вспыхивает нестабильно)</i><br>«ЁБАННЫХ 1000 ЛЕТ ПРОШЛО! КАК ОНА ОСВОБОДИЛАСЬ?!»</p>
+                        <p><b>Дэмьян:</b> <i>(Ухмыляется, наклоняя голову)</i><br>«Ты за столько лет так и не перестала её бояться, да?)»</p>
+                        <p><b>Агата:</b> «Пошёл НАХУЙ!»</p>
+                        <p><b>Дэмьян:</b> «Я просто подметил~»</p>
+                        <p><b>Агата:</b> <i>(Поправляет корону, пытаясь вернуть самообладание. В глазах загорается маниакальный огонь)</i><br>«Пора показать этой псевдо-богине, кто тут истинный бого-рождённый...»</p>
+                        <p><b>Дэмьян:</b> «Не сомневаюсь)»</p>
+                        <p><b>Агата:</b> <i>(Резко разворачивается к огромным дверям балкона)</i><br>«Я собираюсь отправить весточку... КТО ТУТ СТАНЕТ ИСТИННЫМ БОГОМ!»</p>
+                    </div>
+
+                    <table class="song-table">
+                        <thead>
+                            <tr>
+                                <th>Текст песни / Диалог</th>
+                                <th>Действия (Визуализация)</th>
+                                <th>Контекст</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">Welcome home!<br>I'm gonna make you wish that you'd stayed gone!</td>
+                                <td class="col-action">*Агата с ноги распахивает двери балкона в такт музыке. Камера резко наезжает на её лицо.*</td>
+                                <td class="col-context">Агата вступает в "эфир", приветствуя врага угрозой.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">Say hello to a new status quo!<br>Everyone knows that there's a brand-new dawn!</td>
+                                <td class="col-action">*Проходит по балкону, разводя руками. Над Адом встает искусственное золотое солнце (её магия).*</td>
+                                <td class="col-context">Демонстрация того, что Ад изменился и теперь принадлежит ей.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">Turn the <span class="highlight-lyric">DE-MONS</span> on!</td>
+                                <td class="col-action">*Щелкает пальцами. По всему Аду включаются гигантские экраны, дроны-камеры и прожекторы. Вся медиа-машина работает на неё.*</td>
+                                <td class="col-context">Активация пропаганды.</td>
+                            </tr>
+                            <tr style="background: rgba(184, 134, 11, 0.1);">
+                                <td class="col-lyrics" style="color: #ffd700;">Top of the hour, and we're discussing a certain has-been...</td>
+                                <td class="col-action">*Агата мгновенно меняет образ: теперь она сидит в студии новостей, улыбаясь идеальной, фальшивой улыбкой.*</td>
+                                <td class="col-context">Называет Оливию "бывшей" (has-been), принижая её статус.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">Who has been spotted cavorting around town<br>After a 1000-year absence!</td>
+                                <td class="col-action">*На экране позади неё появляются размытые, неудачные фото "девушки с белыми волосами" (Оливии).*</td>
+                                <td class="col-context">Высмеивание долгого отсутствия.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">Did anybody miss her?<br>Did anybody know about her?</td>
+                                <td class="col-action">*Агата наклоняется к камере, делая наигранно-удивленное лицо. Закадровый смех демонов.*</td>
+                                <td class="col-context">Пытается убедить всех, что Оливия никому не нужна.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">More on tonight's program!</td>
+                                <td class="col-action">*Заставка новостей с логотипом Агаты.*</td>
+                                <td class="col-context">—</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">So, the Goddess of Fear is back in world...<br>Why is she hanging around?</td>
+                                <td class="col-action">*Агата ходит вокруг голографической проекции Оливии, тыкая в неё тростью/когтем.*</td>
+                                <td class="col-context">Сомнение в мотивах возвращения.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">What does that mean for your family?<br>Well handily, I've got good news!</td>
+                                <td class="col-action">*Лицо Агаты становится "заботливым", она обращается к зрителям-грешникам.*</td>
+                                <td class="col-context">Манипуляция страхом толпы.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">She's a loser, a fossil!<br>And I don't mean to sound hostile...<br>But the Goddess is a coward!</td>
+                                <td class="col-action">*Проекция Оливии превращается в старую кость (ископаемое). Агата смеется.*</td>
+                                <td class="col-context">Оскорбления: неудачница, ископаемое, трусиха.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">You can take that as gospel!<br>Pulling my viewers? Impossible!</td>
+                                <td class="col-action">*Агата возвышается на пьедестале, вокруг неё нимб из золотого света.*</td>
+                                <td class="col-context">Утверждает, что её власть над аудиторией абсолютна.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">I'm on Angelic throne, she's barely audible!<br>Stop givin' her the time of day!</td>
+                                <td class="col-action">*Агата делает жест "тише", и звук на фоне приглушается.*</td>
+                                <td class="col-context">Сравнение: Агата на троне, Оливию даже не слышно.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">I hope she had a nice vacay...<br>BUT SHE SHOULD'VE STAYED AWAY!</td>
+                                <td class="col-action">*Лицо Агаты искажается в демонической гримасе ярости, экран трескается.*</td>
+                                <td class="col-context">Прямая угроза.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">While she hid in void of fear<br>We pivoted to ether!</td>
+                                <td class="col-action">*Показывает на свои технологии, вышки и экраны.*</td>
+                                <td class="col-context">Мы перешли в эфир (технологии), пока ты пряталась.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">World's been better since she split<br>Where's she been? WHO GIVES A SHIT!</td>
+                                <td class="col-action">*Агата готовится к финальной ноте, но...*</td>
+                                <td class="col-context">"Всем плевать, где она была".</td>
+                            </tr>
+                            <tr style="border-top: 3px solid #000;">
+                                <td class="col-lyrics" style="color: #94f8ff; text-shadow: 2px 2px 0 #000;">*Помехи*<br>Salutations!<br>Good to be back on the air!</td>
+                                <td class="col-action">*Все экраны в Аду начинают бешено мигать, изображение Агаты сменяется черно-белым искаженным лицом Оливии.*</td>
+                                <td class="col-context">Оливия перехватывает сигнал. Стиль меняется на ретро-хоррор.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #94f8ff;">Yes, I know it's been a while<br>Since someone with style treated Hell to a broadcast!</td>
+                                <td class="col-action">*Оливия поправляет прическу/одежду, выглядя безупречно элегантно на фоне хаоса.*</td>
+                                <td class="col-context">Намек на отсутствие стиля у Агаты.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #94f8ff;">Sinners, rejoice!</td>
+                                <td class="col-action">*Раскидывает руки.*</td>
+                                <td class="col-context">—</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;">What a dated voice!</td>
+                                <td class="col-action">*Агата бьет кулаком по пульту управления, пытаясь вернуть сигнал.*</td>
+                                <td class="col-context">"Какой устаревший голос!"</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #94f8ff;">Instead of a clout-chasin' mediocre video podcast...</td>
+                                <td class="col-action">*Изображение Агаты на экране превращается в клоуна.*</td>
+                                <td class="col-context">Оливия называет шоу Агаты "посредственным видео-подкастом".</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;"> Come on!</td>
+                                <td class="col-action">*Агата рычит от злости.*</td>
+                                <td class="col-context">—</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #94f8ff;">Is Agat insecure? Pursuing allure?<br>Flitting between this fad and that, is nothin' working?</td>
+                                <td class="col-action">*Оливия появляется на экранах прямо за спиной Агаты (в студии), шепча ей на ухо.*</td>
+                                <td class="col-context">Бить по больному: неуверенность Агаты и её попытки быть популярной.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;"> Ignore this chirping!</td>
+                                <td class="col-action">*Агата пытается закрыть собой экран.*</td>
+                                <td class="col-context">"Не слушайте этот щебет!"</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #94f8ff;">Every day, she's got a new Heaven's!</td>
+                                <td class="col-action">*Показывает чертежи Агаты, которые постоянно меняются.*</td>
+                                <td class="col-context">Насмешка над планами "Нового Рая".</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;"> You're lookin' at the future, she's the shit that comes before that!</td>
+                                <td class="col-action">*Агата создает золотую вспышку, пытаясь сжечь проекцию.*</td>
+                                <td class="col-context">"Я — будущее, она — дерьмо из прошлого".</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #94f8ff;">Is Agy as strong as she purports?<br>Or is it based on her support?<br>She'd be powerless without the other Demons!</td>
+                                <td class="col-action">*Оливия показывает марионеток-демонов, нити от которых ведут к Агате, а потом обрезает их.*</td>
+                                <td class="col-context">Оливия утверждает, что сила Агаты — только в её свите.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;"> Oh, please!</td>
+                                <td class="col-action">*Закатывает глаза.*</td>
+                                <td class="col-context">—</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #94f8ff;">And here's the sugar on the cream...<br>She asked me to join her team!</td>
+                                <td class="col-action">*На экране появляется старый документ/воспоминание, где Агата просит помощи (искаженный факт).*</td>
+                                <td class="col-context">Удар ниже пояса: "Она просила меня присоединиться".</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #94f8ff;">I said no, and now she's my doggy, that's the tea!</td>
+                                <td class="col-action">*Агата на экране изображена в виде чихуахуа на поводке у Оливии.*</td>
+                                <td class="col-context">"Теперь она моя сучка, вот и вся правда".</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;"> You old-timey prick! I'll show you suffering!</td>
+                                <td class="col-action">*Агата теряет контроль, вся студия начинает плавиться от жара.*</td>
+                                <td class="col-context">Истерика.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #94f8ff;">Uh oh, the Queen is buffering!</td>
+                                <td class="col-action">*Изображение Агаты зависает и распадается на пиксели.*</td>
+                                <td class="col-context">Издевательство над "лагом".</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ffd700;"> I'll destroy you, you little Go-d-d-d's–</td>
+                                <td class="col-action">*Сигнал Агаты полностью обрывается. Экран чернеет.*</td>
+                                <td class="col-context">—</td>
+                            </tr>
+                            <tr style="background: #000;">
+                                <td class="col-lyrics" style="color: #94f8ff; font-family: 'Courier New', monospace;">I'm afraid you've lost your fears...</td>
+                                <td class="col-action">*В тишине слышен спокойный голос. Оливия стоит на шпиле самого высокого здания Ада.*</td>
+                                <td class="col-context">Тихая угроза.</td>
+                            </tr>
+                            <tr style="background: #000;">
+                                <td class="col-lyrics" style="color: #ffffff; font-size: 1.2em; font-weight: bold;">LET'S BEGIN~</td>
+                                <td class="col-action">*Музыка взрывается хоррором. Из спины Оливии вырываются гигантские белые щупальца, закрывая небо.*</td>
+                                <td class="col-context">Начало настоящего кошмара.</td>
+                            </tr>
+                            <tr style="background: #000;">
+                                <td class="col-lyrics" style="color: #94f8ff;">I'm gonna make you wish that I'd stayed gone~</td>
+                                <td class="col-action">*Глаза Оливии заливаются абсолютной чернотой. Лицо искажается в демонически-божественную маску.*</td>
+                                <td class="col-context">Зеркальный ответ на угрозу Агаты в начале.</td>
+                            </tr>
+                            <tr style="background: #000;">
+                                <td class="col-lyrics" style="color: #94f8ff;">Tune on in... When I'm done!</td>
+                                <td class="col-action">*Оливия встает на щупальца, возвышаясь над всем Адом. Её тень накрывает город.*</td>
+                                <td class="col-context">—</td>
+                            </tr>
+                            <tr style="background: #000;">
+                                <td class="col-lyrics" style="color: #94f8ff;">Your status quo will know its <span style="color: red;">RACE</span> is run!</td>
+                                <td class="col-action">*Изо рта Оливии течет черная кровь/жижа. Голос становится двойным, эхо разносится повсюду.*</td>
+                                <td class="col-context">"Время твоего правления (расы/вида) вышло".</td>
+                            </tr>
+                            <tr style="background: #000;">
+                                <td class="col-lyrics" style="color: #94f8ff;">Oh, this will be fun~ =)</td>
+                                <td class="col-action">*Жуткая улыбка на весь экран. Резкая вспышка помех. Оливия исчезает.*</td>
+                                <td class="col-context">—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.4); border-left: 4px solid #b81111;">
+                        <p><b>Сцена:</b> В студии воцаряется тишина. Дымятся приборы.</p>
+                        <p><b>Агата:</b> <i>(Сидит в полном шоке, смотря в черный экран. Глаз дергается. Тишина затягивается на несколько секунд.)</i></p>
+                        <p><b>Агата:</b> <i>(Резко хватается руками за голову, вскакивает и начинает топать ногами по полу, как капризный ребенок, срывая голос)</i><br>
+                        <span style="font-size: 2em; color: #ffd700; text-shadow: 0 0 10px red;">ДА БЛЯТЬ!!!</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-container">
+                <div class="song-header" id="enternal detention">
+                    <div class="song-title">Eternal Detention (Rob vs Agatha)</div>
+                    <audio controls class="agatha-player" src="../Statics/music/eternal_detention.mp3">
+                        Ваш браузер не поддерживает аудио.
+                    </audio>
+                </div>
+
+                <div class="song-content-wrapper">
+                    <div style="margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.3); border-left: 2px solid #8a6508;">
+                        <p><b>Сцена:</b> Круг Алчности. Битва прерывается внезапным штормовым ветром. Лампочки лопаются от давления магии.</p>
+                        <p><b>Роб:</b> <i>(Появляясь из вихря с Книгой Демонов)</i> «Хэй! Ты сказала, что та клякса милая, словно ребёнок? А сама-то... Мне кажется, моей мачехе нужно преподать урок)»</p>
+                        <p><b>Агата:</b> <i>(Сжимая кулаки, переходит в демоническую форму, вырастают рога)</i> «Заткнитесь уже все! Да как ты СМЕЕШЬ?!»</p>
+                        <p><i>Агата запускает град черно-золотых копий, но Роб, смеясь, взмывает в воздух, уклоняясь от атаки, и начинает своё "представление".</i></p>
+                    </div>
+
+                    <table class="song-table">
+                        <thead>
+                            <tr>
+                                <th>Текст песни</th>
+                                <th>Действия (Сцена)</th>
+                                <th>Значение / Контекст</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">You're actin' out like you want teacher's attention?~</td>
+                                <td class="col-action">*Резко пикирует с воздуха, нанося быстрый порез косой по щеке Агаты, и тут же отлетает назад, паясничая.*</td>
+                                <td class="col-context">Роб издевается, сравнивая Агату с непослушной ученицей.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">Well, I'm the principal of this eternal detention!</td>
+                                <td class="col-action">*Приземляется на гигантскую золотую статую Агаты, материализуя в руках свою косу.*</td>
+                                <td class="col-context">Называет себя "Директором" вечного наказания (Ада).</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">I hope you had your fun, but, Girl, it's time to ring the bell!</td>
+                                <td class="col-action">*Раскручивает косу и одним мощным ударом разрубает статую Агаты пополам. Обломки с грохотом падают вниз.*</td>
+                                <td class="col-context">"Звонок прозвенел" — время игр закончилось. Символическое уничтожение её образа.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">ha-ha, Ding-ding!~</td>
+                                <td class="col-action">*Агата отряхивается от пыли, презренно глядя на разрушенную статую.*</td>
+                                <td class="col-context">Издевательский смех.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">Angell, you're gettin' way too big for your crown!</td>
+                                <td class="col-action">*Роб делает рывок на сверхзвуковой скорости, нанося глубокий порез Агате по руке. Рана мгновенно затягивается.*</td>
+                                <td class="col-context">Намек на непомерное эго Агаты.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">Now I'm here to drop your punishment, it's gonna cool down!</td>
+                                <td class="col-action">*Атакует с разворота, но Агата блокирует удар копьем. Поднимается штормовой ветер с огнем.*</td>
+                                <td class="col-context">Обещает "остудить" её пыл наказанием.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">Just in case y'all had forgotten you not the motherfuckin' queen of He-e-e-e-ell~</td>
+                                <td class="col-action">*Взлетает в центре огненного вихря, возвышаясь над полем битвы.*</td>
+                                <td class="col-context">Напоминает всем присутствующим, что её титул Королевы — фальшивка.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;"><span class="highlight-lyric">Cause I'm the Death Son!</span> I'm the Time!</td>
+                                <td class="col-action">*Направляет поток адского пламени в Агату. Она едва успевает увернуться.*</td>
+                                <td class="col-context">Роб раскрывает свою сущность — Сын Смерти и Времени.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">The mortal world is scared goin to this line...</td>
+                                <td class="col-action">*Телепортируется за спину Агаты и наносит удар ногой, отбрасывая её на несколько метров.*</td>
+                                <td class="col-context">Демонстрация контроля над пространством.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">I am so spooky, I'm the shit~<br>I am a living aspect of the infinite!</td>
+                                <td class="col-action">*Приземляется на высокую балку, зависая над Агатой лицом к лицу, упиваясь своей крутостью.*</td>
+                                <td class="col-context">Самовосхваление. Он — аспект бесконечности.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">So, scheme all you want, Ms. Angallic-Queen-mam~</td>
+                                <td class="col-action">*Грешники внизу смотрят шоу. Роб готовится к финальному удару косой, целясь в шею.*</td>
+                                <td class="col-context">Последняя насмешка перед попыткой казни.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">You not really a god, but who are you?<br>Just a dead angell!</td>
+                                <td class="col-action">*Замахивается косой для обезглавливания, НО Агата голой рукой перехватывает лезвие.*</td>
+                                <td class="col-context">Недооценка противника.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #ecedb7;">You keep talkin' loud like you run this whole town still!</td>
+                                <td class="col-action">*Агата с силой раскручивает косу вместе с Робом и швыряет его в воздух.*</td>
+                                <td class="col-context">Агата перехватывает инициативу.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">I'm the voice in your head sayin' "sit down" chill.</td>
+                                <td class="col-action">*Роб пытается взлететь, но Агата использует власть Королевы над демонами. Роба с силой вдавливает в землю, он падает на колени.*</td>
+                                <td class="col-context">Демонстрация того, что в Аду её воля — закон даже для него.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">Thought you were the judge, but you're stuck on trial!</td>
+                                <td class="col-action">*Подлетает к стоящему на коленях Робу и с силой наступает ногой ему на грудь/лицо.*</td>
+                                <td class="col-context">Роли поменялись: теперь судит она.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">Funny how the crown starts to slip right here...</td>
+                                <td class="col-action">*Заносит ногу для удара, накапливая кинетическую энергию.*</td>
+                                <td class="col-context">Сарказм в ответ на его слова о короне.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;"><span class="highlight-lyric">FAST! I was here before you, I'll be here last - FACT!</span></td>
+                                <td class="col-action">*Удар чудовищной силы. Роб отлетает, пробивая собой несколько зданий Круга Алчности. Грохот разрушений заглушает музыку.*</td>
+                                <td class="col-context">Демонстрация физического превосходства. Роб врезается в стены.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">Say my name once more, feel the floor go cold!</td>
+                                <td class="col-action">*Из земли вырываются сотни золотых копий, окружая место падения Роба.*</td>
+                                <td class="col-context">Угроза.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;"><span class="highlight-lyric">Cause I'm the Serpent, I'm the Flame!</span></td>
+                                <td class="col-action">*Агата призывает гигантскую магическую змею из чистого света и золота.*</td>
+                                <td class="col-context">Ответ на его "Time and Death". Она — Змей и Пламя.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">The mortal world is scared to say my name!</td>
+                                <td class="col-action">*Змея бросается вперед, хватает Роба зубами за ногу и с хрустом кусает.*</td>
+                                <td class="col-context">Устрашение.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">I am so spooky, I'm the shit!</td>
+                                <td class="col-action">*Змея поднимает Роба высоко в воздух.*</td>
+                                <td class="col-context">Передразнивание его слов.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">I am a livin' aspect of the infinite.</td>
+                                <td class="col-action">*Змея швыряет Роба обратно к ногам Агаты.*</td>
+                                <td class="col-context">Утверждение своего божественного статуса.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">So scheme all you want, Mister Time Hoodman...</td>
+                                <td class="col-action">*Поднимает его за воротник.*</td>
+                                <td class="col-context">Уничижительное обращение "Мистер Капюшон".</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">I'm nearly a God, who are you? Just a dead man!</td>
+                                <td class="col-action">*Бросает его снова. Пытается добить, но Роб останавливает время и телепортируется.*</td>
+                                <td class="col-context">Заявляет, что она почти Бог, а он — труп.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">I don’t need your ratings... I don’t crave applause...<br>I am consequence... I am cause!</td>
+                                <td class="col-action">*Агата стоит неподвижно, пока вокруг неё Роб призывает сотни призрачных кос.*</td>
+                                <td class="col-context">Агата утверждает, что она выше оценки толпы.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">Pray to Angell, pray to lies!<br>Watch the terror in your eyes...<br>No redemption, no disguise!</td>
+                                <td class="col-action">*Роб налетает всем роем кос. Схватка в воздухе. Он хватает Агату за горло.*</td>
+                                <td class="col-context">Отчаянная попытка Роба задавить числом и яростью.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;"><span class="highlight-lyric">Detention never dies!</span></td>
+                                <td class="col-action">*Агата вырывается из захвата с диким криком. Мощным пинком отправляет Роба прямо в частокол из собственных копий.*</td>
+                                <td class="col-context">Роба пронзает насквозь.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">I'm the death son, I'm the time...<br>I am so spooky... I'm the shit...</td>
+                                <td class="col-action">*Роб висит на копьях, захлебываясь кровью. Пытается встать, раны медленно затягиваются, но сил нет.*</td>
+                                <td class="col-context">Слабеющий голос. Попытка убедить себя в своей силе.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #e89761;">I am a livin' aspect of the infinite!</td>
+                                <td class="col-action">*Вспышка магии времени — попытка замедлить Агату. Агата лишь щелкает пальцами, разбивая заклинание.*</td>
+                                <td class="col-context">Последний козырь Роба не сработал.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;">So scheme all you want, Mister Time Hoodman...<br>I'm nearly a God, who are you?</td>
+                                <td class="col-action">*Медленно подходит к беспомощному противнику. Улыбается.*</td>
+                                <td class="col-context">Финальный приговор.</td>
+                            </tr>
+                            <tr>
+                                <td class="col-lyrics" style="color: #f8fa7d;"><span class="highlight-lyric">Just a dead man.</span></td>
+                                <td class="col-action">*Резким движением руки пробивает грудь Роба и вырывает его сердце/душу.*</td>
+                                <td class="col-context">Фаталити. Победа Агаты.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </article>
+    </div>
+
+    <div class="music-player">
+        <button id="playBtn">▶</button>
+        <span id="trackName" style="font-size: 0.8em;">Agatha Theme - Fallen Gold</span>
+        <audio id="bgMusic" src="../Statics/music/agata_theme.mp3"></audio>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const songHeaders = document.querySelectorAll('.song-header');
+
+            songHeaders.forEach(header => {
+                header.addEventListener('click', function(e) {
+                    // Игнорируем клик, если нажали прямо на плеер (чтобы музыка не останавливалась при раскрытии)
+                    if (e.target.tagName === 'AUDIO') return;
+
+                    // Находим родительский контейнер
+                    const container = this.closest('.song-container');
+                    
+                    // Переключаем класс 'open'
+                    container.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>

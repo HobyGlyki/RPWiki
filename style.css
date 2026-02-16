@@ -468,3 +468,151 @@ article ul li b { color: #fff; }
     display: block;
     clear: both; 
 }
+
+
+/* === СТИЛЬ ДЛЯ ПЕСЕН === */
+        .song-container {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .song-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .song-title {
+            color: var(--accent);
+            font-size: 1.4em;
+            font-family: 'Times New Roman', serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Кастомный аудио-плеер (базовая стилизация) */
+        audio.agatha-player {
+            width: 100%;
+            height: 40px;
+            border-radius: 20px;
+            outline: none;
+            filter: sepia(100%) hue-rotate(10deg) saturate(150%) contrast(0.8); /* Золотой оттенок */
+        }
+
+        /* Таблица песен */
+        .song-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+
+        .song-table th {
+            text-align: left;
+            padding: 10px;
+            background: linear-gradient(to bottom, #2e2612, #110f0a);
+            color: #ffd700;
+            border-bottom: 2px solid var(--border);
+            text-transform: uppercase;
+            font-size: 0.8em;
+        }
+
+        .song-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid rgba(138, 101, 8, 0.3);
+            vertical-align: top;
+        }
+
+        .song-table tr:hover {
+            background: rgba(184, 134, 11, 0.05);
+        }
+
+        /* Колонки */
+        .col-lyrics {
+            width: 40%;
+            font-style: italic;
+            color: #ededed;
+            font-family: 'Georgia', serif;
+        }
+
+        .col-action {
+            width: 30%;
+            color: #f7d56f; /* Более тусклый золотой для действий */
+            font-size: 0.95em;
+        }
+
+        .col-context {
+            width: 30%;
+            color: #bcbcbc;
+            font-size: 0.95em;
+        }
+
+        /* Выделение ключевых слов в тексте */
+        .highlight-lyric {
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+        .highlightr-lyric {
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+
+
+        /* === СТИЛЬ ДЛЯ СКРЫТИЯ/РАСКРЫТИЯ ПЕСЕН === */
+        .song-container {
+            transition: all 0.3s ease;
+        }
+
+        /* Заголовок теперь кликабельный */
+        .song-header {
+            cursor: pointer;
+            position: relative;
+            padding-right: 30px; /* Место для стрелочки */
+        }
+        
+        .song-header:hover .song-title {
+            color: #fff;
+            text-shadow: 0 0 10px var(--accent);
+        }
+
+        /* Стрелочка индикатор */
+        .song-header::after {
+            content: '▼';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            font-size: 1.2em;
+            transition: transform 0.4s ease;
+        }
+
+        /* Если открыто - переворачиваем стрелку */
+        .song-container.open .song-header::after {
+            transform: translateY(-50%) rotate(180deg);
+            color: #ff4444; /* Красный оттенок при открытии (опционально) */
+        }
+
+        /* Скрытый блок с контентом */
+        .song-content-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.8s cubic-bezier(0, 1, 0, 1), opacity 0.5s ease-in-out;
+        }
+
+        /* Состояние открытого блока */
+        .song-container.open .song-content-wrapper {
+            max-height: 5000px; /* Достаточно большое значение, чтобы влез любой текст */
+            opacity: 1;
+            transition: max-height 1s ease-in-out, opacity 1s ease-in-out; 
+            /* Плавное появление */
+        }
