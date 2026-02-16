@@ -100,6 +100,16 @@ const charactersData = [
     'dateAdded': '2025-04-18',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'emilia',
+    'name': 'Эмилия Стоун',
+    'nickname': 'Принцесса Гордыни',
+    'image': 'Statics/image/Gemini_Generated_Image_uvh585uvh585uvh5.png',
+    'link': 'Wikis/emilia.html',
+    'dateAdded': '2025-04-19',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   }
 ];
  
