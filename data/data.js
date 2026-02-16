@@ -110,6 +110,16 @@ const charactersData = [
     'dateAdded': '2025-04-19',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'remor',
+    'name': 'Ремор',
+    'nickname': 'Бог Кошмаров и Снов',
+    'image': 'Statics/image/remor2.jpg',
+    'link': 'Wikis/remor.html',
+    'dateAdded': '2025-04-20',
+    'author': 'mic',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   }
 ];
  
