@@ -120,6 +120,15 @@ const charactersData = [
     'dateAdded': '2025-04-20',
     'author': 'mic',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {    'id': 'agata ',
+    'name': 'Агата',
+    'nickname': 'Дочь Марты, лидер восстания в Раю',
+    'image': 'Statics/image/agata.jpg',
+    'link': 'Wikis/agata.html',
+    'dateAdded': '2025-04-21',
+    'author': 'mic',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   }
 ];
  
