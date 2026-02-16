@@ -44,24 +44,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-// --- 3. ГЕНЕРАЦИЯ АЛФАВИТНОГО СПИСКА (Универсальная) ---
+// --- 3. ГЕНЕРАЦИЯ АЛФАВИТНОГО СПИСКА (Обновленная) ---
     const contentArea = document.getElementById('wiki-content-area');
     
     if (contentArea) {
-        // Читаем, что именно нужно отрендерить на этой странице (по умолчанию - персонажи)
+        // Читаем атрибуты
         const contentType = contentArea.getAttribute('data-content-type') || 'characters';
         const category = contentArea.getAttribute('data-category') || 'all';
+        const filter = contentArea.getAttribute('data-filter'); // Новый атрибут для фильтрации
 
-        // Если это страница персонажей
+        // Логика для ПЕРСОНАЖЕЙ
         if (contentType === 'characters' && typeof charactersData !== 'undefined') {
-            renderAlphabeticalIndex(contentArea, charactersData);
+            
+            let dataToRender = charactersData;
+
+            // Если задан фильтр "rice" (для страницы Райсов)
+            if (filter === 'rice') {
+                dataToRender = charactersData.filter(char => {
+                    const nameLower = char.name.toLowerCase();
+                    // Проверяем фамилию ИЛИ конкретные ID предков/родственников без фамилии
+                    return nameLower.includes('райс') || 
+                           nameLower.includes('rice') || 
+                           ['ivriil', 'remor', 'olivia'].includes(char.id);
+                });
+            }
+
+            renderAlphabeticalIndex(contentArea, dataToRender);
         } 
-        // Если это страница миров/АУ
+        // Логика для МИРОВ
         else if (contentType === 'worlds' && typeof worldsData !== 'undefined') {
             // Фильтруем миры по нужной категории
             const filteredWorlds = worldsData.filter(world => world.categories.includes(category));
             renderAlphabeticalIndex(contentArea, filteredWorlds);
         }
+        // Если это страница фракций/организаций
+        else if (contentType === 'factions' && typeof factionsData !== 'undefined') {
+            renderAlphabeticalIndex(contentArea, factionsData);
+        }
+        // И так далее для других типов контента...
+        
     }
     
 // --- 4. ГЕНЕРАЦИЯ НЕДАВНИХ СТАТЕЙ (Для Главной страницы) ---

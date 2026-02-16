@@ -81,6 +81,15 @@ const charactersData = [
     'dateAdded': '2025-04-17',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
 
+  },
+  {
+    'id': 'cole',
+    'name': 'Коул Райс',
+    'nickname': 'Страж, Ангел Смерти',
+    'image': 'Statics/image/cole.jpg',
+    'link': 'Wikis/cole.html',
+    'dateAdded': '2025-04-18',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   }
 ];
  
