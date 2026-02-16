@@ -66,8 +66,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     return nameLower.includes('райс') || 
                            nameLower.includes('rice') || 
                            ['ivriil', 'remor', 'olivia'].includes(char.id);
-                });
-            }
+                });}
+            else if (filter === 'mic') {
+                dataToRender = charactersData.filter(char => {
+                    const nameLower = char.author.toLowerCase();
+                    // Проверяем фамилию ИЛИ конкретные ID предков/родственников без фамилии
+                    return nameLower.includes('mic') 
+                });}
+            else if (filter === 'sasha') {
+                dataToRender = charactersData.filter(char => {
+                    const nameLower = char.author.toLowerCase();
+                    // Проверяем фамилию ИЛИ конкретные ID предков/родственников без фамилии
+                    return nameLower.includes('sasha') 
+                });}
+                           
 
             renderAlphabeticalIndex(contentArea, dataToRender);
         } 

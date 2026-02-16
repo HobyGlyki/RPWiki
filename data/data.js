@@ -7,6 +7,7 @@ const charactersData = [
     "image": "Statics/image/adrianava.jpg", 
     "link": "Wikis/adrian.html",
     "dateAdded": "2024-02-15", // Самый новый
+    "author": "mic",
     "settings": { "posY": "top", "scale": "1.0" }
   },
   {
@@ -16,6 +17,7 @@ const charactersData = [
     "image": "Statics/image/JerryAva.jpg", 
     "link": "Wikis/jerry.html",
     "dateAdded": "2025-04-12",
+    "author": "mic",
     "settings": { "posY": "top", "scale": "1.0" }
   },
   {
@@ -25,6 +27,7 @@ const charactersData = [
     "image": "Statics/image/GlitchAva.jpg",
     "link": "Wikis/glitch.html",
     "dateAdded": "2024-02-11", // Самый старый из новых
+    "author": "mic",
     "settings": { "posY": "0%", "scale": "1.0" }
   },
   {
@@ -34,6 +37,7 @@ const charactersData = [
     'image': 'Statics/image/zero.jpg',
     'link': 'Wikis/zero.html',
     'dateAdded': '2025-04-14',
+    'author': 'sasha',
     'settings': { 'posY': '10%', 'center': true, 'scale': '1.0' }
   },
   {
@@ -43,6 +47,7 @@ const charactersData = [
     'image': 'Statics/image/ivriil.jpg',
     'link': 'Wikis/ivriil.html',
     'dateAdded': '2025-04-13',
+    'author': 'mic',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   },
   {
@@ -52,6 +57,7 @@ const charactersData = [
     'image': 'Statics/image/gabrielava.jpg',
     'link': 'Wikis/gabriel.html',
     'dateAdded': '2025-04-14',
+    'author': 'mic',
     'settings': { 'posY': '0px', 'center': true, 'scale': '1.0' }
   },
   {
@@ -61,6 +67,7 @@ const charactersData = [
     'image': 'Statics/image/jenny.jpg',
     'link': 'Wikis/jenny.html',
     'dateAdded': '2025-04-15',
+    'author': 'mic',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   },
   {
@@ -70,6 +77,7 @@ const charactersData = [
     'image': 'Statics/image/chanzie.jpg',
     'link': 'Wikis/chanzie.html',
     'dateAdded': '2025-04-16',
+    'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   },
   {
@@ -79,6 +87,7 @@ const charactersData = [
     'image': 'Statics/image/john.jpg',
     'link': 'Wikis/john.html',
     'dateAdded': '2025-04-17',
+    'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
 
   },
@@ -89,6 +98,7 @@ const charactersData = [
     'image': 'Statics/image/cole.jpg',
     'link': 'Wikis/cole.html',
     'dateAdded': '2025-04-18',
+    'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   }
 ];
