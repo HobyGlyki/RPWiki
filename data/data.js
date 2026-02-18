@@ -136,7 +136,16 @@ const charactersData = [
     'nickname': 'Дочь Смерти, девушка Коула Райса',
     'image':"Statics/image/violet.jpg",
     'link': 'Wikis/violet.html',
-    'dateAdded': '2025-04-20',
+    'dateAdded': '2025-04-22',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {'id': 'angie',
+    'name': 'Энджи Доу',
+    'nickname': 'Тренажорный Кошмар, бывшая участница ОКО',
+    'image': 'Statics/image/angie.jpg',
+    'link': 'Wikis/angie.html',
+    'dateAdded': '2025-04-23',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   },
