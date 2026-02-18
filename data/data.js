@@ -129,7 +129,17 @@ const charactersData = [
     'dateAdded': '2025-04-21',
     'author': 'mic',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  }
+  },
+  {
+    'id': 'violet',
+    'name': 'Фиалка Грейро Морн',
+    'nickname': 'Дочь Смерти, девушка Коула Райса',
+    'image':"Statics/image/violet.jpg",
+    'link': 'Wikis/violet.html',
+    'dateAdded': '2025-04-20',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
 ];
  
 // === БАЗА ДАННЫХ МИРОВ И АУ ===
