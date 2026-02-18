@@ -149,6 +149,15 @@ const charactersData = [
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   },
+  {'id': 'marty',
+    'name': 'Марти Дуглас',
+    'nickname': 'Палач, член ОКО',
+    'image': 'Statics/image/marty.jpg',
+    'link': 'Wikis/marty.html',
+    'dateAdded': '2025-04-24',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  }
 ];
  
 // === БАЗА ДАННЫХ МИРОВ И АУ ===
