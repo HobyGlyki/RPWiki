@@ -299,3 +299,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         });
+
+
+        async function checkLinks() {
+    // Находим все ссылки на странице
+    const links = document.querySelectorAll('a[href]');
+
+    for (let link of links) {
+        const url = link.getAttribute('href');
+
+        // Пропускаем внешние ссылки и "якоря" (#), проверяем только внутренние .html
+        if (url.startsWith('http') || url.startsWith('#')) continue;
+
+        try {
+            const response = await fetch(url, { method: 'HEAD' });
+
+            if (!response.ok) {
+                // Если статус не 200-299 (например, 404)
+                link.classList.add('broken-link');
+                link.title = "Страница еще не создана";
+            }
+        } catch (error) {
+            // Если файл вообще не найден или ошибка запроса
+            link.classList.add('broken-link');
+        }
+    }
+}
+
+// Запускаем после загрузки страницы
+window.addEventListener('DOMContentLoaded', checkLinks);
