@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Пустота</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: "Courier New", Courier, monospace;
+            cursor: default;
+            user-select: none;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: lighter;
+            letter-spacing: 5px;
+            animation: glitch 4s infinite;
+            opacity: 0.8;
+        }
+
+        /* Эффект легкого дрожания и мерцания */
+        @keyframes glitch {
+            0% { transform: translate(0); text-shadow: none; }
+            2% { transform: translate(-2px, 1px); text-shadow: 2px 0 red; }
+            4% { transform: translate(2px, -1px); text-shadow: -2px 0 blue; }
+            6% { transform: translate(0); text-shadow: none; }
+            95% { opacity: 0.8; }
+            96% { opacity: 0.2; transform: scaleY(1.1); }
+            97% { opacity: 0.8; }
+            100% { transform: translate(0); }
+        }
+
+        .sub-text {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #333; /* Почти невидимый текст */
+            transition: color 10s ease-in-out;
+        }
+
+        /* Текст медленно проявляется, если долго смотреть */
+        body:hover .sub-text {
+            color: #550000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ЕЁ НЕ СУЩЕСТВУЕТ</h1>
+        <div class="sub-text">ведь так?</div>
+    </div>
+
+</body>
+</html>

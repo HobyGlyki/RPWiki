@@ -26,7 +26,7 @@ const charactersData = [
     "nickname": "Музыкант, мироходец",
     "image": "Statics/image/GlitchAva.jpg",
     "link": "Wikis/glitch.html",
-    "dateAdded": "2024-02-11", // Самый старый из новых
+    "dateAdded": "2025-04-26", // Самый старый из новых
     "author": "mic",
     "settings": { "posY": "0%", "scale": "1.0" }
   },
@@ -155,6 +155,24 @@ const charactersData = [
     'image': 'Statics/image/marty.jpg',
     'link': 'Wikis/marty.html',
     'dateAdded': '2025-04-24',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {'id': 'sgs'
+    ,'name': 'СГС (Альфред)',
+    'nickname': 'Жнец, член ОКО',
+    'image': 'Statics/image/sgs.jpg',
+    'link': 'Wikis/sgs.html',
+    'dateAdded': '2025-04-25',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {   'id': 'helen',
+    'name': 'Хелен',
+    'nickname': 'Бывший "волонтёр" одного "приюта", член ОКО',
+    'image': 'Statics/image/helen.jpg',
+    'link': 'Wikis/helen.html',
+    'dateAdded': '2025-04-26',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   }
