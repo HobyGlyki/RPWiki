@@ -288,7 +288,7 @@
     <div class="music-player">
         <button id="playBtn">▶</button>
         <span id="trackName" style="font-size: 0.8em;">Remor Theme - Nightmares</span>
-        <audio id="bgMusic" src="../Statics/music/remor_theme.mp3"></audio>
+        <audio id="bgMusic" src="../Statics/music/Remor.mp3"></audio>
     </div>
 
     <script src="../script.js"></script>
@@ -346,6 +346,22 @@
                 updateAppearance('human');
             }
         }
+        document.addEventListener('DOMContentLoaded', () => {
+    const playBtn = document.getElementById('playBtn');
+    const audio = document.getElementById('bgMusic');
+
+    if (playBtn && audio) {
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = '⏸'; // Меняем иконку на паузу
+            } else {
+                audio.pause();
+                playBtn.textContent = '▶'; // Возвращаем плей
+            }
+        });
+    }
+});
     </script>
 </body>
 </html>

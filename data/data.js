@@ -175,6 +175,56 @@ const charactersData = [
     'dateAdded': '2025-04-26',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'amadeus',
+    'name': 'Амадей Карс',
+    'nickname': 'Психопат, наследник Ньюва',
+    'image': 'Statics/image/Amadeus.jpg',
+    'link': 'Wikis/amadeus.html',
+    'dateAdded': '2025-04-27',
+    'author': 'mic',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'asriel',
+    'name': 'Азриэль Дримур',
+    'nickname': 'Лорд Азриэль и главный Дримур',
+    'image': 'Statics/image/asriel.jpg',
+    'link': 'Wikis/asriel.html',
+    'dateAdded': '2025-04-27',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'claire',
+    'name': 'Клэр',
+    'nickname': 'Богиня Хаоса',
+    'image': 'Statics/image/Clair.jpg',
+    'link': 'Wikis/claire.html',
+    'dateAdded': '2025-04-27',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'evilive',
+    'name': 'Эвилай Дримур',
+    'nickname': 'Искусственная душа, девушка-АУ',
+    'image': 'Statics/image/evilive (3).jpg',
+    'link': 'Wikis/evilive (3).html',
+    'dateAdded': '2025-04-27',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'milli',
+    'name': 'Милли Райс',
+    'nickname': 'Автоматон, создательница ОКО',
+    'image': 'Statics/image/Gemini_Generated_Image_tv1apstv1apstv1a.png',
+    'link': 'Wikis/milli.html',
+    'dateAdded': '2025-04-27',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   }
 ];
  

@@ -146,9 +146,24 @@
     <div class="music-player">
         <button id="playBtn">▶</button>
         <span id="trackName" style="font-size: 0.8em;">Ad-Corp Theme - Evolution</span>
-        <audio id="bgMusic" src="../Statics/music/themeAd.mp3"></audio>
+        <audio id="bgMusic" src="../Statics/music/adrian.mp3"></audio>
     </div>
+<script> document.addEventListener('DOMContentLoaded', () => {
+    const playBtn = document.getElementById('playBtn');
+    const audio = document.getElementById('bgMusic');
 
+    if (playBtn && audio) {
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = '⏸'; // Меняем иконку на паузу
+            } else {
+                audio.pause();
+                playBtn.textContent = '▶'; // Возвращаем плей
+            }
+        });
+    }
+});</script>
     <script src="../script.js"></script>
     <script src="../data/data.js"></script>
 </body>

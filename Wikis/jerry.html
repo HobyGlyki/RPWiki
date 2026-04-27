@@ -388,8 +388,8 @@
 
     <div class="music-player">
         <button id="playBtn">▶</button>
-        <span id="trackName" style="font-size: 0.8em;">Jerry Theme - Hero of RX</span>
-        <audio id="bgMusic" src="../Statics/music/jerry_theme.mp3"></audio>
+        <span id="trackName" style="font-size: 0.8em;">Jerry Theme - Project RX</span>
+        <audio id="bgMusic" src="../Statics/music/ProjectRX.mp3"></audio>
     </div>
 
     <script src="../script.js"></script>
@@ -454,7 +454,7 @@
                         <li><b><a href="elizabeth.html" class="wiki-link">Элизабет</a>:</b> Старая подруга со времен Ad-Asylum.</li>
                         <li><b><a href="dante.html" class="wiki-link">Данте</a> и <a href="trixy.html" class="wiki-link">Трикси</a>:</b> Напарники, лейтенанты полиции.</li>
                         <li><b><a href="tom.html" class="wiki-link">Том</a>:</b> Старый слепой друг.</li>
-                        <li><b><a href="evil.html" class="wiki-link">Эвилайв</a>:</b> Клон Чанзи. Считает другом, рад её дружбе с Ремором.</li>
+                        <li><b><a href="evilive.html" class="wiki-link">Эвилайв</a>:</b> Клон Чанзи. Считает другом, рад её дружбе с Ремором.</li>
                         <li><b><a href="zero.html" class="wiki-link">Зеро</a>:</b> Союзница, вроде, помог ей освободится от Дэмьяна. </li>
                         <li><b><a href="remor.html" class="wiki-link">Ремор</a>:</b> Бывший враг, теперь близкий друг и союзник. Джерри благодарен ему за помощь.</li>
                     </ul>
@@ -470,7 +470,7 @@
                         <li><b><a href="dx.html" class="wiki-link">DX</a>:</b> Враг. Вызывает легкий страх, но готов к бою с ним.</li>
                         <li><b><a href="cherry.html" class="wiki-link">Черри Райдер</a>:</b> Уважает за храбрость, но ненавидит за наглость и за то, что "украл" Дженнифер.</li>
                         <li><b><a href="belatrix.html" class="wiki-link">Беллатриса</a>:</b> Бывшая девушка. Расстались из-за её краж. Неловкие отношения.</li>
-                        <li><b><a href="sofi.html" class="wiki-link">Софи</a>, <a href="milly.html" class="wiki-link">Милли</a>, <a href="john.html" class="wiki-link">Джон</a>, <a href="angie.html" class="wiki-link">Энджи</a>:</b> Члены ОКО. Отношение от "скверных друзей" до врагов.</li>
+                        <li><b><a href="sofi.html" class="wiki-link">Софи</a>, <a href="milli.html" class="wiki-link">Милли</a>, <a href="john.html" class="wiki-link">Джон</a>, <a href="angie.html" class="wiki-link">Энджи</a>:</b> Члены ОКО. Отношение от "скверных друзей" до врагов.</li>
                         <li><b><a href="anjelika.html" class="wiki-link">Анжелика</a>:</b> Ведущая новостей, поливающая RX грязью. Скверный друг.</li>
                     </ul>`
             },
@@ -639,6 +639,22 @@
             // Обновляем текст
             updateContent(mode);
         }
+        document.addEventListener('DOMContentLoaded', () => {
+    const playBtn = document.getElementById('playBtn');
+    const audio = document.getElementById('bgMusic');
+
+    if (playBtn && audio) {
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = '⏸'; // Меняем иконку на паузу
+            } else {
+                audio.pause();
+                playBtn.textContent = '▶'; // Возвращаем плей
+            }
+        });
+    }
+});
     </script>
 </body>
 </html>
