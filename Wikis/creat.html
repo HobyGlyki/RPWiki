@@ -429,15 +429,12 @@
                 addInfoRow('info_personal_container', 'Возраст', '21 год');
                 addInfoRow('info_personal_container', 'Статус', 'Жив');
                 addRelationGroup('Родители');
-                addRelationGroup('Родственники');
                 addHistoryChapter('Начало пути', '<p>Черри начал свой путь в программировании с простых скриптов...</p> <p>А так же Черри очень любил кушать Сникерсы</p>');
                 addHistoryChapter('Будущее и Трагедия', '<p>Её детство прошло в тени первой семейной трагедии...</p>');
                 addContentSection('Личность и характер', '<p>Аналитический склад ума, любовь к порядку и котикам. <b>Перфекционист</b> в коде, мечтатель в сюжетах.</p>');
                 addContentSection('Внешность', '<p>Предпочитает удобный стиль: оверсайз худи, наушники и всегда держит при себе верный ноутбук или <b>Гитару.</b></p>');
                 addContentSection('Способности и Арсенал', '<ul>\n  <li><b>Python:</b> Бэкенд и автоматизация.</li>\n  <li><b>Godot:</b> Создание 2D хорроров.</li>\n  <li><b>FL Studio:</b> Написание атмосферных OST.</li>\n</ul>');
                 addContentRelGroup('друзья');
-                addContentRelGroup('нейтральные');
-                addContentRelGroup('враги');
                 addFactRow('Кофеин', 'Главный источник энергии для ночного кодинга.');
                 addFactRow('Гитара', 'Пишет метал-каверы в свободное время.');
             }
@@ -491,6 +488,33 @@ document.querySelectorAll('#sections_container .dynamic-section').forEach((s, i)
         tC += `<li><a href="#s${i}">${t}</a></li>`; 
     }
 });
+const crelGroups = document.querySelectorAll('#content_relations_root .relation-group');
+if(crelGroups.length > 0) {
+    let hasValidGroup = false;
+    crelGroups.forEach(g => { if(g.querySelector('.crel-group-title').value) hasValidGroup = true; });
+
+    if(hasValidGroup) {
+        sC += `<h2 id="relations">Связи с персонажами</h2>`;
+        tC += `<li><a href="#relations">Связи с персонажами</a></li>`;
+
+        crelGroups.forEach(g => {
+            const title = g.querySelector('.crel-group-title').value;
+            if(title) {
+                sC += `<h3>${title}</h3><ul>`;
+                g.querySelectorAll('.crel-members > .crel-row').forEach(m => {
+                    const name = m.querySelector('.crel-name').value;
+                    const file = m.querySelector('.crel-file').value;
+                    const quote = m.querySelector('.crel-quote').value;
+                    if(name) {
+                        let linkStr = file ? `<b><a href="${file}" class="wiki-link">${name}</a></b>` : `<b>${name}</b>`;
+                        sC += `<li>${linkStr}: ${quote ? `«${quote}»` : ''}</li>`;
+                    }
+                });
+                sC += `</ul>`;
+            }
+        });
+    }
+}
             const factRows = document.querySelectorAll('#facts_container .dynamic-row');
             if(factRows.length > 0) {
                 sC += `<h2 id="facts">Интересные факты</h2><ul>`; tC += `<li><a href="#facts">Интересные факты</a></li>`;
