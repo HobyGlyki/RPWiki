@@ -202,11 +202,10 @@
                     <button type="button" class="btn" style="width:100%; margin-bottom:20px;" onclick="addFactRow()">+ Добавить факт</button>
                 </div>
 
-                <h2 class="collapsible" onclick="toggleBlock(this)" style="margin-top: 30px;">7. Галерея и Музыка</h2>
+                <h2 class="collapsible" onclick="toggleBlock(this)" style="margin-top: 30px;">7. Галерея</h2>
                 <div class="block-content">
                     <div id="gallery_container"></div>
                     <button type="button" class="btn" onclick="addGalleryRow()">+ Фото в галерею</button>
-                    <div class="form-group" style="margin-top:20px;"><label>Музыка:</label><div style="display:flex; gap:10px;"><input type="text" id="f_music_name" placeholder="Название"><input type="text" id="f_music_file" placeholder="file.mp3"></div></div>
                 </div>
 
                 <div class="sticky-footer">
@@ -255,8 +254,6 @@
                 f_quote: document.getElementById('f_quote').value,
                 f_intro: document.getElementById('f_intro').value,
                 f_infobox_title: document.getElementById('f_infobox_title').value,
-                f_music_name: document.getElementById('f_music_name').value,
-                f_music_file: document.getElementById('f_music_file').value,
                 images_container: document.getElementById('images_container').innerHTML,
                 info_personal_container: document.getElementById('info_personal_container').innerHTML,
                 relations_root: document.getElementById('relations_root').innerHTML,
@@ -279,8 +276,6 @@
                 document.getElementById('f_quote').value = draft.f_quote || '';
                 document.getElementById('f_intro').value = draft.f_intro || '';
                 document.getElementById('f_infobox_title').value = draft.f_infobox_title || '';
-                document.getElementById('f_music_name').value = draft.f_music_name || '';
-                document.getElementById('f_music_file').value = draft.f_music_file || '';
                 if(draft.history_container) document.getElementById('history_container').innerHTML = draft.history_container;
                 if(draft.images_container) document.getElementById('images_container').innerHTML = draft.images_container;
                 if(draft.info_personal_container) document.getElementById('info_personal_container').innerHTML = draft.info_personal_container;
@@ -549,7 +544,7 @@ if(crelGroups.length > 0) {
             const relSection = relRowsHTML 
                 ? `<div class="infobox-header">Родственные связи</div><table>${relRowsHTML}</table>` 
                 : "";
-return `<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>${document.getElementById('f_title').value} - Wiki</title><link rel="stylesheet" href="../style.css"><style>body.dark-mode { --bg: ${pbg}; --content-bg: ${cbg}; --accent: ${acc}; --glow: ${glow}; --card-bg: ${ibg}; --text: ${txt}; --border: ${brd}; } .page-title, h3, h2 { color: var(--accent); text-shadow: 0 0 10px var(--glow); border-bottom-color: var(--border); } .infobox { border: 1px solid var(--border); box-shadow: 0 0 20px rgba(0,0,0,0.5); } .infobox-header { background: linear-gradient(to right, var(--bg), color-mix(in srgb, var(--glow), transparent 80%)); color: var(--accent); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); text-align: center; padding: 5px 0; } article b { color: var(--accent); text-shadow: 0 0 5px var(--glow); }</style></head><body class="dark-mode"><div id="navbar-container" data-path="../"></div><div class="container clearfix"><article><aside class="infobox"><div class="infobox-name">${document.getElementById('f_infobox_title').value}</div>${iH}<div class="infobox-header">Личные данные</div><table>${iR}</table>${relSection}</aside><h1 class="page-title">${document.getElementById('f_title').value}</h1><p><i>«${document.getElementById('f_quote').value}»</i></p><p>${document.getElementById('f_intro').value}</p><div class="toc"><h3>Содержание</h3>${tC}</div>${sC}</article></div><div class="music-player">▶ ${document.getElementById('f_music_name').value}<audio src="../Statics/music/${document.getElementById('f_music_file').value}"></audio></div><script src="../script.js"><\/script>${iS}</body></html>`;        }
+return `<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>${document.getElementById('f_title').value} - Wiki</title><link rel="stylesheet" href="../style.css"><style>body.dark-mode { --bg: ${pbg}; --content-bg: ${cbg}; --accent: ${acc}; --glow: ${glow}; --card-bg: ${ibg}; --text: ${txt}; --border: ${brd}; } .page-title, h3, h2 { color: var(--accent); text-shadow: 0 0 10px var(--glow); border-bottom-color: var(--border); } .infobox { border: 1px solid var(--border); box-shadow: 0 0 20px rgba(0,0,0,0.5); } .infobox-header { background: linear-gradient(to right, var(--bg), color-mix(in srgb, var(--glow), transparent 80%)); color: var(--accent); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); text-align: center; padding: 5px 0; } article b { color: var(--accent); text-shadow: 0 0 5px var(--glow); }</style></head><body class="dark-mode"><div id="navbar-container" data-path="../"></div><div class="container clearfix"><article><aside class="infobox"><div class="infobox-name">${document.getElementById('f_infobox_title').value}</div>${iH}<div class="infobox-header">Личные данные</div><table>${iR}</table>${relSection}</aside><h1 class="page-title">${document.getElementById('f_title').value}</h1><p><i>«${document.getElementById('f_quote').value}»</i></p><p>${document.getElementById('f_intro').value}</p><div class="toc"><h3>Содержание</h3>${tC}</div>${sC}</article></div><script src="../script.js"><\/script>${iS}</body></html>`;        }
 
         function togglePreview(s) { const o = document.getElementById('preview-overlay'), f = document.getElementById('preview-iframe'); if(s) { f.srcdoc = generateCode(true); o.style.display = 'block'; document.body.style.overflow = 'hidden'; } else { o.style.display = 'none'; document.body.style.overflow = 'auto'; f.srcdoc = ''; } }
         function downloadHTML() { const b = new Blob([generateCode()], {type: 'text/html'}), a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = document.getElementById('f_title').value.toLowerCase().replace(/\s/g, '_') + ".html"; a.click(); }
