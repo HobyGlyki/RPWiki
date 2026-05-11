@@ -225,6 +225,26 @@ const charactersData = [
     'dateAdded': '2025-04-27',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'viki',
+    'name': 'Вики Дримур',
+    'nickname': 'Искусственно-созданный ребёнок Азриэля и Чары.',
+    'image': 'Statics/image/photo_2026-05-11_22-03-03.jpg',
+    'link': 'Wikis/milli.html',
+    'dateAdded': '2025-04-27',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    'id': 'kara',
+    'name': 'Кара Дримур',
+    'nickname': 'Искусственно-созданный ребёнок Азриэля и Чары.',
+    'image': 'Statics/image/photo_2026-05-11_20-09-32.jpg',
+    'link': 'Wikis/milli.html',
+    'dateAdded': '2025-04-27',
+    'author': 'sasha',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   }
 ];
  
