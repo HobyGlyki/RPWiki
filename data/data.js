@@ -211,7 +211,7 @@ const charactersData = [
     'name': 'Эвилай Дримур',
     'nickname': 'Искусственная душа, девушка-АУ',
     'image': 'Statics/image/evilive (3).jpg',
-    'link': 'Wikis/evilive (3).html',
+    'link': 'Wikis/evilive.html',
     'dateAdded': '2025-04-27',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
