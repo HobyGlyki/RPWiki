@@ -229,10 +229,10 @@ const charactersData = [
   {
     'id': 'viki',
     'name': 'Вики Дримур',
-    'nickname': 'Искусственно-созданный ребёнок Азриэля и Чары.',
+    'nickname': 'Младшая из сестёр Дримуров',
     'image': 'Statics/image/photo_2026-05-11_22-03-03.jpg',
-    'link': 'Wikis/milli.html',
-    'dateAdded': '2025-04-27',
+    'link': 'Wikis/vika.html',
+    'dateAdded': '2026-05-14',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   },
@@ -241,11 +241,21 @@ const charactersData = [
     'name': 'Кара Дримур',
     'nickname': 'Искусственно-созданный ребёнок Азриэля и Чары.',
     'image': 'Statics/image/photo_2026-05-11_20-09-32.jpg',
-    'link': 'Wikis/milli.html',
-    'dateAdded': '2025-04-27',
+    'link': 'Wikis/kara.html',
+    'dateAdded': '2026-05-17',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  }
+  },
+  {
+    'id': 'cherry',
+    'name': 'Черри Райдер',
+    'nickname': 'Панк всея мультивселенный, главное лицо автора',
+    'image': 'Statics/image/Черри.png',
+    'link': 'Wikis/cherry.html',
+    'dateAdded': '2026-05-18',
+    'author': 'mic',
+    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
 ];
  
 // === БАЗА ДАННЫХ МИРОВ И АУ ===
