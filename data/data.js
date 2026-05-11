@@ -250,7 +250,7 @@ const charactersData = [
     'id': 'cherry',
     'name': 'Черри Райдер',
     'nickname': 'Панк всея мультивселенный, главное лицо автора',
-    'image': 'Statics/image/Черри.png',
+    'image': 'Statics/image/черри.png',
     'link': 'Wikis/cherry.html',
     'dateAdded': '2026-05-18',
     'author': 'mic',
