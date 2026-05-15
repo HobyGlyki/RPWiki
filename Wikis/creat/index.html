@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki Architect | MULTIVERSE ARCHIVES</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+        body {
+            background-color: var(--page-bg);
+            background-image: radial-gradient(circle at 50% 0%, var(--page-bg-light) 0%, var(--page-bg) 80%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            margin: 0;
+            transition: background 0.5s ease;
+            color: var(--text);
+        }
+        
+        article {
+            background-color: var(--content-bg) !important;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            position: relative;
+        }
+        select {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            font-size: 1.1em !important;
+            cursor: pointer;
+        }
+
+        select option {
+            background-color: #000000;
+            color: #ffffff;
+            font-size: 1.1em;
+            padding: 8px;
+        }
+
+        .form-group { margin-bottom: 25px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--text); font-family: 'Times New Roman', serif; font-size: 1.1em; letter-spacing: 1px;}
+        input[type="text"], textarea, select { 
+            width: 100%; padding: 12px; background: rgba(0,0,0,0.5); color: var(--text); 
+            border: 1px solid var(--border); border-radius: 4px; font-family: 'Segoe UI', sans-serif; box-sizing: border-box; 
+        }
+        input:focus, textarea:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 8px var(--glow); }
+        
+        .tag-btn { background: #1a1a1a; border: 1px solid #444; color: #ccc; padding: 6px 10px; font-size: 0.8em; cursor: pointer; border-radius: 4px; transition: 0.2s; }
+        .tag-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        .preset-box { background: rgba(30, 30, 30, 0.5); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 25px; display: flex; flex-direction: column; gap: 15px; }
+        .color-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+        
+        .dynamic-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 6px; border: 1px solid var(--border); }
+        .btn { background: var(--card-bg); color: var(--accent); border: 1px solid var(--accent); padding: 10px 18px; cursor: pointer; border-radius: 4px; font-weight: bold; text-transform: uppercase; font-size: 0.8em; transition: 0.2s; }
+        .btn:hover { background: var(--accent); color: #fff; box-shadow: 0 0 15px var(--glow); }
+        
+        h2.collapsible { cursor: pointer; position: relative; padding-left: 25px; user-select: none; transition: color 0.2s; }
+        h2.collapsible:hover { color: #fff; }
+        h2.collapsible::before { content: '▼'; position: absolute; left: 0; top: 2px; font-size: 0.7em; color: var(--accent); transition: transform 0.3s; }
+        h2.collapsible.collapsed::before { transform: rotate(-90deg); }
+        
+        .relation-group { background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin-bottom: 20px; }
+        .member-row { display: grid; grid-template-columns: 1fr 1fr 1fr 30px 30px 35px; gap: 8px; margin-top: 8px; }
+        .crel-row { display: grid; grid-template-columns: 1fr 1fr 1fr 30px 30px 35px; gap: 8px; margin-top: 8px; align-items: start; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px; border: 1px solid #444; }
+        .img-preview-small { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); }
+
+        #toolkit-panel {
+            display: none; position: fixed; bottom: 85px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 600px; background: rgba(15, 15, 15, 0.98); backdrop-filter: blur(12px);
+            border: 1px solid var(--accent); box-shadow: 0 0 30px rgba(0,0,0,0.9), 0 0 15px var(--glow);
+            padding: 20px; border-radius: 12px; z-index: 1000;
+        }
+        
+        #preview-overlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--page-bg); z-index: 99999; }
+        #preview-iframe { width: 100%; height: 100%; display: block; border: none; background: transparent; }
+        .preview-back-btn {
+            position: fixed; bottom: 30px; right: 30px; z-index: 100000; background: #d9534f; color: #fff; border: 2px solid #fff;
+            padding: 12px 25px; border-radius: 30px; font-weight: bold; cursor: pointer; box-shadow: 0 0 20px rgba(217, 83, 79, 0.8);
+        }
+        
+        .sticky-footer { 
+            position: sticky; bottom: 20px; background: rgba(10, 10, 10, 0.95); padding: 15px; 
+            border-radius: 10px; text-align: center; border: 1px solid var(--accent); 
+            box-shadow: 0 0 20px var(--glow); z-index: 100; margin-top: 40px; backdrop-filter: blur(5px);
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;
+        }
+    </style>
+</head>
+<body class="dark-mode" style="--page-bg: #050505; --page-bg-light: #1a1a1a; --content-bg: #0d0d0d; --accent: #4a90e2; --border: #333333; --text: #e0e0e0; --glow: rgba(74, 144, 226, 0.4); --card-bg: #1e1e1e;">
+
+    <div id="preview-overlay">
+        <button class="preview-back-btn" onclick="togglePreview(false)">✖ Вернуться в редактор</button>
+        <iframe id="preview-iframe"></iframe>
+    </div>
+
+    <div id="toolkit-panel">
+        <button style="position:absolute; top:10px; right:15px; background:none; border:none; color:#aaa; cursor:pointer; font-size:1.5em;" onclick="toggleToolkit()">×</button>
+        <div style="margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:15px;">
+            <span style="font-family: 'Times New Roman', serif; color:var(--accent);">🔗 Создать быструю ссылку</span>
+            <div style="display:flex; gap:5px; margin-top:10px;">
+                <input type="text" id="tool_link_text" placeholder="Имя">
+                <input type="text" id="tool_link_url" placeholder="file">
+                <button type="button" class="tag-btn" onclick="generateToolCode('link')">ОК</button>
+            </div>
+        </div>
+        <div style="margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:15px;">
+            <span style="font-family: 'Times New Roman', serif; color:var(--accent);">🖼 Картинка в текст</span>
+            <div style="display:flex; gap:5px; flex-wrap:wrap; margin-top:10px;">
+                <input type="file" id="tool_img_file" accept="image/*" style="width:40%">
+                <input type="text" id="tool_img_cap" placeholder="Подпись" style="width:30%">
+                <select id="tool_img_float" style="width:20%;">
+                    <option value="float-right">Справа</option>
+                    <option value="float-left">Слева</option>
+                </select>
+                <button type="button" class="tag-btn" onclick="generateToolCode('image')">ОК</button>
+            </div>
+        </div>
+        <div style="margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:15px;">
+            <span style="font-family: 'Times New Roman', serif; color:var(--accent);">💡 Подсказка по HTML</span>
+            <div style="margin-top:10px; font-size: 0.9em; line-height: 1.5; color: #ccc; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px;">
+                <b>&lt;b&gt;жирный&lt;/b&gt;</b> | <i>&lt;i&gt;курсив&lt;/i&gt;</i><br>
+                <s>&lt;s&gt;зачеркнутый&lt;/s&gt;</s> | <u>&lt;u&gt;подчеркнутый&lt;/u&gt;</u><br>
+                <b>&lt;br&gt;</b> — перенос строки (Enter)<br>
+                <span style="color:red;"> <b>&lt;span style="color:red;"&gt;</b>текст<b>&lt;/span&gt;</b></span> — цветной текст
+            </div>
+        </div>
+        <div id="tool_output_box" style="display:none; margin-top:15px;">
+            <input type="text" id="tool_output" readonly onclick="this.select(); document.execCommand('copy'); alert('Скопировано!');" style="cursor:pointer; color:var(--accent); text-align:center;">
+        </div>
+    </div>
+
+    <div class="container clearfix">
+        <article>
+            <h1 class="page-title" style="text-align: center;">Wiki Architect</h1>
+            
+            <div class="preset-box">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <label style="margin:0;">Стиль:</label>
+                    <select id="color_preset" onchange="applyPreset(this.value)" style="width:auto; min-width:200px;">
+                        <option value="custom">-- Свой --</option>
+                        <option value="jerry">Джеррими</option>
+                        <option value="rx">Red X</option>
+                        <option value="rs">Проект РС</option>
+                        <option value="agata">Агата</option>
+                        <option value="adrian">Эдриан</option>
+                        <option value="glitch">Глюк</option>
+                    </select>
+                </div>
+                <div class="color-grid">
+                    <div><label>Фон сайта</label><input type="color" id="f_page_bg" value="#050505" oninput="updateLiveColors()"></div>
+                    <div><label>Фон статьи</label><input type="color" id="f_bg_color" value="#0d0d0d" oninput="updateLiveColors()"></div>
+                    <div><label>Инфобокс</label><input type="color" id="f_info_bg" value="#1e1e1e" oninput="updateLiveColors()"></div>
+                    <div><label>Акцент</label><input type="color" id="f_accent_color" value="#4a90e2" oninput="updateLiveColors()"></div>
+                    <div><label>Рамки</label><input type="color" id="f_border_color" value="#333333" oninput="updateLiveColors()"></div>
+                    <div><label>Текст</label><input type="color" id="f_text_color" value="#e0e0e0" oninput="updateLiveColors()"></div>
+                </div>
+            </div>
+
+            <form id="wikiForm">
+                <h2 class="collapsible" onclick="toggleBlock(this)">1. Заголовок</h2>
+                <div class="block-content">
+<div class="preset-box" style="margin-bottom: 20px;">
+    <div style="display: flex; flex-direction: row; gap: 20px; align-items: flex-end; width: 100%;">
+        
+        <div style="flex: 1;">
+            <label style="color:var(--accent); font-size: 0.9em; margin-bottom: 5px; display: block;">Имя на английском (ID папки):</label>
+            <input type="text" id="f_id_name" placeholder="например: gwen" style="width: 100%; box-sizing: border-box; margin: 0;">
+        </div>
+        
+        <div style="position: relative; flex: 1;">
+            <label style="color:var(--accent); font-size: 0.9em; margin-bottom: 5px; display: block;">Теги (Роли):</label>
+            
+            <button type="button" onclick="toggleTagsPopup()" style="width: 100%; box-sizing: border-box; text-align: left; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 11px 12px; border-radius: 4px; color: var(--text); cursor: pointer; font-family: 'Segoe UI', sans-serif; font-size: 1em; transition: 0.2s;">
+                <span id="tag-placeholder">Выбрать теги</span>
+                <span id="tag-counter" style="font-size: 0.8em; color: var(--accent);">Выбрано: 0</span>
+            </button>
+            
+            <div id="tags-popup" style="display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 100; background: var(--card-bg); border: 1px solid var(--accent); padding: 15px; margin-top: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border-radius: 4px;">
+                <div class="color-grid" style="grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="mic" class="tag-checkbox" onchange="updateTagCounter()"> Черри</label>
+                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="sasha" class="tag-checkbox" onchange="updateTagCounter()"> Саша</label>
+                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="hero" class="tag-checkbox" onchange="updateTagCounter()"> Герой</label>
+                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="villain" class="tag-checkbox" onchange="updateTagCounter()"> Злодей</label>
+                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="god" class="tag-checkbox" onchange="updateTagCounter()"> Бог</label>
+                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="anomaly" class="tag-checkbox" onchange="updateTagCounter()"> Аномалия</label>
+                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="demon" class="tag-checkbox" onchange="updateTagCounter()"> Демон</label>
+                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="angel" class="tag-checkbox" onchange="updateTagCounter()"> Ангел</label>
+                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="oko" class="tag-checkbox" onchange="updateTagCounter()"> ОКО</label>
+                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="ad-asyl" class="tag-checkbox" onchange="updateTagCounter()"> Ad-Asylume</label>
+                </div>
+                <button type="button" class="btn" onclick="toggleTagsPopup()" style="width: 100%; margin-top: 15px; font-size: 0.8em; padding: 5px;">Закрыть</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+                    <div class="form-group"><label>Имя персонажа:</label><input type="text" id="f_title" placeholder="ИМЯ ПЕРСОНАЖА" oninput="autoFillInfoTitle()"></div>
+                    <div class="form-group"><label>Цитата:</label><textarea id="f_quote" rows="2" placeholder="Эпичная цитата..."></textarea></div>
+                    <div class="form-group"><label>Вводный текст:</label><textarea id="f_intro" rows="3" placeholder="Краткое описание для шапки статьи..."></textarea></div>
+                </div>
+
+                <h2 class="collapsible" onclick="toggleBlock(this)">2. Инфобокс</h2>
+                <div class="block-content">
+                    <div class="form-group"><label>Имя в инфобоксе:</label><input type="text" id="f_infobox_title"></div>
+                    <div id="images_container"></div>
+                    <button type="button" class="btn" onclick="addImageRow()">+ Добавить облик</button>
+                    <div id="info_personal_container" style="margin-top:20px;"><label>Личные данные:</label></div>
+                    <button type="button" class="btn" onclick="addInfoRow('info_personal_container')">+ Добавить параметр</button>
+                    <h3 style="color:var(--accent); margin-top:30px;">Связи (для Инфобокса)</h3>
+                    <div id="relations_root"></div>
+                    <button type="button" class="btn" onclick="addRelationGroup()">+ Создать Группу Связей (Инфобокс)</button>
+                </div>
+                
+<h2 class="collapsible" onclick="toggleBlock(this)">3. История</h2>
+<div class="block-content">
+    <div id="history_container"></div>
+    <button type="button" class="btn" style="width:100%; border-style:dashed; margin-bottom:20px;" onclick="addHistoryChapter()">+ Добавить главу истории (Детство, События и т.д.)</button>
+</div>
+
+<h2 class="collapsible" onclick="toggleBlock(this)">4. Разделы Контента</h2>
+
+                <div class="block-content">
+                    <div id="sections_container"></div>
+                    <button type="button" class="btn" style="width:100%; border-style:dashed; margin-bottom:20px;" onclick="addContentSection()">+ Добавить новый раздел</button>
+                </div>
+
+                <h2 class="collapsible" onclick="toggleBlock(this)">5. Связи с персонажами (Для тела статьи)</h2>
+                <div class="block-content">
+                    <p style="font-size: 0.9em; color:#aaa; margin-top:-15px;">Этот раздел сгенерирует развернутый блок связей с цитатами прямо в текст статьи.</p>
+                    <div id="content_relations_root"></div>
+                    <button type="button" class="btn" style="width:100%; margin-bottom:20px;" onclick="addContentRelGroup()">+ Добавить категорию связей (Семья, Враги...)</button>
+                </div>
+
+                <h2 class="collapsible" onclick="toggleBlock(this)">6. Интересные факты</h2>
+                <div class="block-content">
+                    <div id="facts_container"></div>
+                    <button type="button" class="btn" style="width:100%; margin-bottom:20px;" onclick="addFactRow()">+ Добавить факт</button>
+                </div>
+
+                <h2 class="collapsible" onclick="toggleBlock(this)" style="margin-top: 30px;">7. Галерея</h2>
+                <div class="block-content">
+                    <div id="gallery_container"></div>
+                    <button type="button" class="btn" onclick="addGalleryRow()">+ Фото в галерею</button>
+                </div>
+
+                <div class="sticky-footer">
+                    <button type="button" class="btn" onclick="togglePreview(true)">👁 Просмотр статьи</button>
+                    <button type="button" class="btn" onclick="toggleToolkit()" style="background:transparent; color:var(--text);">🛠 Инструментарий</button>
+                    <button type="button" class="btn" onclick="downloadHTML()">💾 Скачать </button>
+                    <button type="button" class="btn" style="border-color:#d9534f; color:#d9534f; background:transparent;" onclick="clearDraft()">🗑 Очистить черновик</button>
+                </div>
+            </form>
+        </article>
+    </div>
+
+    <script src="../../data/data.js"></script>
+    <script>
+        const presets = {
+            jerry:  { acc: '#0062ac', cbg: '#0d0d0d', ibg: '#121010', pbg: '#050505', txt: '#d0d0d0', brd: '#003c6c' },
+            rx:     { acc: '#ff0000', cbg: '#0d0d0d', ibg: '#1a0505', pbg: '#050505', txt: '#e0e0e0', brd: '#800000' },
+            rs:     { acc: '#8a0303', cbg: '#050505', ibg: '#0f0000', pbg: '#030000', txt: '#cdcdcd', brd: '#4a0000' },
+            agata:  { acc: '#b8860b', cbg: '#040403', ibg: '#1a1710', pbg: '#080600', txt: '#ededed', brd: '#8a6508' },
+            adrian: { acc: '#23ff77', cbg: '#0c0f0d', ibg: '#0c0f0d', pbg: '#050505', txt: '#e0e0e0', brd: '#183320' },
+            glitch: { acc: '#0062ac', cbg: '#141519', ibg: '#121010', pbg: '#070714', txt: '#d0d0d0', brd: '#0062ac' }
+        };
+
+        let dbCharOptions = '<option value="">-- Ввести вручную --</option>';
+        function initDBOptions() {
+            if (typeof charactersData !== 'undefined') {
+                charactersData.forEach(c => {
+                    let fileName = c.link.split('/').pop();
+                    dbCharOptions += `<option value="${fileName}|${c.name}">${c.name}</option>`;
+                });
+            }
+        }
+
+        function saveDraft() {
+            document.querySelectorAll('input, textarea').forEach(el => {
+                if((el.type === 'text' || el.type === 'color') && el.id !== 'tool_output') el.setAttribute('value', el.value);
+                if(el.tagName === 'TEXTAREA') el.textContent = el.value;
+            });
+            document.querySelectorAll('select').forEach(el => {
+                Array.from(el.options).forEach(o => o.removeAttribute('selected'));
+                if(el.selectedIndex >= 0) el.options[el.selectedIndex].setAttribute('selected', 'selected');
+            });
+            const draft = {
+                history_container: document.getElementById('history_container').innerHTML,
+                f_title: document.getElementById('f_title').value,
+                f_quote: document.getElementById('f_quote').value,
+                f_intro: document.getElementById('f_intro').value,
+                f_infobox_title: document.getElementById('f_infobox_title').value,
+                images_container: document.getElementById('images_container').innerHTML,
+                info_personal_container: document.getElementById('info_personal_container').innerHTML,
+                relations_root: document.getElementById('relations_root').innerHTML,
+                sections_container: document.getElementById('sections_container').innerHTML,
+                content_relations_root: document.getElementById('content_relations_root').innerHTML,
+                facts_container: document.getElementById('facts_container').innerHTML,
+                gallery_container: document.getElementById('gallery_container').innerHTML,
+                color_preset: document.getElementById('color_preset').value,
+                colors: { pbg: document.getElementById('f_page_bg').value, cbg: document.getElementById('f_bg_color').value, ibg: document.getElementById('f_info_bg').value, acc: document.getElementById('f_accent_color').value, brd: document.getElementById('f_border_color').value, txt: document.getElementById('f_text_color').value }
+            };
+            localStorage.setItem('wikiArchitectDraft', JSON.stringify(draft));
+        }
+
+        function loadDraft() {
+            const saved = localStorage.getItem('wikiArchitectDraft');
+            if(!saved) return false;
+            try {
+                const draft = JSON.parse(saved);
+                document.getElementById('f_title').value = draft.f_title || '';
+                document.getElementById('f_quote').value = draft.f_quote || '';
+                document.getElementById('f_intro').value = draft.f_intro || '';
+                document.getElementById('f_infobox_title').value = draft.f_infobox_title || '';
+                if(draft.history_container) document.getElementById('history_container').innerHTML = draft.history_container;
+                if(draft.images_container) document.getElementById('images_container').innerHTML = draft.images_container;
+                if(draft.info_personal_container) document.getElementById('info_personal_container').innerHTML = draft.info_personal_container;
+                if(draft.relations_root) document.getElementById('relations_root').innerHTML = draft.relations_root;
+                if(draft.sections_container) document.getElementById('sections_container').innerHTML = draft.sections_container;
+                if(draft.content_relations_root) document.getElementById('content_relations_root').innerHTML = draft.content_relations_root;
+                if(draft.facts_container) document.getElementById('facts_container').innerHTML = draft.facts_container;
+                if(draft.gallery_container) document.getElementById('gallery_container').innerHTML = draft.gallery_container;
+                if(draft.color_preset) document.getElementById('color_preset').value = draft.color_preset;
+                if(draft.colors) {
+                    document.getElementById('f_page_bg').value = draft.colors.pbg;
+                    document.getElementById('f_bg_color').value = draft.colors.cbg;
+                    document.getElementById('f_info_bg').value = draft.colors.ibg;
+                    document.getElementById('f_accent_color').value = draft.colors.acc;
+                    document.getElementById('f_border_color').value = draft.colors.brd;
+                    document.getElementById('f_text_color').value = draft.colors.txt;
+                }
+                return true;
+            } catch(e) { console.error("Ошибка загрузки", e); return false; }
+        }
+
+        function clearDraft() { if(confirm('Точно удалить все несохраненные данные?')) { localStorage.removeItem('wikiArchitectDraft'); location.reload(); } }
+        document.addEventListener('input', (e) => { if(e.target.type !== 'file') saveDraft(); });
+        document.addEventListener('change', (e) => { if(e.target.type !== 'file') saveDraft(); });
+
+window.uploadedFiles = {}; // Глобальное хранилище для ZIP-архива
+
+        function handleImageUpload(input, type) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const row = input.closest('.dynamic-row');
+                    const preview = row.querySelector('.img-preview-small');
+                    if(preview) preview.src = e.target.result;
+                    input.setAttribute('data-filename', file.name);
+                    
+                    // Сохраняем base64 картинки для скачивания в ZIP
+                    window.uploadedFiles[file.name] = e.target.result.split(',')[1];
+
+                    if(type === 'infobox') {
+                        const tabName = row.querySelector('.img-tab-name').value || "Облик";
+                        addGalleryRow(file.name, tabName, e.target.result);
+                    }
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function moveUp(btn) { const row = btn.closest('.dynamic-row, .relation-group, .member-row, .crel-row, .dynamic-section'); if (row && row.previousElementSibling && !row.previousElementSibling.tagName.match(/LABEL|H3/i)) { row.previousElementSibling.insertAdjacentElement('beforebegin', row); saveDraft(); } }
+        function moveDown(btn) { const row = btn.closest('.dynamic-row, .relation-group, .member-row, .crel-row, .dynamic-section'); if (row && row.nextElementSibling && row.nextElementSibling.tagName !== 'BUTTON') { row.nextElementSibling.insertAdjacentElement('afterend', row); saveDraft(); } }
+        function toggleBlock(h2) { h2.classList.toggle('collapsed'); const content = h2.nextElementSibling; content.style.display = content.style.display === 'none' ? 'block' : 'none'; }
+
+        function updateLiveColors() {
+            const acc = document.getElementById('f_accent_color').value, cbg = document.getElementById('f_bg_color').value, ibg = document.getElementById('f_info_bg').value, pbg = document.getElementById('f_page_bg').value, txt = document.getElementById('f_text_color').value, brd = document.getElementById('f_border_color').value;
+            const r = parseInt(acc.slice(1,3), 16), g = parseInt(acc.slice(3,5), 16), b = parseInt(acc.slice(5,7), 16), glow = `rgba(${r}, ${g}, ${b}, 0.4)`;
+            const pbgLight = `#${Math.min(255, parseInt(pbg.slice(1,3), 16) + 20).toString(16).padStart(2, '0')}${Math.min(255, parseInt(pbg.slice(3,5), 16) + 20).toString(16).padStart(2, '0')}${Math.min(255, parseInt(pbg.slice(5,7), 16) + 20).toString(16).padStart(2, '0')}`;
+            document.body.style.setProperty('--accent', acc); document.body.style.setProperty('--content-bg', cbg); document.body.style.setProperty('--card-bg', ibg); document.body.style.setProperty('--page-bg', pbg); document.body.style.setProperty('--page-bg-light', pbgLight); document.body.style.setProperty('--text', txt); document.body.style.setProperty('--border', brd); document.body.style.setProperty('--glow', glow);
+        }
+
+        function applyPreset(val) { if (presets[val]) { Object.keys(presets[val]).forEach(k => { const map = {acc:'f_accent_color', cbg:'f_bg_color', ibg:'f_info_bg', pbg:'f_page_bg', txt:'f_text_color', brd:'f_border_color'}; document.getElementById(map[k]).value = presets[val][k]; }); updateLiveColors(); saveDraft(); } }
+        function toggleToolkit() { const p = document.getElementById('toolkit-panel'); p.style.display = p.style.display === 'block' ? 'none' : 'block'; }
+        function generateToolCode(t) {
+            let c = "";
+            if(t==='link') { c = `<a href="../${document.getElementById('tool_link_url').value}" class="wiki-link">${document.getElementById('tool_link_text').value}</a>`; } 
+            else if(t==='image') {
+                const fileInput = document.getElementById('tool_img_file');
+                const fileName = fileInput.files[0] ? fileInput.files[0].name : "img.png";
+                c = `<div class="wiki-image-float ${document.getElementById('tool_img_float').value}"><img src="../../Statics/image/${fileName}"><span class="img-caption">${document.getElementById('tool_img_cap').value}</span></div>`;
+                if(fileInput.files[0]) { const reader = new FileReader(); reader.onload = function(e) { addGalleryRow(fileName, document.getElementById('tool_img_cap').value || "Изображение", e.target.result); }; reader.readAsDataURL(fileInput.files[0]); }
+            }
+            document.getElementById('tool_output').value = c; document.getElementById('tool_output_box').style.display = 'block';
+        }
+
+        function addRelationGroup(title = '') {
+            const root = document.getElementById('relations_root');
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'relation-group';
+            const groupId = 'group_' + Date.now();
+            groupDiv.innerHTML = `<div style="display:flex; gap:10px; margin-bottom:10px;"><button type="button" class="tag-btn" onclick="moveUp(this)">↑</button><button type="button" class="tag-btn" onclick="moveDown(this)">↓</button><input type="text" placeholder="Категория" class="group-title" value="${title}" style="font-weight:bold; color:var(--accent); flex-grow:1;"><button type="button" class="btn" style="color:#d9534f; border-color:#d9534f;" onclick="this.parentElement.parentElement.remove(); saveDraft();">Удалить</button></div><div class="members-container" id="${groupId}"></div><button type="button" class="tag-btn" style="margin-top:10px; width:100%;" onclick="addRelationMember('${groupId}')">+ Персонаж</button>`;
+            root.appendChild(groupDiv);
+            if(title === '') addRelationMember(groupId);
+            saveDraft();
+        }
+
+        function addHistoryChapter(t = '', c = '') {
+    const d = document.createElement('div');
+    d.className = 'dynamic-section history-row'; // Добавляем класс для поиска
+    d.style.marginBottom = '15px';
+    d.style.background = 'rgba(255,255,255,0.03)';
+    d.style.padding = '10px';
+    d.style.borderRadius = '6px';
+    d.innerHTML = `
+        <div style="display:flex; gap:10px; margin-bottom:10px;">
+            <button type="button" class="tag-btn" onclick="moveUp(this)">↑</button>
+            <button type="button" class="tag-btn" onclick="moveDown(this)">↓</button>
+            <input type="text" class="hist-title" placeholder="Название главы (например: Подростковый возраст)" value="${t}" style="flex-grow:1; font-weight:bold; color:var(--accent);">
+            <button type="button" class="btn" style="color:#d9534f; border-color:#d9534f; background:transparent;" onclick="this.parentElement.parentElement.remove(); saveDraft();">X</button>
+        </div>
+        <textarea class="hist-content" rows="4" placeholder="Текст главы...">${c}</textarea>
+    `;
+    document.getElementById('history_container').appendChild(d);
+    saveDraft();
+}
+
+        function addRelationMember(containerId, name='', file='') {
+            const container = document.getElementById(containerId);
+            const row = document.createElement('div');
+            row.className = 'member-row';
+            row.innerHTML = `<select onchange="updateRowInputs(this)" style="padding:8px;">${dbCharOptions}</select><input type="text" placeholder="Имя" class="m-name" value="${name}"><input type="text" placeholder="file" class="m-file" value="${file}"><button type="button" class="tag-btn" onclick="moveUp(this)">↑</button><button type="button" class="tag-btn" onclick="moveDown(this)">↓</button><button type="button" class="tag-btn" style="color:#d9534f;" onclick="this.parentElement.remove(); saveDraft();">X</button>`;
+            container.appendChild(row);
+            saveDraft();
+        }
+
+        function addContentRelGroup(title = '') {
+            const root = document.getElementById('content_relations_root');
+            const gId = 'crel_group_' + Date.now();
+            const div = document.createElement('div');
+            div.className = 'relation-group';
+            div.innerHTML = `<div style="display:flex; gap:10px; margin-bottom:10px;"><button type="button" class="tag-btn" onclick="moveUp(this)">↑</button><button type="button" class="tag-btn" onclick="moveDown(this)">↓</button><input type="text" placeholder="Название группы" class="crel-group-title" value="${title}" style="font-weight:bold; color:var(--accent); font-size:1.1em; background:transparent; border:none; border-bottom:1px solid var(--accent); flex-grow:1;"><button type="button" class="btn" style="color:#d9534f; border-color:#d9534f; background:transparent;" onclick="this.parentElement.parentElement.remove(); saveDraft();">Удалить</button></div><div class="crel-members" id="${gId}"></div><button type="button" class="tag-btn" style="margin-top:10px; width:100%;" onclick="addContentRelMember('${gId}')">+ Добавить связь</button>`;
+            root.appendChild(div);
+            if(!title) addContentRelMember(gId);
+            saveDraft();
+        }
+
+        function addContentRelMember(gId, name='', file='', quote='') {
+            const container = document.getElementById(gId);
+            const row = document.createElement('div');
+            row.className = 'crel-row';
+            row.innerHTML = `<select onchange="updateRowInputs(this)" style="padding:8px; grid-column: 1 / span 3;">${dbCharOptions}</select><button type="button" class="tag-btn" onclick="moveUp(this)">↑</button><button type="button" class="tag-btn" onclick="moveDown(this)">↓</button><button type="button" class="tag-btn" style="color:#d9534f;" onclick="this.parentElement.remove(); saveDraft();">X</button><input type="text" placeholder="Имя" class="crel-name" value="${name}" style="grid-column: 1 / span 1;"><input type="text" placeholder="file" class="crel-file" value="${file}" style="grid-column: 2 / span 5;"><textarea placeholder="Цитата..." class="crel-quote" rows="2" style="grid-column: 1 / span 6; margin-top:5px;">${quote}</textarea>`;
+            container.appendChild(row);
+            saveDraft();
+        }
+
+        function addInfoRow(cont, k='', v='') { const d = document.createElement('div'); d.className = 'dynamic-row'; d.innerHTML = `<button type="button" class="tag-btn" onclick="moveUp(this)">↑</button><button type="button" class="tag-btn" onclick="moveDown(this)">↓</button><input type="text" value="${k}" class="info-key" placeholder="Параметр" style="width:30%"><input type="text" value="${v}" class="info-value" placeholder="Значение"><button type="button" onclick="this.parentElement.remove(); saveDraft();" style="background:none; border:none; color:#d9534f; cursor:pointer;">X</button>`; document.getElementById(cont).appendChild(d); saveDraft(); }
+        function addImageRow() { const d = document.createElement('div'); d.className = 'dynamic-row'; d.innerHTML = `<button type="button" class="tag-btn" onclick="moveUp(this)">↑</button><button type="button" class="tag-btn" onclick="moveDown(this)">↓</button><input type="text" class="img-tab-name" placeholder="Облик" style="width:25%"><input type="file" class="img-file-input" accept="image/*" onchange="handleImageUpload(this, 'infobox')" style="width:40%"><img src="" class="img-preview-small"><button type="button" onclick="this.parentElement.remove(); saveDraft();" style="background:none; border:none; color:#d9534f; cursor:pointer;">X</button>`; document.getElementById('images_container').appendChild(d); saveDraft(); }
+        function addGalleryRow(fName='', caption='', previewSrc='') { const d = document.createElement('div'); d.className = 'dynamic-row gal-row'; d.innerHTML = `<button type="button" class="tag-btn" onclick="moveUp(this)">↑</button><button type="button" class="tag-btn" onclick="moveDown(this)">↓</button><input type="file" class="gal-file-input" accept="image/*" onchange="handleImageUpload(this, 'gallery')" style="width:40%" ${previewSrc ? 'style="display:none"' : ''}><input type="text" class="gal-cap" placeholder="Подпись" value="${caption}"><img src="${previewSrc}" class="img-preview-small"><input type="hidden" class="gal-filename-hidden" value="${fName}"><button type="button" onclick="this.parentElement.remove(); saveDraft();" style="background:none; border:none; color:#d9534f; cursor:pointer;">X</button>`; document.getElementById('gallery_container').appendChild(d); saveDraft(); }
+        function addFactRow(t='', d='') { const row = document.createElement('div'); row.className = 'dynamic-row'; row.innerHTML = `<button type="button" class="tag-btn" onclick="moveUp(this)">↑</button><button type="button" class="tag-btn" onclick="moveDown(this)">↓</button><input type="text" class="fact-title" placeholder="Заголовок" style="width:30%" value="${t}"><input type="text" class="fact-desc" placeholder="Описание" value="${d}"><button type="button" onclick="this.parentElement.remove(); saveDraft();" style="background:none; border:none; color:#d9534f; cursor:pointer;">X</button>`; document.getElementById('facts_container').appendChild(row); saveDraft(); }
+        function addContentSection(t = '', c = '') { const id = 'sec_' + Math.random().toString(36).substr(2, 9); const div = document.createElement('div'); div.className = 'dynamic-section'; div.style.marginBottom = '20px'; div.style.background = 'rgba(0,0,0,0.3)'; div.style.padding = '15px'; div.style.borderRadius = '8px'; div.style.border = '1px solid var(--border)'; div.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;"><button type="button" class="tag-btn" onclick="moveUp(this)">↑</button><button type="button" class="tag-btn" onclick="moveDown(this)">↓</button><input type="text" value="${t}" class="sec-title" placeholder="Раздел" style="flex-grow:1; margin: 0 10px; font-weight:bold; font-size:1.2em; font-family:'Times New Roman', serif; background:transparent; border:none; border-bottom:1px solid var(--accent); color:var(--accent);"><button type="button" class="btn" style="color:#d9534f; border-color:#d9534f; background:transparent;" onclick="this.parentElement.parentElement.remove(); saveDraft();">X</button></div><textarea id="${id}" class="sec-content" rows="6" placeholder="Текст...">${c}</textarea>`; document.getElementById('sections_container').appendChild(div); saveDraft(); }
+
+        function updateRowInputs(selectEl) { const row = selectEl.parentElement; const val = selectEl.value; if(val) { const parts = val.split('|'); const fileInput = row.querySelector('.m-file') || row.querySelector('.crel-file'); const nameInput = row.querySelector('.m-name') || row.querySelector('.crel-name'); if(fileInput) fileInput.value = parts[0]; if(nameInput) nameInput.value = parts[1]; } saveDraft(); }
+
+        window.onload = () => {
+            initDBOptions();
+            if (!loadDraft()) {
+                document.getElementById('f_title').value = "Черри";
+                document.getElementById('f_quote').value = "Код — это магия, доступная каждому, кто готов учиться.";
+                document.getElementById('f_intro').value = "Черри (англ. Cherry) — Главный архитектор <b>Wiki Architect</b> и ведущий разработчик игр ";
+                addImageRow();
+                addInfoRow('info_personal_container', 'Полное Имя', 'Владимир Ктототамович');
+                addInfoRow('info_personal_container', 'Прозвища', 'Cherry');
+                addInfoRow('info_personal_container', 'Возраст', '21 год');
+                addInfoRow('info_personal_container', 'Статус', 'Жив');
+                addRelationGroup('Родители');
+                addHistoryChapter('Начало пути', '<p>Черри начал свой путь в программировании с простых скриптов...</p> <p>А так же Черри очень любил кушать Сникерсы</p>');
+                addHistoryChapter('Будущее и Трагедия', '<p>Её детство прошло в тени первой семейной трагедии...</p>');
+                addContentSection('Личность и характер', '<p>Аналитический склад ума, любовь к порядку и котикам. <b>Перфекционист</b> в коде, мечтатель в сюжетах.</p>');
+                addContentSection('Внешность', '<p>Предпочитает удобный стиль: оверсайз худи, наушники и всегда держит при себе верный ноутбук или <b>Гитару.</b></p>');
+                addContentSection('Способности и Арсенал', '<ul>\n  <li><b>Python:</b> Бэкенд и автоматизация.</li>\n  <li><b>Godot:</b> Создание 2D хорроров.</li>\n  <li><b>FL Studio:</b> Написание атмосферных OST.</li>\n</ul>');
+                addContentRelGroup('друзья');
+                addFactRow('Кофеин', 'Главный источник энергии для ночного кодинга.');
+                addFactRow('Гитара', 'Пишет метал-каверы в свободное время.');
+            }
+            updateLiveColors();
+        };
+
+        function generateCode(isPreview = false) {
+            const acc = document.getElementById('f_accent_color').value, cbg = document.getElementById('f_bg_color').value, ibg = document.getElementById('f_info_bg').value, pbg = document.getElementById('f_page_bg').value, txt = document.getElementById('f_text_color').value, brd = document.getElementById('f_border_color').value;
+            const r = parseInt(acc.slice(1,3), 16), g = parseInt(acc.slice(3,5), 16), b = parseInt(acc.slice(5,7), 16), glow = `rgba(${r}, ${g}, ${b}, 0.3)`;
+            let relRowsHTML = "";
+            document.querySelectorAll('#relations_root .relation-group').forEach(group => {
+                const title = group.querySelector('.group-title').value;
+                const members = group.querySelectorAll('.member-row');
+                let linksArray = [];
+                members.forEach(m => {
+                    const mName = m.querySelector('.m-name').value;
+                    const mFile = m.querySelector('.m-file').value;
+                    if(mName) linksArray.push(mFile ? `<a href="../${mFile}" class="wiki-link">${mName}</a>` : mName);
+                });
+                if(title && linksArray.length > 0) { relRowsHTML += `<tr><th>${title}</th><td>${linksArray.join(', ')}</td></tr>`; }
+            });
+            let iR = ""; document.querySelectorAll('#info_personal_container .dynamic-row').forEach(r => { if(r.querySelector('.info-key').value) iR += `<tr><th>${r.querySelector('.info-key').value}</th><td>${r.querySelector('.info-value').value}</td></tr>`; });
+            let sC = ""; // Основной контент
+let tC = "<ul>"; // Оглавление
+
+// === СБОРКА ИСТОРИИ ===
+const histRows = document.querySelectorAll('#history_container .history-row');
+let hContent = "";
+let hSubLinks = ""; // Сюда соберем подпункты для оглавления
+let hasHistory = false;
+
+histRows.forEach((row, index)=> {
+    const hTitle = row.querySelector('.hist-title').value;
+    const hText = row.querySelector('.hist-content').value;
+    if(hTitle || hText) {
+        hasHistory = true;
+        const subId = `hist_${index}`;
+        if(hTitle) {hContent += `<h3>${hTitle}</h3>`;
+        hSubLinks += `<li><a href="#${subId}">${hTitle}</a></li>`;
+    }
+    hContent += hText;}
+});
+
+if(hasHistory) {
+    sC += `<h2 id="history">История</h2>` + hContent;
+tC += `<li><a href="#history">История</a>${hSubLinks ? `<ul>${hSubLinks}</ul>` : ""}</li>`;}
+document.querySelectorAll('#sections_container .dynamic-section').forEach((s, i) => { 
+    const t = s.querySelector('.sec-title').value, c = s.querySelector('.sec-content').value; 
+    if(t) { 
+        sC += `<h2 id="s${i}">${t}</h2>${c}`; 
+        tC += `<li><a href="#s${i}">${t}</a></li>`; 
+    }
+});
+const crelGroups = document.querySelectorAll('#content_relations_root .relation-group');
+if(crelGroups.length > 0) {
+    let hasValidGroup = false;
+    crelGroups.forEach(g => { if(g.querySelector('.crel-group-title').value) hasValidGroup = true; });
+
+    if(hasValidGroup) {
+        sC += `<h2 id="relations">Связи с персонажами</h2>`;
+        tC += `<li><a href="#relations">Связи с персонажами</a></li>`;
+
+        crelGroups.forEach(g => {
+            const title = g.querySelector('.crel-group-title').value;
+            if(title) {
+                sC += `<h3>${title}</h3><ul>`;
+                g.querySelectorAll('.crel-members > .crel-row').forEach(m => {
+                    const name = m.querySelector('.crel-name').value;
+                    const file = m.querySelector('.crel-file').value;
+                    const quote = m.querySelector('.crel-quote').value;
+                    if(name) {
+                        let linkStr = file ? `<b><a href="../${file}" class="wiki-link">${name}</a></b>` : `<b>${name}</b>`;
+                        sC += `<li>${linkStr}: ${quote ? `«${quote}»` : ''}</li>`;
+                    }
+                });
+                sC += `</ul>`;
+            }
+        });
+    }
+}
+            const factRows = document.querySelectorAll('#facts_container .dynamic-row');
+            if(factRows.length > 0) {
+                sC += `<h2 id="facts">Интересные факты</h2><ul>`; tC += `<li><a href="#facts">Интересные факты</a></li>`;
+                factRows.forEach(r => { if(r.querySelector('.fact-title').value || r.querySelector('.fact-desc').value) sC += `<li><b>${r.querySelector('.fact-title').value}:</b> ${r.querySelector('.fact-desc').value}</li>`; });
+                sC += `</ul>`;
+            }
+            // ЗАМЕНИТЬ КОНЕЦ ФУНКЦИИ generateCode НАЧИНАЯ С ГАЛЕРЕИ
+            const galItems = document.querySelectorAll('.gal-row'); 
+            if(galItems.length > 0) { 
+                sC += `\n            <h2 id="gallery">Галерея</h2>\n            <div class="gallery-grid">\n`; 
+                galItems.forEach(gi => { 
+                    const fInput = gi.querySelector('.gal-file-input'), hFileName = gi.querySelector('.gal-filename-hidden').value;
+                    const name = (fInput && fInput.files[0]) ? fInput.files[0].name : (hFileName || "img.jpg");
+                    // ВАЖНО: Теперь картинки будут лежать в той же папке!
+                    const src = isPreview ? gi.querySelector('.img-preview-small').src : `${name}`;
+                    sC += `                <div class="gallery-item">\n                    <img src="${src}">\n                    <div class="gallery-caption">${gi.querySelector('.gal-cap').value}</div>\n                </div>\n`; 
+                }); 
+                sC += `            </div>\n`; tC += `<li><a href="#gallery">Галерея</a></li>\n`; 
+            } 
+            tC += "                </ul>";
+            const imgRows = document.querySelectorAll('#images_container .dynamic-row'); let iH = '', iS = '';
+            if (imgRows.length > 0) {
+                let firstFileSrc = "", log = "", btns = "";
+                imgRows.forEach((row, index) => {
+                    const tN = row.querySelector('.img-tab-name').value || `Облик ${index+1}`, fInput = row.querySelector('.img-file-input'), preview = row.querySelector('.img-preview-small').src;
+                    const finalSrc = isPreview ? preview : `${(fInput && fInput.files[0]) ? fInput.files[0].name : "img.jpg"}`;
+                    if(index === 0) firstFileSrc = finalSrc;
+                    btns += `<button class="toggle-btn ${index === 0 ? 'active' : ''}" onclick="switchAvatar('m_${index}', this)">${tN}</button>`;
+                    log += `if (m === 'm_${index}') i.src = '${finalSrc}'; `;
+                });
+                iH = imgRows.length === 1 ? `<div class="infobox-image"><img src="${firstFileSrc}"></div>\n` : `<div class="image-toggle">${btns}</div>\n<div class="infobox-image"><img id="cI" src="${firstFileSrc}"></div>\n`;
+                iS = `\n<script>\n    function switchAvatar(m, b) {\n        const i = document.getElementById('cI'), bt = document.querySelectorAll('.toggle-btn');\n        bt.forEach(x => x.classList.remove('active'));\n        b.classList.add('active');\n        ${log}\n    }\n<\/script>`;
+            }
+            const relSection = relRowsHTML 
+                ? `<div class="infobox-header">Родственные связи</div>\n                <table>\n${relRowsHTML}                </table>\n` 
+                : "";
+            
+return `<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>${document.getElementById('f_title').value} - Wiki</title>
+    <link rel="stylesheet" href="../../../../style.css">
+    <style>
+        body.dark-mode { 
+            --bg: ${pbg}; 
+            --content-bg: ${cbg}; 
+            --accent: ${acc}; 
+            --glow: ${glow}; 
+            --card-bg: ${ibg}; 
+            --text: ${txt}; 
+            --border: ${brd}; 
+        } 
+        .page-title, h3, h2 { color: var(--accent); text-shadow: 0 0 10px var(--glow); border-bottom-color: var(--border); } 
+        .infobox { border: 1px solid var(--border); box-shadow: 0 0 20px rgba(0,0,0,0.5); } 
+        .infobox-header { background: linear-gradient(to right, var(--bg), color-mix(in srgb, var(--glow), transparent 80%)); color: var(--accent); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); text-align: center; padding: 5px 0; } 
+        article b { color: var(--accent); text-shadow: 0 0 5px var(--glow); }
+    </style>
+</head>
+<body class="dark-mode">
+    <div id="navbar-container" data-path="../../../../"></div>
+    <div class="container clearfix">
+        <article>
+            <aside class="infobox">
+                <div class="infobox-name">${document.getElementById('f_infobox_title').value}</div>
+                ${iH}                <div class="infobox-header">Личные данные</div>
+                <table>
+${iR}                </table>
+                ${relSection}            </aside>
+            <h1 class="page-title">${document.getElementById('f_title').value}</h1>
+            <p><i>«${document.getElementById('f_quote').value}»</i></p>
+            <p>${document.getElementById('f_intro').value}</p>
+            <div class="toc">
+                <h3>Содержание</h3>
+                ${tC}
+            </div>
+            ${sC}
+        </article>
+    </div>
+    <script src="../../../../script.js"><\/script>${iS}
+</body>
+</html>`;
+        }
+        function togglePreview(s) { const o = document.getElementById('preview-overlay'), f = document.getElementById('preview-iframe'); if(s) { f.srcdoc = generateCode(true); o.style.display = 'block'; document.body.style.overflow = 'hidden'; } else { o.style.display = 'none'; document.body.style.overflow = 'auto'; f.srcdoc = ''; } }
+   function toggleTagsPopup() {
+            const p = document.getElementById('tags-popup');
+            p.style.display = p.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function updateTagCounter() {
+            const count = document.querySelectorAll('.tag-checkbox:checked').length;
+            document.getElementById('tag-counter').innerText = `Выбрано: ${count}`;
+            document.getElementById('tag-placeholder').innerText = count > 0 ? "Теги выбраны" : "Выбрать теги";
+        }
+
+        // Обновленная функция скачивания
+        function downloadHTML() { 
+            const zip = new JSZip();
+            const idName = document.getElementById('f_id_name').value.trim() || 'new_character';
+            const charName = document.getElementById('f_title').value.trim() || 'Новый Персонаж';
+            
+            // СОЗДАЕМ ПАПКУ ВНУТРИ АРХИВА
+            const charFolder = zip.folder(idName);
+            
+            // 1. Генерируем index (уже с переносами строк)
+            const htmlContent = generateCode(false);
+            charFolder.file("index", htmlContent);
+            
+            // 2. Добавляем картинки В ПАПКУ
+            if (!window.uploadedFiles) window.uploadedFiles = {};
+            for (const [fileName, base64Data] of Object.entries(window.uploadedFiles)) {
+                charFolder.file(fileName, base64Data, {base64: true});
+            }
+            
+            // 3. Формируем инструкцию для data.js
+            const selectedTags = Array.from(document.querySelectorAll('.tag-checkbox:checked')).map(cb => cb.value);
+            const tagsStr = selectedTags.length > 0 ? `\n    "tags": ${JSON.stringify(selectedTags)},` : "";
+            const today = new Date().toISOString().split('T')[0];
+            const firstImgName = Object.keys(window.uploadedFiles)[0] || "avatar.jpg";
+            
+            const jsonSnippet = `// СКОПИРУЙ ЭТО В data.js (в массив charactersData):
+{
+    "id": "${idName}",
+    "name": "${charName}",
+    "nickname": "",
+    "image": "Wikis/${idName}/${firstImgName}",
+    "link": "Wikis/${idName}",${tagsStr}
+    "dateAdded": "${today}",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+}`;
+            charFolder.file("entry.json", jsonSnippet);
+            
+            // 4. Генерация и сохранение архива
+            zip.generateAsync({type:"blob"}).then(function(content) {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(content);
+                a.download = idName + "_full_package.zip";
+                a.click();
+            });
+        }
+        
+</script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Артефакты и Предметы - Wiki</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script src="../../data/data.js"></script>
+    <style>
+        /* Стиль Хранилища - Мистический Золотой и Темный */
+        body.dark-mode {
+            --bg: #1a0f0f;
+            --content-bg: #241414;
+            --accent: #ffb700;      /* Золото */
+            --text: #e0d0b0;        /* Пергаментный оттенок */
+            --border: #5c4000;
+            --card-bg: #2e1a1a;
+            --glow: rgba(255, 183, 0, 0.2);
+        }
+
+        .category-header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .artifact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.2s;
+        }
+        .artifact-card:hover {
+            transform: translateX(5px);
+            box-shadow: -5px 0 15px var(--glow);
+        }
+
+        .artifact-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .artifact-type {
+            font-size: 0.8em;
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        /* Иконки для типов */
+        .type-book::before { content: '📖 '; }
+        .type-mask::before { content: '🎭 '; }
+        .type-drug::before { content: '🧪 '; }
+        .type-weapon::before { content: '⚔️ '; }
+        .type-tech::before { content: '📟 '; }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <div id="navbar-container" data-path="../../"></div>
+
+    <div class="container clearfix">
+        <article style="width: 100%;">
+            
+            <aside class="infobox">
+                <div class="infobox-name">Архив Артефактов</div>
+                <div class="infobox-image">
+                
+                <div class="infobox-header">Статистика</div>
+                <table>
+                    <tr><th>Категории</th><td>Книги, Маски, Токсины</td></tr>
+                    <tr><th>Уровень угрозы</th><td>От "Летально" до "Конец Света"</td></tr>
+                    <tr><th>Хранители</th><td>Пантеон, Adrian Corp, Семья Райс</td></tr>
+                </table>
+                </div>
+
+            </aside>
+
+            <h1 class="page-title">АРТЕФАКТЫ И ПРЕДМЕТЫ</h1>
+            <p><i>«Вещи, способные менять судьбы, переписывать историю или даровать силу, о которой смертные могут только мечтать. Но помните: у каждого предмета есть своя цена».</i></p>
+
+            <div class="toc" id="toc">
+                <h3>Содержание</h3>
+                <ul>
+                    <li><a href="#books">Божественные Книги</a></li>
+                    <li><a href="#masks">Маски Первородных</a></li>
+                    <li><a href="#substances">Вещества и Токсины</a></li>
+                    <li><a href="#weapons">Оружие и Технологии</a></li>
+                </ul>
+            </div>
+
+            <h2 id="books" class="category-header">Божественные Книги</h2>
+            
+            <div class="artifact-card">
+                <div class="artifact-name">Книга Рохана (Книга Знаний)</div>
+                <div class="artifact-type type-book">Божественный Артефакт</div>
+                <p>Легендарный фолиант Бога Знаний. Содержит информацию обо всём во Вселенной. Именно из этой книги случайно появилась Богиня Хаоса — <a href="../claire" class="wiki-link">Клэр</a>.</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Книга Жизни</div>
+                <div class="artifact-type type-book">Артефакт Марты</div>
+                <p>Реестр всех живых существ. В ней записаны судьбы и сроки жизни. Позволяет манипулировать жизненной энергией.</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Книга Демонов</div>
+                <div class="artifact-type type-book">Тёмный Гримуар</div>
+                <p>Древний свод законов и иерархии Ада. Содержит имена всех демонов, ритуалы призыва и способы управления ими.</p>
+            </div>
+            
+            <div class="artifact-card">
+                <div class="artifact-name">DarkShow</div>
+                <div class="artifact-type type-book">Артефакт Комедии и Трагедии</div>
+                <p>Загадочный объект (или явление), связанный с двуликим богом. Суть его скрыта за завесой тайны и безумия.</p>
+            </div>
+
+            <h2 id="masks" class="category-header">Маски Первородных</h2>
+            <p>Древние сосуды силы. Большинство из них ныне разрушены, а заключенные в них боги освободились или нашли новые сосуды.</p>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Маски Комедии и Трагедии</div>
+                <div class="artifact-type type-mask">Статус: Активны</div>
+                <p>Две связанные маски. Позволяют носителю манипулировать реальностью через абсурд или драму. Единственные сохранившиеся маски.</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Маска Страха</div>
+                <div class="artifact-type type-mask">Статус: Разрушена</div>
+                <p>Бывший сосуд Бога Кошмаров <a href="../remor" class="wiki-link">Ремора</a>. Долгое время её носила <a href="../jenny" class="wiki-link">Дженнифер</a>, используя силу для управления снами.</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Маски Жизни и Смерти</div>
+                <div class="artifact-type type-mask">Статус: Разрушена</div>
+                <p>Маски, в которые ушли Марта и Талия. Ныне уничтожены, богини находятся в сосудах (Глюк/Дженнифер и др.).</p>
+            </div>
+
+            <h2 id="substances" class="category-header">Вещества и Токсины</h2>
+            <p><i>Секретный реестр препаратов Ad-Asylum и частных разработок. Большинство из них запрещены во всех известных мирах.</i></p>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Хронос (Chronos)</div>
+                <div class="artifact-type type-drug">Создатель: Мэрри Райс (Adrian Corp)</div>
+                <p><b>Эффект:</b> Позволяет видеть варианты будущего и замедлять восприятие времени (Time Dilation).<br>
+                <b>Побочные эффекты:</b> Вызывает «Коллапс мозга» при длительном использовании и адские фантомные боли. Изменяет структуру радужки глаза, заставляя носителя видеть сразу две реальности. Вызывает тяжелейшую зависимость.<br>
+                <b>Носители:</b> <a href="../jerry" class="wiki-link">Джерри Райс</a> (Объект 42), <a href="../jenny" class="wiki-link">Дженнифер</a>, <a href="../chanzie" class="wiki-link">Чанзи</a>.</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Дуатин (Duatin)</div>
+                <div class="artifact-type type-drug">Создатель: Мэрри Райс / Доработан Адамом</div>
+                <p><b>Эффект:</b> Полное отключение болевых центров и рефлекторная ярость. Превращает страх в агрессию. Используется для подавления воли и создания берсерков. Так же, не совместим с РШ и может одаривать особой магией носителя.<br>
+                <b>История:</b> Изначально тестировался на <a href="../amadee" class="wiki-link">Амадее Карсе</a>, показавшем 100% совместимость. Даже малые дозы вызывают неконтролируемую агрессию.</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">ADS-12 (Зелёный Туман)</div>
+                <div class="artifact-type type-drug">Создатель: <a href="../mike" class="wiki-link">Майк Венфир</a></div>
+                <p>Основной инструмент «ломки» в Красной Комнате. Токсичный газ зеленого цвета.<br>
+                <b>Эффект:</b> Вызывает панические атаки и реалистичные галлюцинации, основанные на самых глубоких страхах жертвы. Используется для стирания личности.</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Токсин Безумия (Ravenhell)</div>
+                <div class="artifact-type type-drug">Создатель: Рейвенхелл</div>
+                <p>Психотропный яд класса «Сверхлетально».<br>
+                <b>Эффект:</b> Полная дефрагментация сознания. Стирает грань между реальностью и кошмаром. Жертва начинает неконтролируемо смеяться, пока не наступает смерть от удушья или разрыва легких («Улыбка изнутри»).</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Асмадениус (Asmadenius)</div>
+                <div class="artifact-type type-drug">Тип: Галлюциноген / Религиозный</div>
+                <p><b>Эффект:</b> Вызывает галлюциногенные состояния, почти наркотическое. Жертва перестаёт внято думать и становится более пасивной <br>
+                <b>Цена:</b> Необратимая деградация лобных долей мозга. Использовался для создания исскуственного спокойствия жерты.</p>
+            </div>
+<!-- 
+            <div class="artifact-card">
+                <div class="artifact-name">RB</div>
+                <div class="artifact-type type-drug">Статус: Нестабилен</div>
+                <p>Экспериментальный боевой стимулятор. Крайне опасен.<br>
+                <b>Инциденты:</b> Зафиксированы случаи самопроизвольного возгорания подопытных в Секторе D сразу после инъекции.</p>
+            </div> -->
+
+            <div class="artifact-card">
+                <div class="artifact-name">«Веселье» (Fun)</div>
+                <div class="artifact-type type-drug">Создатель: <a href="../john" class="wiki-link">Джон Доу</a></div>
+                <p>Кустарный психотроп дешевого производства. Вызывает эйфорию и чувство ложной безопасности. Используется Джоном для манипуляции людьми в уличных условиях.</p>
+            </div>
+
+            <h2 id="weapons" class="category-header">Оружие и Технологии</h2>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Нож Глюка</div>
+                <div class="artifact-type type-weapon">Оружие Душ</div>
+                <p>Уникальный клинок, проводящий энергию всех 8 человеческих душ. Меняет свойства в зависимости от души (смотрите в статье <a href="../glitch" class="wiki-link">Глюк</a>).</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">Глючные-Бластеры (ГлБ)</div>
+                <div class="artifact-type type-weapon">Магический Конструкт</div>
+                <p>Летающие орудия в форме черепов драконов. Стреляют лучами энергии. Цвет луча определяет эффект (смотрите в статье <a href="../glitch" class="wiki-link">Глюк</a>).</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">УПМ</div>
+                <div class="artifact-type type-tech">Мобильность</div>
+                <p>Устройство Пространственного Маневрирования. Позволяет перемещаться в воздухе с помощью тросов и газа. Основное снаряжение отряда надежды.</p>
+            </div>
+
+            <div class="artifact-card">
+                <div class="artifact-name">УОЧС</div>
+                <div class="artifact-type type-tech">медецинское устройство</div>
+                <p>Устройство Отслеживания Чужих Снов. Позволяет подключаться к сознанию спящего. Используется для терапии или пыток.</p>
+            </div>
+
+        </article>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

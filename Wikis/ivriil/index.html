@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ивриил Райс - Wiki</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script src="../../data/data.js"></script> 
+    <style>
+        /* === ИНДИВИДУАЛЬНЫЙ СТИЛЬ ИВРИИЛА === */
+        
+        /* 1. Режим ДЖЕНТЛЬМЕН (Стандартный) */
+        body.mode-gentleman {
+            --bg: #050508;          /* Почти черный, с оттенком ночи */
+            --content-bg: #0e0e14;  /* Темно-синяя подложка */
+            --accent: #92a1cf;      /* Благородный серебряно-лавандовый */
+            --text: #e0e0e0;
+            --text-muted: #8d94b0;
+            --border: #2a2f45;      /* Темно-синяя рамка */
+            --card-bg: #15151e;     
+            --glow: rgba(146, 161, 207, 0.25); /* Холодное свечение */
+        }
+
+        /* 2. Режим ТЕНЬ (Боевой / Нулл) */
+        body.mode-shadow {
+            --bg: #000000;
+            --content-bg: #080808;
+            --accent: #483d8b;      /* Темный индиго / Тень */
+            --text: #cdcdcd;
+            --border: #1a1a1a;
+            --card-bg: #050505;
+            --glow: rgba(72, 61, 139, 0.6); /* Зловещее фиолетовое свечение */
+        }
+
+        /* Особенности оформления */
+        .page-title {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            letter-spacing: 3px;
+        }
+
+        /* Иконки в списках */
+        body.mode-gentleman article ul li { list-style: none; position: relative; padding-left: 25px; }
+        body.mode-gentleman article ul li::before { content: '⚜'; position: absolute; left: 0; font-size: 0.8em; color: var(--accent); }
+        body.mode-shadow article ul li { list-style: none; position: relative; padding-left: 25px; }
+        body.mode-shadow article ul li::before { content: '👁'; color: var(--accent); position: absolute; left: 0; }
+
+        /* Исключение для оглавления */
+        .toc ul li::before { content: none !important; }
+        
+        /* Стили для цитат */
+        #quote-block i {
+            border-left: 3px solid var(--accent);
+            background: linear-gradient(90deg, rgba(146, 161, 207, 0.05), transparent);
+        }
+    </style>
+</head>
+<body class="dark-mode mode-gentleman"> 
+    
+    <div id="navbar-container" data-path="../../"></div>
+
+    <div class="container clearfix">
+        
+        <article style="width: 100%;">
+            
+            <aside class="infobox">
+                <div class="infobox-name" id="infobox-name">Ивриил Райс</div>
+                
+                <div class="image-toggle">
+                    <button class="toggle-btn active" onclick="switchMode('gentleman', this)">Джентльмен</button>
+                    <button class="toggle-btn" onclick="switchMode('shadow', this)">Тень</button>
+                </div>
+                
+                <div class="infobox-image">
+                    <img id="charImage" src="../../Statics/image/ivriil.jpg" alt="Ивриил Райс" onerror="this.src='../../Statics/image/RPImage.png'">
+                </div>
+                
+                <div class="infobox-header">Личные данные</div>
+                <table>
+                    <tr><th>Имя</th><td>Ивриил Райс</td></tr>
+                    <tr><th>Прозвища</th><td>Джентльмен Кошмаров<br>Улыбающийся Человек</td></tr>
+                    <tr><th>Раса</th><td>Высшее Существо<br>(Не демон)</td></tr>
+                    <tr><th>Возраст</th><td>Визуально 28 лет<br>Хроно: с VII века</td></tr>
+                    <tr><th>Статус</th><td>Жив, Наблюдатель</td></tr>
+                </table>
+
+                <div class="infobox-header">Родственные связи</div>
+                <table>
+                    <tr><th>Мать</th><td><a href="../olivia" class="wiki-link">Оливия Райс</a></td></tr>
+                    <tr><th>Дядя</th><td><a href="../remor" class="wiki-link">Ремор</a></td></tr>
+                    <tr><th>Потомки</th><td>Род Райсов:<br><a href="../jerry" class="wiki-link">Джерри</a>, <a href="../cole" class="wiki-link">Коул</a>, <a href="../jenny" class="wiki-link">Дженнифер</a></td></tr>
+                </table>
+            </aside>
+
+            <h1 class="page-title">ИВРИИЛ РАЙС</h1>
+            <p id="quote-block"><i>«Мир — это большая сцена, а я лишь помогаю актёрам найти их истинное предназначение... даже если для этого придётся разрушить их реальность. Вы не боитесь темноты, вы боитесь того, кто в ней улыбается».</i></p>
+            
+            <p><b>Ивриил Райс</b> (англ. Ivriil Rice) — загадочная сущность высшего порядка, известный как «Джентльмен Кошмаров». Сын богини Оливии и предок семьи Райсов. Он мастер манипуляций, который скрывает безумие и жестокость за маской безупречных манер и аристократического шарма.</p>
+            <p>Именно он ответственен за трагедию семьи Райсов, включая смерть <a href="../richard" class="wiki-link">Ричарда Райса</a>.</p>
+
+            <div class="toc" id="toc">
+                <h3>Содержание</h3>
+                <ul>
+                    <li><a href="#history">История</a></li>
+                    <li><a href="#personality">Личность и характер</a></li>
+                    <li><a href="#appearance">Внешность</a></li>
+                    <li><a href="#abilities">Способности и Арсенал</a></li>
+                    <li><a href="#relations">Связи с персонажами</a></li>
+                    <li><a href="#facts">Интересные факты</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                </ul>
+            </div>
+            
+            <h2 id="history">История</h2>
+            
+            <h3>Древние времена (VII век)</h3>
+            <p>Ивриил появился на свет в VII веке. Он — сын богини <a href="../olivia" class="wiki-link">Оливии</a>, рожденный до её окончательного падения. Подробности его ранней жизни скрыты в тумане истории, но известно, что он веками наблюдал за развитием человечества, считая себя "режиссером" чужих судеб.</p>
+
+            <h3>2010 год: Ночь Пороха</h3>
+            <p>Ключевым моментом современной истории стало его вмешательство в судьбу своих потомков. В 2010 году Ивриил лично пришел за <a href="../richard" class="wiki-link">Ричардом Райсом</a> (отцом Джерри). Для Ивриила это не было простым убийством — это была встреча "старых друзей". Он ликвидировал Ричарда, чтобы запустить цепочку событий, которая привела <a href="../jerry" class="wiki-link">Джерри</a> в Адриан Корп. Это было частью его плана по "воспитанию" идеального героя через страдания.</p>
+
+            <h3>Заключение и Освобождение</h3>
+            <p>Из-за своей опасной природы и вмешательства в дела Богов, Ивриил был заперт в особой тюрьме "Запретная Зона", куда не могли добраться даже демоны. Он провел там годы в изоляции, сохраняя рассудок благодаря своему безумию. </p>
+            <p>Его освобождение произошло благодаря хаосу, который устроила «подрывашка» <a href="../iris" class="wiki-link">Айрис</a>. Воспользовавшись разрушениями, Джентльмен вышел на свободу, отряхнул костюм и вернулся в Игру.</p>
+
+            <h3>Настоящее время</h3>
+            <p>Сейчас Ивриил обосновался на Земле. Он не стремится к открытой власти, как <a href="../agata" class="wiki-link">Агата</a> или Эдриан. Его цель — наблюдение и тонкая манипуляция. Он с интересом следит за <a href="../jerry" class="wiki-link">Джерри</a> и <a href="../cole" class="wiki-link">Коулом</a>, считая их своими "лучшими проектами". Он тесно связан с Богом Теней <a href="../null" class="wiki-link">Нуллом</a>, используя его силу в своих целях.</p>
+
+            <h2 id="personality">Личность и характер</h2>
+            <div id="personality-content">
+                </div>
+
+            <h2 id="appearance">Внешность</h2>
+            <p><b>Облик:</b> Молодой мужчина (на вид около 28 лет) с тонкими, благородными чертами лица. Его кожа бледна, а осанка всегда безупречна.</p>
+            <p><b>Волосы:</b> Черное, слегка растрепанное каре. Главная отличительная черта — <b>яркая белая прядь</b> спереди (генетическая метка Райсов).</p>
+            <p><b>Глаза:</b> Тёмно-синяя радужка. Его взгляд проницательный, холодный и лишенный человеческого тепла.</p>
+            <p><b>Стиль:</b> Носит дорогие классические костюмы (фраки, жилеты), которые всегда идеально выглажены, даже в центре битвы. Неотъемлемый аксессуар — <b>черная трость</b> с серебряным набалдашником.</p>
+
+            <h2 id="abilities">Способности и Арсенал</h2>
+            <div id="abilities-content">
+                </div>
+
+            <h2 id="relations">Связи с персонажами</h2>
+            <ul>
+                <li><b><a href="../olivia" class="wiki-link">Оливия</a>:</b> Мать. Ивриил безмерно уважает её и желает ей свободы. Единственное существо, к которому он испытывает подобие любви.</li>
+                <li><b><a href="../jerry" class="wiki-link">Джерри Райс</a>:</b> Потомок и "любимый проект". Ему любопытно, как этот человек выжил после всех травм.</li>
+                <li><b><a href="../jenny" class="wiki-link">Дженнифер Райс</a>:</b> "Очаровательная девочка". Ивриил видит в ней потенциал, но желает увидеть большие.</li>
+                <li><b><a href="../chanzie" class="wiki-link">Чанзи Райс</a>:</b> "Вот и твоя часть души у меня..это будет ОЧЕНЬ...интересно"</li>
+                <li><b><a href="../cole" class="wiki-link">Коул Райс</a>:</b> "Очаровательный мальчик". Видит в нём искру и хочет направить его (путем разрушения психики) на "верный путь".</li>
+                <li><b><a href="../richard" class="wiki-link">Ричард Райс</a>:</b> "Старый друг" и жертва. Ивриил считает, что оказал ему услугу, убив его.</li>
+                <li><b><a href="../null" class="wiki-link">Нулл</a>:</b> Бог Теней. "Старый ворчливый бог". Ивриил использует его силу, считая Нулла полезным инструментом, но невыносимым собеседником.</li>
+                <li><b><a href="../zero" class="wiki-link">Зеро</a>:</b> Испытывает к ней профессиональное уважение. Считает её "Мастером своего дела" в вопросах науки и магии.</li>
+                <li><b><a href="../marco" class="wiki-link">Марко</a>:</b> "Послушная собачка". Ему забавно наблюдать за попытками Марко скалиться.</li>
+                <li><b><a href="../iris" class="wiki-link">Айрис</a>:</b> Благодарен за освобождение. Находит её страсть к взрывам "искусством".</li>
+                <li><b><a href="../adrian" class="wiki-link">Эдриан Морн</a>:</b> Считает его полезным идиотом, который выполняет грязную работу.</li>
+                <li><b><a href="../agata" class="wiki-link">Агата</a>:</b> "Самопровозглашенная королева". Не считает её угрозой.</li>
+            </ul>
+
+            <h2 id="facts">Интересные факты</h2>
+            <ul>
+                <li><b>Слово Джентльмена:</b> Никогда не нарушает данного слова, но всегда интерпретирует обещания в свою извращенную пользу.</li>
+                <li><b>Аура Страха:</b> Его присутствие вызывает у окружающих иррациональную тревогу, даже если он улыбается и ведет себя дружелюбно.</li>
+                <li><b>Эстет:</b> Обожает классическую музыку и театр. Считает реальную жизнь лучшей сценой для драмы.</li>
+                <li><b>Сходство:</b> Он пугающе сильно похож на <a href="../jenny" class="wiki-link">Дженнифер Райс</a> внешне.</li>
+                <li><b>Не злодей:</b> Искренне не считает себя злодеем. В своих глазах он — "Простой Джентльмен", помогающий миру через боль.</li>
+            </ul>
+            <h2 id="gallery">Галерея</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="../../Statics/image/ivriil.jpg" alt="Ивриил">
+                    <div class="gallery-caption">Ивриил Райс</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../../Statics/image/shadowivriil.jpg" alt="Тень">
+                    <div class="gallery-caption">Форма Тени</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../../Statics/image/ivriil_smile.jpg" alt="Улыбка">
+                    <div class="gallery-caption">"Кошмар"</div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="music-player">
+        <button id="playBtn">▶</button>
+        <span id="trackName" style="font-size: 0.8em;">Waltz of Nightmares</span>
+        <audio id="bgMusic" src="../../Statics/music/ivriil_theme.mp3"></audio>
+    </div>
+
+    <script src="../../script.js"></script>
+
+    <script>
+        // === БАЗА ДАННЫХ КОНТЕНТА ===
+        const contentData = {
+            gentleman: {
+                personality: `
+                    <p><b>Джентльмен.</b> Ивриил — это харизма, возведенная в абсолют. Он всегда вежлив, говорит мягким, вкрадчивым голосом и соблюдает этикет. Однако это лишь маска.</p>
+                    <ul>
+                        <li><b>Холодный интеллект:</b> Полностью лишен эмпатии. Рассматривает людей как фигуры на шахматной доске.</li>
+                        <li><b>Философия:</b> Считает, что свобода — это дар, который нужно заслужить через страдания. Только он знает, как правильно распорядиться чужими судьбами.</li>
+                        <li><b>Тиран:</b> Под маской благодетеля скрывается безумный тиран, не терпящий неповиновения.</li>
+                    </ul>`,
+                abilities: `
+                    <ul>
+                        <li><b>Управление разумом:</b> Способен проникать в сознание, внушать мысли и триггерить глубинные страхи жертвы.</li>
+                        <li><b>Регенерация:</b> Обладает мощнейшей способностью к восстановлению тела, что делает его практически неуязвимым в обычном бою.</li>
+                        <li><b>Древняя магия:</b> Владеет заклинаниями, накопленными за столетия жизни (с VII века).</li>
+                    </ul>`
+            },
+            shadow: {
+                personality: `
+                    <p style="color: #a89f91;"><b>Истинная Сущность.</b> Когда маска спадает, остается лишь холодная, расчетливая жестокость. В этом состоянии он не играет роль, он уничтожает.</p>
+                    <ul>
+                        <li><b>Безумие:</b> Его логика становится непостижимой для смертных. Он наслаждается хаосом, который создает.</li>
+                        <li><b>Аморальность:</b> Для него нет понятий "добра" и "зла". Есть только его воля и те, кто ей мешает.</li>
+                    </ul>`,
+                abilities: `
+                    <ul style="color: #ccc;">
+                        <li><b>Магия Теней (Нулл):</b> Использует силу запертого Бога Теней Нулла для создания конструктов, перемещения через тени и атак тьмой.</li>
+                        <li><b>Искажение пространства:</b> Может буквально «взрывать» пространство вокруг себя, вызывая локальные катастрофы.</li>
+                        <li><b>Ментальный крах:</b> В этой форме его ментальное давление способно свести с ума слабого человека за секунды.</li>
+                    </ul>`
+            }
+        };
+
+        // Инициализация
+        updateContent('gentleman');
+
+        function updateContent(mode) {
+            const data = contentData[mode];
+            document.getElementById('personality-content').innerHTML = data.personality;
+            document.getElementById('abilities-content').innerHTML = data.abilities;
+        }
+
+        function switchMode(mode, btn) {
+            const body = document.body;
+            const img = document.getElementById('charImage');
+            const btns = document.querySelectorAll('.toggle-btn');
+            
+            // Кнопки
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (mode === 'gentleman') img.src = '../../Statics/image/ivriil.jpg';
+            else if (mode === 'shadow') img.src = '../../Statics/image/shadowivriil.jpg';
+
+            // Классы стиля
+            body.classList.remove('mode-gentleman', 'mode-shadow');
+            body.classList.add(`mode-${mode}`);
+
+            // Контент
+            updateContent(mode);
+        }
+
+
+    </script>
+</body>
+</html>

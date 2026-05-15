@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коул Райс - Wiki</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script src="../../data/data.js"></script>
+    <style>
+        /* === СТИЛИ КОУЛА === */
+
+        /* 1. Режим КОУЛ (Обычный) - Амбиции и Скрытая тьма */
+        body.mode-normal {
+            --bg: #0f0f12;
+            --content-bg: #16161a;
+            --accent: #00c853;      /* Изумрудный (Глаза матери) */
+            --text: #e0e0e0;
+            --border: #1b5e20;
+            --card-bg: #1c1c24;
+            --glow: rgba(0, 200, 83, 0.2);
+        }
+        /* Декорация списков для Коула */
+        body.mode-normal article ul li::before { content: '✦'; color: var(--accent); position: absolute; left: 0; }
+
+        /* 2. Режим СТРАЖ (Sentinel) - Технологии и Героизм */
+        body.mode-sentinel {
+            --bg: #121213;
+            --content-bg: #151215;
+            --accent: #ff3333;      /* Яркий красный (Герой) */
+            --text: #ffffff;
+            --border: #af3131;      /* Серебро */
+            --card-bg: #363636;     /* Металлический оттенок */
+            --glow: rgba(255, 255, 255, 0.3);
+        }
+        body.mode-sentinel .infobox { border-color: #af3131; box-shadow: 0 0 15px rgba(255, 0, 0, 0.2); }
+        body.mode-sentinel article ul li::before { content: '◊'; color: var(--accent); position: absolute; left: 0; font-size: 0.8em; }
+
+        /* 3. Режим АНГЕЛ (Angel) - Безумие и Кровь */
+        body.mode-angel {
+            --bg: #050000;
+            --content-bg: #0f0202;
+            --accent: #8a0303;      /* Кроваво-бордовый */
+            --text: #d6d6d6;
+            --border: #4a0000;
+            --card-bg: #1a0505;
+            --glow: rgba(138, 3, 3, 0.6);
+        }
+        body.mode-angel h1, body.mode-angel h2 { text-shadow: 2px 2px 0px #000; color: #ff0000; }
+        body.mode-angel article ul li::before { content: '𓆩♡𓆪';color: red; position: absolute; left: 0; font-size: 0.9em; } /* у Стража символ ромба, у Ангела убираем символ и символ ангела */
+        /* Общие фиксы */
+        article ul { list-style: none; padding-left: 0; }
+        article ul li { position: relative; padding-left: 25px; margin-bottom: 8px; }
+        
+        #quote-block i {
+            border-left: 3px solid var(--accent);
+            background: linear-gradient(90deg, rgba(255,255,255,0.05), transparent);
+            padding: 10px;
+            display: block;
+        }
+        
+        .toc ul li { list-style-type: decimal !important; padding-left: 0; }
+        .toc ul li::before { content: none !important; }
+    </style>
+</head>
+<body class="dark-mode mode-normal">
+
+    <div id="navbar-container" data-path="../../"></div>
+
+    <div class="container clearfix">
+        <article style="width: 100%;">
+            
+            <aside class="infobox">
+                <div class="infobox-name" id="infobox-name">Коул Райс</div>
+                
+                <div class="image-toggle">
+                    <button class="toggle-btn active" onclick="switchMode('normal', this)">Коул</button>
+                    <button class="toggle-btn" onclick="switchMode('sentinel', this)">Страж</button>
+                    <button class="toggle-btn" onclick="switchMode('angel', this)">Ангел</button>
+                </div>
+                
+                <div class="infobox-image">
+                    <img id="charImage" src="../../Statics/image/cole.jpg" alt="Коул Райс" onerror="this.src='../../Statics/image/RPImage.png'">
+                </div>
+                
+                <div class="infobox-header">Личные данные</div>
+                <table>
+                    <tr><th>Полное имя</th><td>Коул Райс</td></tr>
+                    <tr><th>Прозвище</th><td id="info-nick">Страж (Sentinel)<br>Ангел Смерти</td></tr>
+                    <tr><th>Пол</th><td>Мужской</td></tr>
+                    <tr><th>Возраст</th><td>16 лет</td></tr>
+                    <tr><th>Статус</th><td>Жив</td></tr>
+                </table>
+
+                <div class="infobox-header">Родственные связи</div>
+                <table>
+                    <tr><th>Родители</th><td><a href="../jerry" class="wiki-link">Джерри</a> (Отец)<br><a href="../chanzie" class="wiki-link">Чанзи</a> (Мать)</td></tr>
+                    <tr><th>Сестра</th><td><a href="../jenny" class="wiki-link">Дженнифер Райс</a></td></tr>
+                    <tr><th>Пара</th><td><a href="../violet" class="wiki-link">Фиалка</a> (Девушка)<br><a href="../emilia" class="wiki-link">Эмилия Стоун</a> (Вторая)</td></tr>
+                    <tr><th>Дедушки</th><td><a href="../asriel" class="wiki-link">Азриэль</a>, <a href="../richard" class="wiki-link">Ричард</a></td></tr>
+                    <tr><th>Бабушка</th><td><a href="../mary" class="wiki-link">Мэри</a></td></tr>                    
+                    <tr><td>Предки (по отцу)</td><th><a href="../remor" class="wiki-link">Ремор</a>, <a href="../olivia" class="wiki-link">Оливия</a>, <a href="../ivriel" class="wiki-link">Ивриил Райс</a></th></tr>
+                    <tr><td>Дядя и тёти (по матери)</td><th><a href="../arthur" class="wiki-link">Артур</a>, <a href="../evila" class="wiki-link">Эвила</a>, <a href="../stella" class="wiki-link">Стелла</a>, <a href="../vika" class="wiki-link">Вика</a>, <a href="../kara" class="wiki-link">Кара Дримур</a></th></tr>
+                </table>
+            </aside>
+
+            <h1 class="page-title">КОУЛ РАЙС</h1>
+            <p id="quote-block"><i>«Мне всего 16 с небольшим. А я уже решил стать таким же, как мой отец. Героем. Моя главная мечта была спасти всех, но я осознал кое-что важное... Невозможно спасти всех. Поэтому я, как Новый Герой, стану главным героем своей собственной истории. Я сам сделаю выбор: кто будет спасён, а кто убит.»</i></p>
+            
+            <p><b>Коул Райс</b> — младший сын <a href="../jerry" class="wiki-link">Джерри</a> и <a href="../chanzie" class="wiki-link">Чанзи</a>, прибывший из будущего вслед за сестрой. Бывший член «Отряда Надежды», ныне — независимый "герой" с синдромом бога, путешествующий с <a href="../john" class="wiki-link">Джоном Доу</a>. Он балансирует между желанием спасти мир и темной сущностью «Ангела», живущей внутри него.</p>
+
+            <div class="toc" id="toc">
+                <h3>Содержание</h3>
+                    
+                <ul>
+                    <li><a href="#history">История</a>
+                        <ul>
+                            <li><a href="#hist_future">Будущее и Трагедия</a></li>
+                            <li><a href="#hist_arrival">Прибытие и Отряд Надежды</a></li>
+                            <li><a href="#hist_angel">Сделка с Рэйчел и Ангел</a></li>
+                            <li><a href="#hist_oko">Архипелаг ОКО</a></li>
+                            <li><a href="#hist_now">Настоящее время</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#personality">Личность и характер</a></li>
+                    <li><a href="#appearance">Внешность</a></li>
+                    <li><a href="#abilities">Способности и Арсенал</a></li>
+                    <li><a href="#relations">Связи с персонажами</a></li>
+                    <li><a href="#facts">Интересные факты</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                </ul>
+            </div>
+            
+            <h2 id="history">История</h2>
+            
+            <h3 id="hist_future">Будущее и Трагедия</h3>
+            <p>Коул родился в будущем, на 2 года позже своей сестры <a href="../jenny" class="wiki-link">Дженнифер</a>. Его детство прошло в тени первой семейной трагедии — смерти отца, <a href="../jerry" class="wiki-link">Джерри Райса</a>. Видя скорбь матери, он поклялся стать защитником для неё и сестры. С ранних лет он обучался владению катаной и посещал курсы фехтования «Огнецвет».</p>
+            <p>Судьбоносный момент настал, когда на их дом напал <b><a href="../gavriil" class="wiki-link">Фактор Гаврил</b></a>. К тому времени Дженнифер уже покинула семью, и Коул был единственной линией обороны. Гаврил убил <a href="../chanzie" class="wiki-link">Чанзи</a> у него на глазах. В ярости Коул бросился в бой, но силы были неравны. В этот критический миг неизвестная сила перенесла их обоих в прошлое.</p>
+
+            <h3 id="hist_arrival">Прибытие и Отряд Надежды</h3>
+            <p>Оказавшись в нашем времени, раненый Коул смог сбежать от Гаврила и добрался до Сноудина. Там его нашла и вылечила целительница <a href="../ariana" class="wiki-link">Ариана</a>. Восстановившись, он воссоединился с Дженнифер и вступил в <b>«Отряд Надежды»</b>, созданный молодым Джерри.</p>
+            <p>Ситуация осложнялась тем, что их родители в этом времени были слишком молоды. Его дядя, <a href="../arthur" class="wiki-link">Артур</a>, провел тайный ДНК-тест, который раскрыл правду: Коул и Дженнифер — дети Джерри и Чанзи, ещё не рожденные в этом времени. Несмотря на шок, семья приняла их. Именно в этот период Коул встретил свою первую любовь — <a href="../violet" class="wiki-link">Фиалку Грейро</a>.</p>
+
+            <h3 id="hist_angel">Сделка с Рэйчел и Ангел</h3>
+            <p>Желая получить силу, чтобы защитить всех и не допустить повторения будущего, Коул совершил роковую ошибку. Он заключил сделку с <a href="../reachel" class="wiki-link">Рэйчел</a>, впустив в себя древнюю сущность — <b>«Ангела Смерти»</b>.</p>
+            <p>Сущность обманула его и перехватила контроль над разумом. Ангел устроил резню в городе, в ходе которой погибла Фиалка (позже её удалось вернуть к жизни). Остановить безумие смог лишь <a href="../remor" class="wiki-link">Ремор</a>, который нашел способ запереть Ангела внутри души Коула. Однако это решение временное, и тьма внутри продолжает ждать своего часа.</p>
+
+            <h3 id="hist_oko">Архипелаг ОКО</h3>
+            <p>Вместе с семьей Коул оказался заперт в цифровом аду — <a href="../archipelago" class="wiki-link">Архипелаге ОКО</a>, устроенном организацией для игр на выживание. Там ему пришлось пережить новые кошмары и страх за жизнь матери, <a href="../chanzie" class="wiki-link">Чанзи</a>, которая также была пленницей. Благодаря действиям отца, взломавшего систему, им удалось спастись, но этот опыт лишь усилил его паранойю и страх потери.</p>
+
+            <h3 id="hist_now">Настоящее время</h3>
+            <p>Сейчас Коул переживает глубокий личностный кризис. Он прошел через Ад, потерю отца (временную), войну с организацией ОКО и предательство сестры, <a href="../jenny" class="wiki-link">Дженнифер</a>, которая сбежала из семьи и оборвала связи. Его идеалы «чистого героя» рухнули.</p>
+            <p>Разочаровавшись в методах родителей, он путешествует вместе с <a href="../john" class="wiki-link">Джоном Доу</a>, пытаясь найти свой собственный путь. У него завязались сложные отношения (интрижка) с <a href="../emilia" class="wiki-link">Эмилией Стоун</a>. Он чувствует, что печать Ремора слабеет, и Ангел внутри начинает просыпаться, подталкивая его к жестоким решениям.</p>
+            <h2 id="personality">Личность и характер</h2>
+            <div id="personality-content">
+                </div>
+
+            <h2 id="appearance">Внешность</h2>
+            <div id="appearance-content">
+                </div>
+
+            <h2 id="abilities">Способности и Арсенал</h2>
+            <div id="abilities-content">
+                </div>
+
+            <h2 id="relations">Связи с персонажами</h2>
+            <ul>
+                <li><b><a href="../jerry" class="wiki-link">Джерри Райс</a>:</b> Отец. <i>«Извини, что не сдержал слово и не стал тем героем, которым ты хотел меня видеть».</i></li>
+                <li><b><a href="../chanzie" class="wiki-link">Чанзи Райс</a>:</b> Мать. Любит её, но часто конфликтует из-за её гиперопеки и придирчивости.</li>
+                <li><b><a href="../jenny" class="wiki-link">Дженнифер Райс</a>:</b> Сестра. <i>«Я тебя ненавижу. Ты просто сбежала, бросила нас, даже не попрощавшись. Ни со мной, ни с Фиалкой».</i></li>
+                <li><b><a href="../violet" class="wiki-link">Фиалка</a>:</b> Девушка. Отношения сложные, на грани абьюза. <i>«Иногда мне хочется разбить ей лицо об стену, но я люблю её. Мы словно играем роли: я мазохист, она садист».</i></li>
+                <li><b><a href="../emilia" class="wiki-link">Эмилия Стоун</a>:</b> Вторая возлюбленная. <i>«Я рад, что ты больше не демон. Мне нужна твоя помощь».</i></li>
+                <li><b><a href="../john" class="wiki-link">Джон Доу</a>:</b> Лучший друг. <i>«Он бесит меня, но он единственный, кто остался рядом».</i></li>
+                <li><b><a href="../evilive" class="wiki-link">Эвилай Дримур</a>:</b> <i>«Ненавижу. От тебя одни проблемы».</i></li>
+                <li><b><a href="../adrian" class="wiki-link">Эдриан</a>:</b> Враг. <i>«Я сдержу обещание и одолею тебя. За всё».</i></li>
+                <li><b><a href="../sophie" class="wiki-link">Софи</a>:</b> Враг. <i>«Мне плевать на милосердие. Я хочу твоей смерти больше, чем собственного счастья».</i></li>
+                <li><b><a href="../cherry" class="wiki-link">Черри</a>:</b> Враг. <i>«Ты забрал мою сестру. Хочется устроить "око за око", но Дженнифер мне этого не простит».</i></li>
+                <li><b><a href="../asriel" class="wiki-link">Азриэль</a>:</b> Дед. <i>«Могу проспонсировать твою кончину».</i></li>
+                <li><b><a href="../remor" class="wiki-link">Ремор</a>:</b> <i>«Мне неприятно с ним находиться, хоть он и спас меня от Ангела».</i></li>
+            </ul>
+
+            <h2 id="facts">Интересные факты</h2>
+            <ul>
+                <li><b>Двуличный:</b> Быстро меняет сторону. Играет на грани добра и зла, называя других лицемерами, хотя сам таков.</li>
+                <li><b>Синдром Главного Героя:</b> Считает, что всё происходящее крутится вокруг него. Уверен, что все должны уступать ему дорогу, так как его миссия "важнее".</li>
+                <li><b>Ловелас:</b> Обладает сверхъестественной удачей с девушками. Постоянно попадает в неловкие, почти интимные ситуации. Планирует обеспечить себе многоженство.</li>
+                <li><b>Азарт:</b> Обожает ставки, даже если они бессмысленны.</li>
+                <li><b>На грани срыва:</b> Его внешняя апатия — маска. Внутри он кипит от гнева и готов сорваться в любой момент (влияние Ангела).</li>
+            </ul>
+
+            <h2 id="gallery">Галерея</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="../../Statics/image/cole.jpg" alt="Коул" style="object-position: center top;">
+                    <div class="gallery-caption">Коул Райс</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../../Statics/image/cole2.jpg" alt="Повседневный" style="object-position: center top;">
+                    <div class="gallery-caption">Повседневный стиль</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../../Statics/image/colestr.jpg" alt="Страж">
+                    <div class="gallery-caption">Броня Стража</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../../Statics/image/angel.jpg" alt="Ангел" style="object-position: center top;">
+                    <div class="gallery-caption">Ангел Смерти</div>
+                </div>
+            </div>
+
+        </article>
+    </div>
+
+    <div class="music-player">
+        <button id="playBtn">▶</button>
+        <span id="trackName" style="font-size: 0.8em;">Hero or Monster?</span>
+        <audio id="bgMusic" src="../../Statics/music/theme.mp3"></audio>
+    </div>
+
+    <script src="../../script.js"></script>
+    <script>
+        // === ДАННЫЕ ДЛЯ РЕЖИМОВ ===
+        const contentData = {
+            normal: {
+                appearance: `
+                    <p>Стройный парень среднего роста. У него длинные чёрные волосы и изумрудные глаза (наследие матери). </p>
+                    <p><b>Стиль:</b> Предпочитает «эпичный» стиль. Черное длинное пальто с красными деталями (ранее зелеными), черные брюки, высокие сапоги без каблука и иногда белые перчатки. Старается поддерживать имидж крутого парня.</p>`,
+                personality: `
+                    <p><b>Манипулятор с амбициями.</b> Коул — это человек цели. Он возьмет своё любой ценой, не гнушаясь грязными методами. </p>
+                    <ul>
+                        <li><b>Собственник:</b> Гипер-ревнив к тому, что считает "своим" (люди, вещи, титулы).</li>
+                        <li><b>Двуличие:</b> Легко меняет маски. Может быть милым сыном для Чанзи и безжалостным интриганом с врагами.</li>
+                        <li><b>Синдром ГГ:</b> Искренне верит, что его страдания оправданы великой целью.</li>
+                    </ul>`,
+                abilities: `
+                    <ul>
+                        <li><b>Гибкость:</b> Отличная гимнастическая подготовка и реакция.</li>
+                        <li><b>Огнецвет:</b> Быстрый рывок с огнём, который получил от Камелии. Очень опасная техника, особенно для хрупкого тела и магии Коула, но теперь благодаря душе Роба, владеет огненной техникой катаны.</li>
+                        <li><b>Магия растений:</b> Может создавать лозы и заросли из ниоткуда (обычно для спасения от падения).</li>
+                        <li><b>Удача (Женская):</b> Пассивная способность, создающая неловкие ситуации с противоположным полом.</li>
+                        <li><b>Катана:</b> Мощное оружие ближнего боя, красная Катана от <a href="../miko" class="wiki-link">Мико</a>.</li>
+
+                    </ul>`
+            },
+            sentinel: {
+             appearance: `
+                    <p>Стройный парень среднего роста. У него длинные чёрные волосы и изумрудные глаза (наследие матери). </p>
+                    <p><b>Стиль:</b> Предпочитает «эпичный» стиль. Черное длинное пальто с красными деталями (ранее зелеными), черные брюки, высокие сапоги без каблука и иногда белые перчатки. Старается поддерживать имидж крутого парня.</p> 
+                     <h3>Броня «Страж»</h3>
+                    <p>Высокотехнологичный костюм, созданный <a href="../miko" class="wiki-link">Мико</a> с нуля.</p>
+                    <ul>
+                        <li><b>Материал:</b> Огнеупорный сплав стали серебристого цвета с ярко-красными вставками.</li>
+                        <li><b>Оружие:</b> Алая Катана из чистой энергии встроена прямо в костюм. При необходимости может материализовать лезвие из ножен.</li>
+                        <li><b>Энерго-УПМ:</b> Доработанные системы УПМ, позволяющие использовать огненные атаки и создавать энергетические щиты.</li>
+                        </ul>`,
+                
+                    personality: `
+                    <p><b>Манипулятор с амбициями.</b> Коул — это человек цели. Он возьмет своё любой ценой, не гнушаясь грязными методами. </p>
+                    <ul>
+                        <li><b>Собственник:</b> Гипер-ревнив к тому, что считает "своим" (люди, вещи, титулы).</li>
+                        <li><b>Двуличие:</b> Легко меняет маски. Может быть милым сыном для Чанзи и безжалостным интриганом с врагами.</li>
+                        <li><b>Синдром ГГ:</b> Искренне верит, что его страдания оправданы великой целью.</li>
+                    </ul>
+                                        <p>В этом образе Коул пытается быть тем самым "Героем", которым мечтал стать в детстве. Он более собран, решителен и старается подавлять свои тёмные наклонности ради общего блага.</p>`,
+                abilities: `
+                    <ul>
+                        <li><b>Гибкость:</b> Отличная гимнастическая подготовка и реакция.</li>
+                        <li><b>Огнецвет:</b> Благодаря душе Роба, владеет огненной техникой катаны.</li>
+                        <li><b>Магия растений:</b> Может создавать лозы и заросли из ниоткуда (обычно для спасения от падения).</li>
+                        <li><b>Удача (Женская):</b> Пассивная способность, создающая неловкие ситуации с противоположным полом.</li>
+                    </ul>
+                    <p> Костюм Стража значительно усиливает его физические способности и предоставляет новые возможности:</p>
+                    <ul>
+                        <li><b>Катана:</b> Мощное оружие ближнего боя, разрезающее почти любую материю.</li>
+                        <li><b>Энергетические УПМ:</b>Доработанные системы УПМ.</li>
+                        <li><b>Защита:</b> Броня выдерживает высокие температуры и физический урон.</li>
+                        </ul>`
+            },
+            angel: {
+                appearance: `
+                    <h3>Сущность: Ангел</h3>
+                    <p>Коул меняется до неузнаваемости. Его глаза становятся <b>кроваво-красными</b>. Аура вокруг него темнеет, воздух становится тяжелым.</p>
+                    <p>Все его растения и магия приобретают вид <b>горящей крови</b> или хищных, плотоядных цветов.</p>`,
+                personality: `
+                    <p><b>Чистое Безумие.</b> Это не Коул. Это древняя, злобная сущность, жаждущая крови.</p>
+                    <ul>
+                        <li><b>Кровожадность:</b> Убивает без колебаний. Именно в этой форме он убил Фиалку.</li>
+                        <li><b>Садизм:</b> Наслаждается болью врагов.</li>
+                    </ul>`,
+                abilities: `
+                    <ul>
+                        <li><b>Кровавая Магия:</b> Огонь заменяется на горючую кровь.</li>
+                        <li><b>Хищные Растения:</b> Призывает живые, агрессивные растения, питающиеся плотью.</li>
+                        <li><b>Регенерация:</b> Способен восстанавливать смертельные раны за секунды.</li>
+                        <li><b>Полёт:</b> Получает способность летать.</li>
+                    </ul>`
+            }
+        };
+
+        // Инициализация
+        updateContent('normal');
+
+        function updateContent(mode) {
+            const data = contentData[mode];
+            document.getElementById('appearance-content').innerHTML = data.appearance;
+            document.getElementById('personality-content').innerHTML = data.personality;
+            document.getElementById('abilities-content').innerHTML = data.abilities;
+        }
+
+        function switchMode(mode, btn) {
+            const img = document.getElementById('charImage');
+            const body = document.body;
+            const btns = document.querySelectorAll('.toggle-btn');
+            
+            // Кнопки
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Классы стиля
+            body.classList.remove('mode-normal', 'mode-sentinel', 'mode-angel');
+            body.classList.add(`mode-${mode}`);
+
+            // Смена картинки и названия в Инфобоксе
+            const nick = document.getElementById('info-nick');
+            if (mode === 'normal') {
+                img.src = '../../Statics/image/cole.jpg';
+                nick.innerHTML = "Страж (Sentinel)<br>Ангел Смерти"; // Вернуть стандарт
+            } else if (mode === 'sentinel') {
+                img.src = '../../Statics/image/colestr.jpg';
+                nick.innerHTML = "СТРАЖ";
+            } else if (mode === 'angel') {
+                img.src = '../../Statics/image/angel.jpg';
+                nick.innerHTML = "АНГЕЛ СМЕРТИ";
+            }
+
+            // Контент
+            updateContent(mode);
+        }
+    </script>
+</body>
+</html>

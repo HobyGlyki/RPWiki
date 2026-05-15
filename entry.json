@@ -1,0 +1,11 @@
+// ДОБАВИТЬ ЭТОТ КОД В data.js в массив charactersData:
+{
+    "id": "gwen",
+    "name": "Черри",
+    "nickname": "",
+    "image": "Wikis/gwen/12.png",
+    "link": "Wikis/gwen/index.html",
+    "dateAdded": "2026-05-15",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+}

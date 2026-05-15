@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if (contentArea) {
     const contentType = contentArea.getAttribute('data-content-type') || 'characters';
     const filter = contentArea.getAttribute('data-filter');
+    const category = contentArea.getAttribute('data-category') || 'all'; 
 
     if (contentType === 'characters' && typeof charactersData !== 'undefined') {
         let dataToRender = charactersData;
@@ -88,17 +89,15 @@ if (contentArea) {
     }
         // Логика для МИРОВ
         else if (contentType === 'worlds' && typeof worldsData !== 'undefined') {
-            // Фильтруем миры по нужной категории
-            const filteredWorlds = worldsData.filter(world => world.categories.includes(category));
-            renderAlphabeticalIndex(contentArea, filteredWorlds);
-        }
-        // Если это страница фракций/организаций
-        else if (contentType === 'factions' && typeof factionsData !== 'undefined') {
-            renderAlphabeticalIndex(contentArea, factionsData);
-        }
-        // И так далее для других типов контента...
-        
+        // Фильтруем миры по нужной категории (теперь переменная category существует!)
+        const filteredWorlds = worldsData.filter(world => world.categories && world.categories.includes(category));
+        renderAlphabeticalIndex(contentArea, filteredWorlds);
     }
+    // Если это страница фракций/организаций
+    else if (contentType === 'factions' && typeof factionsData !== 'undefined') {
+        renderAlphabeticalIndex(contentArea, factionsData);
+    }
+}
     
 // --- 4. ГЕНЕРАЦИЯ НЕДАВНИХ СТАТЕЙ (Для Главной страницы) ---
     const recentGrid = document.getElementById('recent-articles-grid');
@@ -175,11 +174,11 @@ function renderAlphabeticalIndex(container, data) {
 
 function createWikiCard(char) {
     const link = document.createElement('a');
-    link.href = char.link;
+    link.href = "../../" + char.link;
     link.className = 'wiki-card';
 
     const img = document.createElement('img');
-    img.src = char.image;
+    img.src = "../../" + char.image;
     img.alt = char.name[0];
 
     if (char.settings) {
@@ -311,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let link of links) {
         const url = link.getAttribute('href');
 
-        // Пропускаем внешние ссылки и "якоря" (#), проверяем только внутренние .html
+        // Пропускаем внешние ссылки и "якоря" (#), проверяем только внутренние 
         if (url.startsWith('http') || url.startsWith('#')) continue;
 
         try {
