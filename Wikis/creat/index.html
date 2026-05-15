@@ -595,7 +595,7 @@ return `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>${document.getElementById('f_title').value} - Wiki</title>
-    <link rel="stylesheet" href="../../../../style.css">
+    <link rel="stylesheet" href="../../../style.css">
     <style>
         body.dark-mode { 
             --bg: ${pbg}; 
@@ -613,7 +613,7 @@ return `<!DOCTYPE html>
     </style>
 </head>
 <body class="dark-mode">
-    <div id="navbar-container" data-path="../../../../"></div>
+    <div id="navbar-container" data-path="../../"></div>
     <div class="container clearfix">
         <article>
             <aside class="infobox">
@@ -632,7 +632,7 @@ ${iR}                </table>
             ${sC}
         </article>
     </div>
-    <script src="../../../../script.js"><\/script>${iS}
+    <script src="../../script.js"><\/script>${iS}
 </body>
 </html>`;
         }
@@ -659,7 +659,7 @@ ${iR}                </table>
             
             // 1. Генерируем index (уже с переносами строк)
             const htmlContent = generateCode(false);
-            charFolder.file("index", htmlContent);
+            charFolder.file("index.html", htmlContent);
             
             // 2. Добавляем картинки В ПАПКУ
             if (!window.uploadedFiles) window.uploadedFiles = {};
