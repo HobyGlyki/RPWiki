@@ -8,6 +8,7 @@ const charactersData = [
     "image": "Statics/image/JerryAva.jpg", 
     "link": "Wikis/jerry.html",
     "dateAdded": "2025-04-12",
+    "tags": ["hero"],
     "author": "mic",
     "settings": { "posY": "top", "scale": "1.0" }
   },
@@ -18,6 +19,7 @@ const charactersData = [
     "image": "Statics/image/chanzie.jpg",
     "link": "Wikis/chanzie.html",
     "dateAdded": "2025-04-16",
+    "tags": ["hero", 'demon'],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -28,6 +30,7 @@ const charactersData = [
     "image": "Statics/image/jenny.jpg",
     "link": "Wikis/jenny.html",
     "dateAdded": "2025-04-15",
+    "tags": ["hero"],
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -38,6 +41,7 @@ const charactersData = [
     "image": "Statics/image/cole.jpg",
     "link": "Wikis/cole.html",
     "dateAdded": "2025-04-18",
+    "tags": ["hero", 'angel'],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -48,6 +52,7 @@ const charactersData = [
     "image": "Statics/image/remor2.jpg",
     "link": "Wikis/remor.html",
     "dateAdded": "2025-04-20",
+    "tags": ["hero", 'god'],
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -58,6 +63,7 @@ const charactersData = [
     "image": "Statics/image/violet.jpg",
     "link": "Wikis/violet.html",
     "dateAdded": "2025-04-22",
+    'tags': ["hero", 'demon'],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -68,6 +74,7 @@ const charactersData = [
     "image": "Statics/image/gabrielava.jpg",
     "link": "Wikis/gabriel.html",
     "dateAdded": "2025-04-14",
+    'tags': ["hero", 'angel'],
     "author": "mic",
     "settings": { "posY": "0px", "center": true, "scale": "1.0" }
   },
@@ -79,6 +86,7 @@ const charactersData = [
     "image": "Statics/image/asriel.jpg",
     "link": "Wikis/asriel.html",
     "dateAdded": "2025-04-27",
+    "tags": ["villain"],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -89,6 +97,7 @@ const charactersData = [
     "image": "Statics/image/0in5OIc6l9uuWeKw3783q3hSIHfP3cUnojdih924_lnhqKLvcRCLa64oMffKWjtkFZR6oLul--iEn310HjY1Zpzh.jpg",
     "link": "Wikis/arthur.html",
     "dateAdded": "2026-05-15",
+    'tags': ["villain"],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -99,6 +108,7 @@ const charactersData = [
     "image": "Statics/image/stella.jpg",
     "link": "Wikis/stella.html",
     "dateAdded": "2026-05-15",
+    'tags': ["hero"],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -109,6 +119,7 @@ const charactersData = [
     "image": "Statics/image/photo_2026-05-11_22-03-03.jpg",
     "link": "Wikis/vika.html",
     "dateAdded": "2026-05-09",
+    "tags": ["hero", 'demon'],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -119,6 +130,7 @@ const charactersData = [
     "image": "Statics/image/photo_2026-05-11_20-09-32.jpg",
     "link": "Wikis/kara.html",
     "dateAdded": "2026-05-10",
+    "tags": ["hero"],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -129,6 +141,7 @@ const charactersData = [
     "image": "Statics/image/evilive (3).jpg",
     "link": "Wikis/evilive.html",
     "dateAdded": "2025-04-27",
+    "tags": ["hero"],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -141,6 +154,7 @@ const charactersData = [
     "image": "Statics/image/GlitchAva.jpg",
     "link": "Wikis/glitch.html",
     "dateAdded": "2025-04-26",
+    'tags': ["hero", "god"],
     "author": "mic",
     "settings": { "posY": "0%", "scale": "1.0" }
   },
@@ -151,6 +165,7 @@ const charactersData = [
     "image": "Statics/image/черри.png",
     "link": "Wikis/cherry.html",
     "dateAdded": "2026-05-11",
+    'tags': ["hero", 'demon'],
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -161,6 +176,7 @@ const charactersData = [
     "image": "Statics/image/cassy.jpg",
     "link": "Wikis/cassy.html",
     "dateAdded": "2026-05-15",
+    "tags": ["hero"],
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -170,6 +186,7 @@ const charactersData = [
     "nickname": "Злой котёнок, участница группы MGQ",
     "image": "Statics/image/gwen.png",
     "link": "Wikis/gwen.html",
+    'tags': ["hero"],
     "dateAdded": "2026-05-16",
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
@@ -183,6 +200,7 @@ const charactersData = [
     "image": "Statics/image/Clair.jpg",
     "link": "Wikis/claire.html",
     "dateAdded": "2025-04-27",
+    'tags': ["villain", 'god'],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -193,6 +211,7 @@ const charactersData = [
     "image": "Statics/image/Gemini_Generated_Image_tv1apstv1apstv1a.png",
     "link": "Wikis/milli.html",
     "dateAdded": "2025-04-08",
+    "tags": ["villain"],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -203,6 +222,7 @@ const charactersData = [
     "image": "Statics/image/sgs.jpg",
     "link": "Wikis/sgs.html",
     "dateAdded": "2025-04-25",
+    "tags": ["villain"],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -213,6 +233,7 @@ const charactersData = [
     "image": "Statics/image/Amadeus.jpg",
     "link": "Wikis/amadeus.html",
     "dateAdded": "2025-04-27",
+    "tags": ["villain", 'angel'],
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -223,6 +244,7 @@ const charactersData = [
     "image": "Statics/image/john.jpg",
     "link": "Wikis/john.html",
     "dateAdded": "2025-04-17",
+    "tags": ["villain"],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -233,6 +255,7 @@ const charactersData = [
     "image": "Statics/image/angie.jpg",
     "link": "Wikis/angie.html",
     "dateAdded": "2025-04-23",
+    'tags': ["hero"],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -243,6 +266,7 @@ const charactersData = [
     "image": "Statics/image/marty.jpg",
     "link": "Wikis/marty.html",
     "dateAdded": "2025-04-24",
+    'tags': ["villain"],
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -252,6 +276,7 @@ const charactersData = [
     "nickname": "Бывший \"волонтёр\" одного \"приюта\", член ОКО",
     "image": "Statics/image/helen.jpg",
     "link": "Wikis/helen.html",
+    "tags": ["villain"],
     "dateAdded": "2025-04-26",
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
@@ -262,6 +287,7 @@ const charactersData = [
     "nickname": "Полу-бог Шалости, подрывательница",
     "image": "Statics/image/iris.jpg",
     "link": "Wikis/iris.html",
+    "tags": ["villain", "mini-god"],
     "dateAdded": "2026-05-15",
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
@@ -274,6 +300,7 @@ const charactersData = [
     "nickname": "Основатель Adrian Corp.",
     "image": "Statics/image/adrianava.jpg", 
     "link": "Wikis/adrian.html",
+    'tags': ["villain", 'demon'],
     "dateAdded": "2024-02-15",
     "author": "mic",
     "settings": { "posY": "top", "scale": "1.0" }
@@ -285,6 +312,7 @@ const charactersData = [
     "image": "Statics/image/agata.jpg",
     "link": "Wikis/agata.html",
     "dateAdded": "2025-04-21",
+    'tags': ["villain", 'angel', 'demon'],
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
@@ -294,6 +322,7 @@ const charactersData = [
     "nickname": "Принцесса Гордыни",
     "image": "Statics/image/Gemini_Generated_Image_uvh585uvh585uvh5.png",
     "link": "Wikis/emilia.html",
+    'tags': ["hero", 'demon'],
     "dateAdded": "2025-04-19",
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
@@ -305,6 +334,7 @@ const charactersData = [
     "image": "Statics/image/zero.jpg",
     "link": "Wikis/zero.html",
     "dateAdded": "2025-04-14",
+    'tags': ["villain", 'mini-god'],
     "author": "sasha",
     "settings": { "posY": "10%", "center": true, "scale": "1.0" }
   },
@@ -317,6 +347,7 @@ const charactersData = [
     "image": "Statics/image/ivriil.jpg",
     "link": "Wikis/ivriil.html",
     "dateAdded": "2025-04-13",
+    'tags': ["villain"],
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },

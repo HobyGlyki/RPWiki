@@ -46,43 +46,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- 3. ГЕНЕРАЦИЯ АЛФАВИТНОГО СПИСКА (Обновленная) ---
     const contentArea = document.getElementById('wiki-content-area');
-    
-    if (contentArea) {
-        // Читаем атрибуты
-        const contentType = contentArea.getAttribute('data-content-type') || 'characters';
-        const category = contentArea.getAttribute('data-category') || 'all';
-        const filter = contentArea.getAttribute('data-filter'); // Новый атрибут для фильтрации
 
-        // Логика для ПЕРСОНАЖЕЙ
-        if (contentType === 'characters' && typeof charactersData !== 'undefined') {
-            
-            let dataToRender = charactersData;
+if (contentArea) {
+    const contentType = contentArea.getAttribute('data-content-type') || 'characters';
+    const filter = contentArea.getAttribute('data-filter');
 
-            // Если задан фильтр "rice" (для страницы Райсов)
-            if (filter === 'rice') {
-                dataToRender = charactersData.filter(char => {
-                    const nameLower = char.name.toLowerCase();
-                    // Проверяем фамилию ИЛИ конкретные ID предков/родственников без фамилии
-                    return nameLower.includes('райс') || 
-                           nameLower.includes('rice') || 
-                           ['ivriil', 'remor', 'olivia'].includes(char.id);
-                });}
-            else if (filter === 'mic') {
-                dataToRender = charactersData.filter(char => {
-                    const nameLower = char.author.toLowerCase();
-                    // Проверяем фамилию ИЛИ конкретные ID предков/родственников без фамилии
-                    return nameLower.includes('mic') 
-                });}
-            else if (filter === 'sasha') {
-                dataToRender = charactersData.filter(char => {
-                    const nameLower = char.author.toLowerCase();
-                    // Проверяем фамилию ИЛИ конкретные ID предков/родственников без фамилии
-                    return nameLower.includes('sasha') 
-                });}
-                           
+    if (contentType === 'characters' && typeof charactersData !== 'undefined') {
+        let dataToRender = charactersData;
 
-            renderAlphabeticalIndex(contentArea, dataToRender);
-        } 
+        if (filter) {
+            dataToRender = charactersData.filter(char => {
+                const nameLower = char.name.toLowerCase();
+                const id = char.id;
+                const author = char.author ? char.author.toLowerCase() : '';
+                // Проверка тегов, если они есть (добавим их в data.js ниже)
+                const tags = char.tags || [];
+
+                switch (filter) {
+                    case 'rice':
+                        if (id === 'milli') return false; // Милли не Райс
+                        return nameLower.includes('райс') || nameLower.includes('rice') || ['ivriil', 'remor', 'olivia'].includes(id);
+                    case 'drimmur':
+                        return nameLower.includes('дримур') || nameLower.includes('drimmur') || ['chanzie', 'evilive'].includes(id);
+                    case 'rider':
+                        return nameLower.includes('райдер') || nameLower.includes('rider') || ['cassy', 'gwen', 'glitch', 'cherry'].includes(id);
+                    case 'oko':
+                        return ['claire', 'milli', 'sgs', 'amadeus', 'john', 'angie', 'marty', 'helen', 'iris'].includes(id);
+                    case 'mic': return author.includes('mic');
+                    case 'sasha': return author.includes('sasha');
+                    // Новые фильтры по ролям/тегам
+                    case 'gods': return tags.includes('god') || ['remor', 'claire', 'olivia', 'iris'].includes(id);
+                    case 'demons': return tags.includes('demon') || ['adrian', 'agata', 'emilia', 'zero'].includes(id);
+                    case 'angels': return tags.includes('angel') || ['gabriel'].includes(id);
+                    case 'heroes': return tags.includes('hero') || ['jerry', 'jenny', 'glitch'].includes(id);
+                    case 'villains': return tags.includes('villain') || ['adrian', 'agata', 'amadeus', 'john', 'angie'].includes(id);
+                    default: return true;
+                }
+            });
+        }
+        renderAlphabeticalIndex(contentArea, dataToRender);
+    }
         // Логика для МИРОВ
         else if (contentType === 'worlds' && typeof worldsData !== 'undefined') {
             // Фильтруем миры по нужной категории
