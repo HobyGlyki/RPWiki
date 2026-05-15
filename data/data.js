@@ -159,6 +159,17 @@ const charactersData = [
     "settings": { "posY": "0%", "scale": "1.0" }
   },
   {
+    "id": "ariana",
+    "name": "Ариана",
+    "nickname": "",
+    "image": "Wikis/ariana/avatar.jpg",
+    "link": "Wikis/ariana",
+    "tags": ["sasha","hero","demon"],
+    "dateAdded": "2026-05-15",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+},
+  {
     "id": "cherry",
     "name": "Черри Райдер",
     "nickname": "Панк всея мультивселенный, главное лицо автора",
