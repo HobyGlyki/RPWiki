@@ -1,15 +1,6 @@
 // === БАЗА ДАННЫХ ПЕРСОНАЖЕЙ ===
 const charactersData = [
-  {
-    "id": "adrian",
-    "name": "Эдриан Морн",
-    "nickname": "Основатель Adrian Corp.",
-    "image": "Statics/image/adrianava.jpg", 
-    "link": "Wikis/adrian.html",
-    "dateAdded": "2024-02-15", // Самый новый
-    "author": "mic",
-    "settings": { "posY": "top", "scale": "1.0" }
-  },
+  // === ГРУППА: РАЙСЫ ===
   {
     "id": "jerry",
     "name": "Джеррими Райс (Red X)",
@@ -21,249 +12,74 @@ const charactersData = [
     "settings": { "posY": "top", "scale": "1.0" }
   },
   {
-    "id": "glitch",
-    "name": "Глюк Райдер",
-    "nickname": "Музыкант, мироходец",
-    "image": "Statics/image/GlitchAva.jpg",
-    "link": "Wikis/glitch.html",
-    "dateAdded": "2025-04-26", // Самый старый из новых
+    "id": "chanzie",
+    "name": "Чанзи Райс",
+    "nickname": "Жена Джерри и мать Коула и Дженнифер",
+    "image": "Statics/image/chanzie.jpg",
+    "link": "Wikis/chanzie.html",
+    "dateAdded": "2025-04-16",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "jenny",
+    "name": "Дженнифер Райс",
+    "nickname": "Дочь Джерри и Чанзи Райс",
+    "image": "Statics/image/jenny.jpg",
+    "link": "Wikis/jenny.html",
+    "dateAdded": "2025-04-15",
     "author": "mic",
-    "settings": { "posY": "0%", "scale": "1.0" }
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
   {
-    'id': 'Zero',
-    'name': 'Зеро',
-    'nickname': 'Сильнейший демон/паук',
-    'image': 'Statics/image/zero.jpg',
-    'link': 'Wikis/zero.html',
-    'dateAdded': '2025-04-14',
-    'author': 'sasha',
-    'settings': { 'posY': '10%', 'center': true, 'scale': '1.0' }
+    "id": "cole",
+    "name": "Коул Райс",
+    "nickname": "Страж, Ангел Смерти",
+    "image": "Statics/image/cole.jpg",
+    "link": "Wikis/cole.html",
+    "dateAdded": "2025-04-18",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
-  {
-    'id': 'ivriil',
-    'name': 'Ивриил',
-    'nickname': 'Джентльмен, сын Оливии',
-    'image': 'Statics/image/ivriil.jpg',
-    'link': 'Wikis/ivriil.html',
-    'dateAdded': '2025-04-13',
-    'author': 'mic',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'gabriel',
-    'name': 'Габриэль Винс',
-    'nickname': 'Бывший Архангел, изобретатель',
-    'image': 'Statics/image/gabrielava.jpg',
-    'link': 'Wikis/gabriel.html',
-    'dateAdded': '2025-04-14',
-    'author': 'mic',
-    'settings': { 'posY': '0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'jenny',
-    'name': 'Дженнифер Райс',
-    'nickname': 'Дочь Джерри и Чанзи Райс',
-    'image': 'Statics/image/jenny.jpg',
-    'link': 'Wikis/jenny.html',
-    'dateAdded': '2025-04-15',
-    'author': 'mic',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'chanzie',
-    'name': 'Чанзи Райс',
-    'nickname': 'Жена Джерри и мать Коула и Дженнифер',
-    'image': 'Statics/image/chanzie.jpg',
-    'link': 'Wikis/chanzie.html',
-    'dateAdded': '2025-04-16',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'john',
-    'name':"Джон Доу"
-    ,'nickname': 'Патологический лжец, создатель наркотика "Веселье"',
-    'image': 'Statics/image/john.jpg',
-    'link': 'Wikis/john.html',
-    'dateAdded': '2025-04-17',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-
-  },
-  {
-    'id': 'cole',
-    'name': 'Коул Райс',
-    'nickname': 'Страж, Ангел Смерти',
-    'image': 'Statics/image/cole.jpg',
-    'link': 'Wikis/cole.html',
-    'dateAdded': '2025-04-18',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'emilia',
-    'name': 'Эмилия Стоун',
-    'nickname': 'Принцесса Гордыни',
-    'image': 'Statics/image/Gemini_Generated_Image_uvh585uvh585uvh5.png',
-    'link': 'Wikis/emilia.html',
-    'dateAdded': '2025-04-19',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'remor',
-    'name': 'Ремор',
-    'nickname': 'Бог Кошмаров и Снов',
-    'image': 'Statics/image/remor2.jpg',
-    'link': 'Wikis/remor.html',
-    'dateAdded': '2025-04-20',
-    'author': 'mic',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {    'id': 'agata ',
-    'name': 'Агата',
-    'nickname': 'Дочь Марты, лидер восстания в Раю',
-    'image': 'Statics/image/agata.jpg',
-    'link': 'Wikis/agata.html',
-    'dateAdded': '2025-04-21',
-    'author': 'mic',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'violet',
-    'name': 'Фиалка Грейро Морн',
-    'nickname': 'Дочь Смерти, девушка Коула Райса',
-    'image':"Statics/image/violet.jpg",
-    'link': 'Wikis/violet.html',
-    'dateAdded': '2025-04-22',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {'id': 'angie',
-    'name': 'Энджи Доу',
-    'nickname': 'Тренажорный Кошмар, бывшая участница ОКО',
-    'image': 'Statics/image/angie.jpg',
-    'link': 'Wikis/angie.html',
-    'dateAdded': '2025-04-23',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {'id': 'marty',
-    'name': 'Марти Дуглас',
-    'nickname': 'Палач, член ОКО',
-    'image': 'Statics/image/marty.jpg',
-    'link': 'Wikis/marty.html',
-    'dateAdded': '2025-04-24',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {'id': 'sgs'
-    ,'name': 'СГС (Альфред)',
-    'nickname': 'Жнец, член ОКО',
-    'image': 'Statics/image/sgs.jpg',
-    'link': 'Wikis/sgs.html',
-    'dateAdded': '2025-04-25',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {   'id': 'helen',
-    'name': 'Хелен',
-    'nickname': 'Бывший "волонтёр" одного "приюта", член ОКО',
-    'image': 'Statics/image/helen.jpg',
-    'link': 'Wikis/helen.html',
-    'dateAdded': '2025-04-26',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'amadeus',
-    'name': 'Амадей Карс',
-    'nickname': 'Психопат, наследник Ньюва',
-    'image': 'Statics/image/Amadeus.jpg',
-    'link': 'Wikis/amadeus.html',
-    'dateAdded': '2025-04-27',
-    'author': 'mic',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'asriel',
-    'name': 'Азриэль Дримур',
-    'nickname': 'Лорд Азриэль и главный Дримур',
-    'image': 'Statics/image/asriel.jpg',
-    'link': 'Wikis/asriel.html',
-    'dateAdded': '2025-04-27',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'claire',
-    'name': 'Клэр',
-    'nickname': 'Богиня Хаоса',
-    'image': 'Statics/image/Clair.jpg',
-    'link': 'Wikis/claire.html',
-    'dateAdded': '2025-04-27',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'evilive',
-    'name': 'Эвилай Дримур',
-    'nickname': 'Искусственная душа, девушка-АУ',
-    'image': 'Statics/image/evilive (3).jpg',
-    'link': 'Wikis/evilive.html',
-    'dateAdded': '2025-04-27',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'milli',
-    'name': 'Милли Райс',
-    'nickname': 'Автоматон, создательница ОКО',
-    'image': 'Statics/image/Gemini_Generated_Image_tv1apstv1apstv1a.png',
-    'link': 'Wikis/milli.html',
-    'dateAdded': '2025-04-08',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'viki',
-    'name': 'Вики Дримур',
-    'nickname': 'Младшая из сестёр Дримуров',
-    'image': 'Statics/image/photo_2026-05-11_22-03-03.jpg',
-    'link': 'Wikis/vika.html',
-    'dateAdded': '2026-05-09',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'kara',
-    'name': 'Кара Дримур',
-    'nickname': 'Искусственно-созданный ребёнок Азриэля и Чары.',
-    'image': 'Statics/image/photo_2026-05-11_20-09-32.jpg',
-    'link': 'Wikis/kara.html',
-    'dateAdded': '2026-05-10',
-    'author': 'sasha',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    'id': 'cherry',
-    'name': 'Черри Райдер',
-    'nickname': 'Панк всея мультивселенный, главное лицо автора',
-    'image': 'Statics/image/черри.png',
-    'link': 'Wikis/cherry.html',
-    'dateAdded': '2026-05-11',
-    'author': 'mic',
-    'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
-  },
-  {
-    "id": "cassy",
-    "name": "Кэйсси Райдер",
-    "nickname": "Красноглазик, участник группы MGQ",
-    "image": "Statics/image/cassy.jpg",
-    "link": "Wikis/cassy.html",
-    "dateAdded": "2026-05-15",
+    {
+    "id": "remor",
+    "name": "Ремор",
+    "nickname": "Бог Кошмаров и Снов",
+    "image": "Statics/image/remor2.jpg",
+    "link": "Wikis/remor.html",
+    "dateAdded": "2025-04-20",
     "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "violet",
+    "name": "Фиалка Грейро Морн",
+    "nickname": "Дочь Смерти, девушка Коула Райса",
+    "image": "Statics/image/violet.jpg",
+    "link": "Wikis/violet.html",
+    "dateAdded": "2025-04-22",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+ {
+    "id": "gabriel",
+    "name": "Габриэль Винс",
+    "nickname": "Бывший Архангел, изобретатель",
+    "image": "Statics/image/gabrielava.jpg",
+    "link": "Wikis/gabriel.html",
+    "dateAdded": "2025-04-14",
+    "author": "mic",
+    "settings": { "posY": "0px", "center": true, "scale": "1.0" }
+  },
+  // === ГРУППА: ДРИММУРЫ ===
+  {
+    "id": "asriel",
+    "name": "Азриэль Дримур",
+    "nickname": "Лорд Азриэль и главный Дримур",
+    "image": "Statics/image/asriel.jpg",
+    "link": "Wikis/asriel.html",
+    "dateAdded": "2025-04-27",
+    "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
   {
@@ -287,6 +103,160 @@ const charactersData = [
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
   {
+    "id": "viki",
+    "name": "Вики Дримур",
+    "nickname": "Младшая из сестёр Дримуров",
+    "image": "Statics/image/photo_2026-05-11_22-03-03.jpg",
+    "link": "Wikis/vika.html",
+    "dateAdded": "2026-05-09",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "kara",
+    "name": "Кара Дримур",
+    "nickname": "Искусственно-созданный ребёнок Азриэля и Чары.",
+    "image": "Statics/image/photo_2026-05-11_20-09-32.jpg",
+    "link": "Wikis/kara.html",
+    "dateAdded": "2026-05-10",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "evilive",
+    "name": "Эвилай Дримур",
+    "nickname": "Искусственная душа, девушка-АУ",
+    "image": "Statics/image/evilive (3).jpg",
+    "link": "Wikis/evilive.html",
+    "dateAdded": "2025-04-27",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+
+  // === ГРУППА: РАЙДЕРЫ ===
+  {
+    "id": "glitch",
+    "name": "Глюк Райдер",
+    "nickname": "Музыкант, мироходец",
+    "image": "Statics/image/GlitchAva.jpg",
+    "link": "Wikis/glitch.html",
+    "dateAdded": "2025-04-26",
+    "author": "mic",
+    "settings": { "posY": "0%", "scale": "1.0" }
+  },
+  {
+    "id": "cherry",
+    "name": "Черри Райдер",
+    "nickname": "Панк всея мультивселенный, главное лицо автора",
+    "image": "Statics/image/черри.png",
+    "link": "Wikis/cherry.html",
+    "dateAdded": "2026-05-11",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "cassy",
+    "name": "Кэйсси Райдер",
+    "nickname": "Красноглазик, участник группы MGQ",
+    "image": "Statics/image/cassy.jpg",
+    "link": "Wikis/cassy.html",
+    "dateAdded": "2026-05-15",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "gwen",
+    "name": "Гвен Райдер",
+    "nickname": "Злой котёнок, участница группы MGQ",
+    "image": "Statics/image/gwen.png",
+    "link": "Wikis/gwen.html",
+    "dateAdded": "2026-05-16",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+
+  // === ГРУППА: ОКО ===
+  {
+    "id": "claire",
+    "name": "Клэр",
+    "nickname": "Богиня Хаоса",
+    "image": "Statics/image/Clair.jpg",
+    "link": "Wikis/claire.html",
+    "dateAdded": "2025-04-27",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+   {
+    "id": "milli",
+    "name": "Милли Райс",
+    "nickname": "Автоматон, создательница ОКО",
+    "image": "Statics/image/Gemini_Generated_Image_tv1apstv1apstv1a.png",
+    "link": "Wikis/milli.html",
+    "dateAdded": "2025-04-08",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "sgs",
+    "name": "СГС (Альфред)",
+    "nickname": "Жнец, член ОКО",
+    "image": "Statics/image/sgs.jpg",
+    "link": "Wikis/sgs.html",
+    "dateAdded": "2025-04-25",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+    {
+    "id": "amadeus",
+    "name": "Амадей Карс",
+    "nickname": "Психопат, наследник Ньюва",
+    "image": "Statics/image/Amadeus.jpg",
+    "link": "Wikis/amadeus.html",
+    "dateAdded": "2025-04-27",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+    {
+    "id": "john",
+    "name": "Джон Доу",
+    "nickname": "Патологический лжец, создатель наркотика \"Веселье\"",
+    "image": "Statics/image/john.jpg",
+    "link": "Wikis/john.html",
+    "dateAdded": "2025-04-17",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+    {
+    "id": "angie",
+    "name": "Энджи Доу",
+    "nickname": "Тренажорный Кошмар, бывшая участница ОКО",
+    "image": "Statics/image/angie.jpg",
+    "link": "Wikis/angie.html",
+    "dateAdded": "2025-04-23",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "marty",
+    "name": "Марти Дуглас",
+    "nickname": "Палач, член ОКО",
+    "image": "Statics/image/marty.jpg",
+    "link": "Wikis/marty.html",
+    "dateAdded": "2025-04-24",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "helen",
+    "name": "Хелен",
+    "nickname": "Бывший \"волонтёр\" одного \"приюта\", член ОКО",
+    "image": "Statics/image/helen.jpg",
+    "link": "Wikis/helen.html",
+    "dateAdded": "2025-04-26",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
     "id": "iris",
     "name": "Айрис",
     "nickname": "Полу-бог Шалости, подрывательница",
@@ -296,6 +266,61 @@ const charactersData = [
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
+
+  // === ГРУППА: ДЕМОНЫ ===
+  {
+    "id": "adrian",
+    "name": "Эдриан Морн",
+    "nickname": "Основатель Adrian Corp.",
+    "image": "Statics/image/adrianava.jpg", 
+    "link": "Wikis/adrian.html",
+    "dateAdded": "2024-02-15",
+    "author": "mic",
+    "settings": { "posY": "top", "scale": "1.0" }
+  },
+  {
+    "id": "agata",
+    "name": "Агата",
+    "nickname": "Дочь Марты, лидер восстания в Раю",
+    "image": "Statics/image/agata.jpg",
+    "link": "Wikis/agata.html",
+    "dateAdded": "2025-04-21",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+    {
+    "id": "emilia",
+    "name": "Эмилия Стоун",
+    "nickname": "Принцесса Гордыни",
+    "image": "Statics/image/Gemini_Generated_Image_uvh585uvh585uvh5.png",
+    "link": "Wikis/emilia.html",
+    "dateAdded": "2025-04-19",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "Zero",
+    "name": "Зеро",
+    "nickname": "Сильнейший демон/паук",
+    "image": "Statics/image/zero.jpg",
+    "link": "Wikis/zero.html",
+    "dateAdded": "2025-04-14",
+    "author": "sasha",
+    "settings": { "posY": "10%", "center": true, "scale": "1.0" }
+  },
+
+  // === ГРУППА: ДРУГИЕ ===
+  {
+    "id": "ivriil",
+    "name": "Ивриил",
+    "nickname": "Джентльмен, сын Оливии",
+    "image": "Statics/image/ivriil.jpg",
+    "link": "Wikis/ivriil.html",
+    "dateAdded": "2025-04-13",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+
 ];
  
 // === БАЗА ДАННЫХ МИРОВ И АУ ===
@@ -356,5 +381,13 @@ const factionsData = [
     "image": "Statics/image/pantheon_logo.jpg",
     "link": "Wikis/pantheon.html",
     "dateAdded": "2024-02-14"
+  },
+  {
+    "id": "oko",
+    "name": "Фракция: ОКО",
+    "nickname": "Тайная и влиятельная структура",
+    "image": "Statics/image/oko_logo.jpg",
+    "link": "oko.html",
+    "dateAdded": "2026-05-16"
   }
 ];
