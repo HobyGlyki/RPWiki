@@ -222,7 +222,7 @@ const charactersData = [
     'nickname': 'Автоматон, создательница ОКО',
     'image': 'Statics/image/Gemini_Generated_Image_tv1apstv1apstv1a.png',
     'link': 'Wikis/milli.html',
-    'dateAdded': '2025-04-27',
+    'dateAdded': '2025-04-08',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   },
@@ -232,7 +232,7 @@ const charactersData = [
     'nickname': 'Младшая из сестёр Дримуров',
     'image': 'Statics/image/photo_2026-05-11_22-03-03.jpg',
     'link': 'Wikis/vika.html',
-    'dateAdded': '2026-05-14',
+    'dateAdded': '2026-05-09',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   },
@@ -242,7 +242,7 @@ const charactersData = [
     'nickname': 'Искусственно-созданный ребёнок Азриэля и Чары.',
     'image': 'Statics/image/photo_2026-05-11_20-09-32.jpg',
     'link': 'Wikis/kara.html',
-    'dateAdded': '2026-05-17',
+    'dateAdded': '2026-05-10',
     'author': 'sasha',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
   },
@@ -252,9 +252,49 @@ const charactersData = [
     'nickname': 'Панк всея мультивселенный, главное лицо автора',
     'image': 'Statics/image/черри.png',
     'link': 'Wikis/cherry.html',
-    'dateAdded': '2026-05-18',
+    'dateAdded': '2026-05-11',
     'author': 'mic',
     'settings': { 'posY': '-0px', 'center': true, 'scale': '1.0' }
+  },
+  {
+    "id": "cassy",
+    "name": "Кэйсси Райдер",
+    "nickname": "Красноглазик, участник группы MGQ",
+    "image": "Statics/image/cassy.jpg",
+    "link": "Wikis/cassy.html",
+    "dateAdded": "2026-05-15",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "arthur",
+    "name": "Артур Дримур",
+    "nickname": "Сын Азриэля, киборг-одиночка",
+    "image": "Statics/image/0in5OIc6l9uuWeKw3783q3hSIHfP3cUnojdih924_lnhqKLvcRCLa64oMffKWjtkFZR6oLul--iEn310HjY1Zpzh.jpg",
+    "link": "Wikis/arthur.html",
+    "dateAdded": "2026-05-15",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "stella",
+    "name": "Стелла Дримур",
+    "nickname": "Тень звезды, любительница кота",
+    "image": "Statics/image/stella.jpg",
+    "link": "Wikis/stella.html",
+    "dateAdded": "2026-05-15",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "iris",
+    "name": "Айрис",
+    "nickname": "Полу-бог Шалости, подрывательница",
+    "image": "Statics/image/iris.jpg",
+    "link": "Wikis/iris.html",
+    "dateAdded": "2026-05-15",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
 ];
  
