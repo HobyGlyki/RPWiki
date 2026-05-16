@@ -169,6 +169,17 @@ const charactersData = [
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
 },
+ {
+    "id": "tom",
+    "name": "Том Райдер",
+    "nickname": "Музыкант, демон музыки, брат Глюка",
+    "image": "Statics/image/tom.jpg",
+    "link": "Wikis/tom",
+    "dateAdded": "2025-04-26",
+    'tags': ["hero", "demon"],
+    "author": "mic",
+    "settings": { "posY": "0%", "scale": "1.0" }
+  },
   {
     "id": "cherry",
     "name": "Черри Райдер",
@@ -197,6 +208,39 @@ const charactersData = [
     "nickname": "Злой котёнок, участница группы MGQ",
     "image": "Statics/image/gwen.png",
     "link": "Wikis/gwen",
+    'tags': ["hero"],
+    "dateAdded": "2026-05-16",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "henry",
+    "name": "Генри Райдер",
+    "nickname": "Злой котёнок, участница группы MGQ",
+    "image": "Statics/image/henry.png",
+    "link": "Wikis/henry",
+    'tags': ["hero"],
+    "dateAdded": "2026-05-16",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+    {
+    "id": "frank",
+    "name": "Френк Райдер",
+    "nickname": "Злой котёнок, участница группы MGQ",
+    "image": "Statics/image/frank.png",
+    "link": "Wikis/frank",
+    'tags': ["hero"],
+    "dateAdded": "2026-05-16",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "elizabeth",
+    "name": "Элизабет Нортс",
+    "nickname": "Злой котёнок, участница группы MGQ",
+    "image": "Statics/image/elizabeth.png",
+    "link": "Wikis/elizabeth",
     'tags': ["hero"],
     "dateAdded": "2026-05-16",
     "author": "mic",
@@ -340,6 +384,39 @@ const charactersData = [
     "settings": { "posY": "top", "scale": "1.0" }
   },
   {
+    "id": "steve",
+    "name": "Стив",
+    "nickname": "Правитель Ада.",
+    "image": "Statics/image/steve.jpg", 
+    "link": "Wikis/steve",
+    'tags': ["hero", 'demon'],
+    "dateAdded": "2024-02-15",
+    "author": "mic",
+    "settings": { "posY": "top", "scale": "1.0" }
+  },
+  {
+    "id": "rob",
+    "name": "Роб",
+    "nickname": "Брат Стива, сын смерти.",
+    "image": "Statics/image/rob.jpg", 
+    "link": "Wikis/rob",
+    'tags': ["hero", 'demon'],
+    "dateAdded": "2024-02-15",
+    "author": "mic",
+    "settings": { "posY": "top", "scale": "1.0" }
+  },
+  {
+    "id": "regina",
+    "name": "Реджина",
+    "nickname": "Правитель Ада.",
+    "image": "Statics/image/regina.jpg", 
+    "link": "Wikis/regina",
+    'tags': ["hero", 'demon'],
+    "dateAdded": "2024-02-15",
+    "author": "mic",
+    "settings": { "posY": "top", "scale": "1.0" }
+  },
+  {
     "id": "agata",
     "name": "Агата",
     "nickname": "Дочь Марты, лидер восстания в Раю",
@@ -372,7 +449,62 @@ const charactersData = [
     "author": "sasha",
     "settings": { "posY": "10%", "center": true, "scale": "1.0" }
   },
-
+// === ГРУППА: Боги===
+{
+    "id": "marta",
+    "name": "Марта",
+    "nickname": "Богиня Жизни",
+    "image": "Statics/image/marta.jpg",
+    "link": "Wikis/marta",
+    "dateAdded": "2026-05-16",
+    "tags": ["god"],
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "talia",
+    "name": "Талия",
+    "nickname": "Богиня Смерти, правительница Ада",
+    "image": "Statics/image/talia.jpg",
+    "link": "Wikis/talia",
+    "dateAdded": "2026-05-16",
+    "tags": ["god"],
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "olivia",
+    "name": "Оливия",
+    "nickname": "Мать Ивриила, Богиня Снов и Кошмаров",
+    "image": "Statics/image/olivia.jpg",
+    "link": "Wikis/olivia",
+    "dateAdded": "2026-05-16",
+    "tags": ["god"],
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "sd",
+    "name": "СД",
+    "nickname": "Сын Смерти, Демон Смерти",
+    "image": "Statics/image/sd.jpg",
+    "link": "Wikis/sd",
+    "dateAdded": "2026-05-16",
+    "tags": ["hero"],
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "new",
+    "name": "Ньюв",
+    "nickname": "",
+    "image": "Statics/image/new.jpg",
+    "link": "Wikis/new",
+    "dateAdded": "2026-05-16",
+    "tags": ["villain", "god"],
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
   // === ГРУППА: ДРУГИЕ ===
   {
     "id": "ivriil",
@@ -380,6 +512,61 @@ const charactersData = [
     "nickname": "Джентльмен, сын Оливии",
     "image": "Statics/image/ivriil.jpg",
     "link": "Wikis/ivriil",
+    "dateAdded": "2025-04-13",
+    'tags': ["villain"],
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+   {
+    "id": "ravenhell",
+    "name": "Рэйвенхелл",
+    "nickname": "Джентльмен, сын Оливии",
+    "image": "Statics/image/ravenhell.jpg",
+    "link": "Wikis/ravenhell",
+    "dateAdded": "2025-04-13",
+    'tags': ["villain"],
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "mike",
+    "name": "Майк",
+    "nickname": "Джентльмен, сын Оливии",
+    "image": "Statics/image/mike.jpg",
+    "link": "Wikis/mike",
+    "dateAdded": "2025-04-13",
+    'tags': ["villain"],
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+  {
+    "id": "sofi",
+    "name": "Софи",
+    "nickname": "Джентльмен, сын Оливии",
+    "image": "Statics/image/sofi.jpg",
+    "link": "Wikis/sofi",
+    "dateAdded": "2025-04-13",
+    'tags': ["villain"],
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+   {
+    "id": "marco",
+    "name": "Марко",
+    "nickname": "Джентльмен, сын Оливии",
+    "image": "Statics/image/marco.jpg",
+    "link": "Wikis/marco",
+    "dateAdded": "2025-04-13",
+    'tags': ["villain"],
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+  },
+    {
+    "id": "code",
+    "name": "Код Дримур",
+    "nickname": "",
+    "image": "Statics/image/code.jpg",
+    "link": "Wikis/code",
     "dateAdded": "2025-04-13",
     'tags': ["villain"],
     "author": "mic",
