@@ -161,12 +161,12 @@ const charactersData = [
   {
     "id": "ariana",
     "name": "Ариана",
-    "nickname": "",
-    "image": "Wikis/ariana/avatar.jpg",
+    "nickname": "Девушка Глюка, главный Врач Эферис",
+    "image": "Wikis/ariana/Gemini_Generated_Image_b9mao3b9mao3b9ma.png",
     "link": "Wikis/ariana",
-    "tags": ["sasha","hero","demon"],
+    "tags": ["hero","demon"],
     "dateAdded": "2026-05-15",
-    "author": "mic",
+    "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
 },
   {
@@ -205,12 +205,12 @@ const charactersData = [
   {
     "id": "ms",
     "name": "МС",
-    "nickname": "",
+    "nickname": " Проклятый человек, принявший скелетный облик, бывший учитель школы магии и владелец своей уже АУ, которая напоминает место для спокойствия.",
     "image": "Wikis/ms/Gemini_Generated_Image_q3gm6hq3gm6hq3gm.png",
     "link": "Wikis/ms",
     "tags": ["sasha","hero"],
     "dateAdded": "2026-05-15",
-    "author": "mic",
+    "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
 },
 

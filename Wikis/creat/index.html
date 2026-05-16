@@ -163,6 +163,18 @@
 <div class="preset-box" style="margin-bottom: 20px;">
     <div style="display: flex; flex-direction: row; gap: 20px; align-items: flex-end; width: 100%;">
         
+
+            <label style="color:var(--accent); font-size: 0.9em; margin-bottom: 8px;">Автор статьи:</label>
+            <div style="display: flex; gap: 20px;">
+                <label style="font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                    <input type="radio" name="f_author" value="sasha" checked> Саша
+                </label>
+                <label style="font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                    <input type="radio" name="f_author" value="mic"> Черрешня
+                </label>
+            </div>
+        
+
         <div style="flex: 1;">
             <label style="color:var(--accent); font-size: 0.9em; margin-bottom: 5px; display: block;">Имя на английском (ID папки):</label>
             <input type="text" id="f_id_name" placeholder="например: gwen" style="width: 100%; box-sizing: border-box; margin: 0;">
@@ -178,8 +190,6 @@
             
             <div id="tags-popup" style="display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 100; background: var(--card-bg); border: 1px solid var(--accent); padding: 15px; margin-top: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border-radius: 4px;">
                 <div class="color-grid" style="grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="mic" class="tag-checkbox" onchange="updateTagCounter()"> Черри</label>
-                    <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="sasha" class="tag-checkbox" onchange="updateTagCounter()"> Саша</label>
                     <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="hero" class="tag-checkbox" onchange="updateTagCounter()"> Герой</label>
                     <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="villain" class="tag-checkbox" onchange="updateTagCounter()"> Злодей</label>
                     <label style="font-weight: normal; cursor: pointer;"><input type="checkbox" value="god" class="tag-checkbox" onchange="updateTagCounter()"> Бог</label>
@@ -677,11 +687,11 @@ ${iR}                </table>
 {
     "id": "${idName}",
     "name": "${charName}",
-    "nickname": "",
+    "nickname": "${document.getElementById('f_intro').value.trim() || charName}",
     "image": "Wikis/${idName}/${firstImgName}",
     "link": "Wikis/${idName}",${tagsStr}
     "dateAdded": "${today}",
-    "author": "mic",
+    "author": "${document.querySelector('input[name="f_author"]:checked').value || 'Unknown'}",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
 }`;
             charFolder.file("entry.json", jsonSnippet);
