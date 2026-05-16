@@ -202,6 +202,18 @@ const charactersData = [
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
+  {
+    "id": "ms",
+    "name": "МС",
+    "nickname": "",
+    "image": "Wikis/ms/Gemini_Generated_Image_q3gm6hq3gm6hq3gm.png",
+    "link": "Wikis/ms",
+    "tags": ["sasha","hero"],
+    "dateAdded": "2026-05-15",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+},
+
 
   // === ГРУППА: ОКО ===
   {
@@ -281,6 +293,17 @@ const charactersData = [
     "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
+  {
+    "id": "nulan",
+    "name": "Нулан",
+    "nickname": "",
+    "image": "Wikis/nulan/изображение_2026-05-16_012747317.png",
+    "link": "Wikis/nulan",
+    "tags": ["sasha","villain","oko"],
+    "dateAdded": "2026-05-15",
+    "author": "mic",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+},
   {
     "id": "helen",
     "name": "Хелен",
