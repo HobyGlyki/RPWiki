@@ -213,17 +213,17 @@ const charactersData = [
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
-  {
+{
     "id": "henry",
     "name": "Генри Райдер",
-    "nickname": "Злой котёнок, участница группы MGQ",
-    "image": "Statics/image/henry.png",
+    "nickname": "Альтернативная версия Глюка Райдера из вселенной FellSwap, один из основателей музыкального коллектива MGQ",
+    "image": "Wikis/henry/Без имени.jpg",
     "link": "Wikis/henry",
-    'tags': ["hero"],
-    "dateAdded": "2026-05-16",
-    "author": "mic",
+    "tags": ["hero","anomaly"],
+    "dateAdded": "2026-05-20",
+    "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
-  },
+},
     {
     "id": "frank",
     "name": "Френк Райдер",
