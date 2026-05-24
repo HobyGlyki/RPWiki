@@ -78,6 +78,7 @@ const charactersData = [
     "author": "mic",
     "settings": { "posY": "0px", "center": true, "scale": "1.0" }
   },
+
   // === ГРУППА: ДРИММУРЫ ===
   {
     "id": "asriel",
@@ -213,17 +214,17 @@ const charactersData = [
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
-  {
+{
     "id": "henry",
     "name": "Генри Райдер",
-    "nickname": "Злой котёнок, участница группы MGQ",
-    "image": "Statics/image/henry.png",
+    "nickname": "Альтернативная версия Глюка Райдера из вселенной FellSwap, один из основателей музыкального коллектива MGQ",
+    "image": "Wikis/henry/Без имени.jpg",
     "link": "Wikis/henry",
-    'tags': ["hero"],
-    "dateAdded": "2026-05-16",
-    "author": "mic",
+    "tags": ["hero","anomaly"],
+    "dateAdded": "2026-05-20",
+    "author": "sasha",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
-  },
+},
     {
     "id": "frank",
     "name": "Френк Райдер",
@@ -484,16 +485,16 @@ const charactersData = [
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
   {
-    "id": "sd",
+    "id": "SD",
     "name": "СД",
-    "nickname": "Сын Смерти, Демон Смерти",
-    "image": "Statics/image/sd.jpg",
-    "link": "Wikis/sd",
-    "dateAdded": "2026-05-16",
-    "tags": ["hero"],
+    "nickname": "Сын Смерти, Демон Смерти и хладнокровным защитником человечества.",
+    "image": "Wikis/SD/Без имени.jpg",
+    "link": "Wikis/SD",
+    "tags": ["hero","god","demon"],
+    "dateAdded": "2026-05-22",
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
-  },
+},
   {
     "id": "new",
     "name": "Ньюв",
