@@ -485,11 +485,11 @@ const charactersData = [
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
   {
-    "id": "SD",
+    "id": "sd",
     "name": "СД",
     "nickname": "Сын Смерти, Демон Смерти и хладнокровным защитником человечества.",
-    "image": "Wikis/SD/Без имени.jpg",
-    "link": "Wikis/SD",
+    "image": "Wikis/sd/Без имени.jpg",
+    "link": "Wikis/sd",
     "tags": ["hero","god","demon"],
     "dateAdded": "2026-05-22",
     "author": "mic",
