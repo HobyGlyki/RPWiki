@@ -506,6 +506,28 @@ const charactersData = [
     "author": "mic",
     "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
   },
+  {
+    "id": "ezio",
+    "name": "Эцио",
+    "nickname": "Архангел-Голос, младший брат Габриэля и старший брат для Ави. Создание Рохана и Марты. Хранитель Книги Рохана.",
+    "image": "Wikis/ezio/0e40371b-2c10-4652-bd43-bc8f1b1b2ada.jpg",
+    "link": "Wikis/ezio",
+    "tags": ["hero","god","angel"],
+    "dateAdded": "2026-05-26",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+},
+{
+    "id": "avi",
+    "name": "Ави",
+    "nickname": "младшая сестра из Голосов. Скромная и дружелюбная девушка.",
+    "image": "Wikis/avi/8eac7149-de60-46e6-9e2f-d964d7a8356e.png",
+    "link": "Wikis/avi",
+    "tags": ["hero","angel"],
+    "dateAdded": "2026-05-26",
+    "author": "sasha",
+    "settings": { "posY": "-0px", "center": true, "scale": "1.0" }
+},
   // === ГРУППА: ДРУГИЕ ===
   {
     "id": "ivriil",
